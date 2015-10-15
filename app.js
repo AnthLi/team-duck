@@ -1,3 +1,4 @@
+// The necessary libraries required for the web app
 var express = require('express');
 var handlebars = require('express-handlebars');
 
