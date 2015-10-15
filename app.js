@@ -13,12 +13,12 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/about', (req, res) => {
   res.render('about', {
-    pageTestScript: './about.handlebars'
+    pageTestScript: '/views/about.handlebars'
   });
 });
 
 app.get('/team', (req, res) => {
   res.render('team', {
-    pageTestScript: './team.handlebars'
+    pageTestScript: '/views/team.handlebars'
   });
 });
