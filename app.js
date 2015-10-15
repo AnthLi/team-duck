@@ -1,7 +1,6 @@
 var express = require('express');
 var handlebars = require('express-handlebars');
 
-
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -13,10 +12,13 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/about', (req, res) => {
-  // TODO
-  
-    res.render('about', {
-      pageTestScript: './about.handlebars'
-    });
-  
+  res.render('about', {
+    pageTestScript: './about.handlebars'
+  });
+});
+
+app.get('/team', (req, res) => {
+  res.render('team', {
+    pageTestScript: './team.handlebars'
+  });
 });
