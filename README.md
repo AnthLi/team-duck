@@ -13,7 +13,7 @@ $ cd path/to/repository
 $ node app.js
 ```
 
-The application should be running on localhost:3000.
+The application is now running on localhost:3000.
 
 ## If you're working on something specific
 ```bash
