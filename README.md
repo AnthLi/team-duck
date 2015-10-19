@@ -1,10 +1,10 @@
-# team-duck
+# The Homework Project
 
 ## Installation
-Make sure you have Node.js installed on your system. 
+Make sure you have Node.js installed on your system.
 
-You can download it [here](https://nodejs.org/en/download/) (required for Windows)
-or follow these commands in the terminal
+You can download it [here](https://nodejs.org/en/download/)
+(required for Windows) or follow these commands in the terminal
 
 On Linux:
 ```bash
