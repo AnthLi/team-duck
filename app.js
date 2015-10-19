@@ -21,7 +21,7 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/team', (req, res) => {
-  res.render('team' + req.query, {
+  res.render('team' /* + req.query */, {
     pageTestScript: "/views/team.handlebars"
   });
 });
