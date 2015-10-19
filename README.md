@@ -33,7 +33,7 @@ The application is now running on localhost:3000.
 
 ## If you're working on something specific
 ```bash
-$ git checkout -n [branch name] // create a new branch
-$ git checkout [branch name]    // make edits on a branch
-$ git branch                    // show all available branches
+$ git checkout -n [branch name]
+$ git checkout [branch name]
+$ git branch
 ```
