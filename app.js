@@ -21,13 +21,13 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/team', (req, res) => {
-  res.render('team', {
+  res.render('team' + req.query.id, {
     pageTestScript: "/views/team.handlebars"
   });
 });
 
 // Start the express app on port 3000
 app.listen(app.get('port'), () => {
-  console.log('Express application started on http://localhost:' + 
+  console.log('Express application started on http://localhost:' +
               app.get('port') + '; press Ctrl-C to terminate');
 });
