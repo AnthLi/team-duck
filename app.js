@@ -27,7 +27,7 @@ app.get('/team', (req, res) => {
 });
 
 // Start the express app on port 3000
-app.listen(3000, () => {
+app.listen(app.get('port'), () => {
   console.log('Express application started on http://localhost:' + 
               app.get('port') + '; press Ctrl-C to terminate');
 });
