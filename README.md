@@ -1,13 +1,23 @@
 # team-duck
 
-##Steps to Begin
+## Installation
+```bash
+$ git clone https://github.com/AnthLi/team-duck
+$ cd path/to/repository
+$ npm install
+```
 
-* > git clone https://github.com/AnthLi/team-duck.git
-* > npm install 
-* > git config user.email "your_email@example.com" #use git email
+## Usage
+```bash
+$ cd path/to/repository
+$ node app.js
+```
 
-## If you're working on something specific, create your own branch
+The application is now running on localhost:3000.
 
-* > git checkout -n [branch name] #For new branch
-* > git checkout [branch name] #To make edits on a branch
-* > git branch #To show all the branches 
+## If you're working on something specific
+```bash
+$ git checkout -n [branch name] // create a new branch
+$ git checkout [branch name]    // make edits on a branch
+$ git branch                    // show all available branches
+```
