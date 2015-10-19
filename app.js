@@ -4,6 +4,9 @@ var handlebars = require('express-handlebars');
 
 var app = express();
 
+// Set the port to 3000
+app.set('port', process.env.PORT || 3000);
+
 var view = handlebars.create({ defaultLayout: 'main' });
 app.engine('handlebars', view.engine);
 app.set('view engine', 'handlebars');
@@ -25,6 +28,6 @@ app.get('/team', (req, res) => {
 
 // Start the express app on port 3000
 app.listen(3000, () => {
-  console.log('Express application started on http://localhost:' +
+  console.log('Express application started on http://localhost:' + 
               app.get('port') + '; press Ctrl-C to terminate');
 });
