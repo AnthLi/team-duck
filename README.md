@@ -15,7 +15,7 @@ $ node app.js
 
 The application should be running on localhost:3000.
 
-## If you're working on something specific, create your own branch
+## If you're working on something specific
 ```bash
 $ git checkout -n [branch name] // create a new branch
 $ git checkout [branch name]    // make edits on a branch
