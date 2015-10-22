@@ -23,9 +23,23 @@ app.get('/about', (req, res) => {
 
 app.get('/team', (req, res) => {
 	var specificUser = req.query.user;
-  res.render('team' /* + req.query */, {
-    pageTestScript: "/views/team.handlebars"
-  });
+
+	switch(specificUser){
+		case 'Ben':
+			res.render('team' /* + req.query */, {
+	    		pageTestScript: "/views/layouts/teammates/Ben.handlebars"
+			});
+			console.log("Ben");
+			break;
+		default:
+			res.render('team' /* + req.query */, {
+	    		pageTestScript: "/views/team.handlebars"
+	    	});
+	    	console.log("Team");
+	    	break;
+		}
+  
+
 });
 
 // Start the express app on port 3000
