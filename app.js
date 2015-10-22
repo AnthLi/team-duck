@@ -16,14 +16,21 @@ app.use(express.static(__dirname + '/public'));
 // Defined routes
 app.get('/about', (req, res) => {
   res.render('about', {
-    pageTestScript: "/views/about.handlebars"
+    pageTestScript: '/views/about.handlebars'
   });
 });
 
 app.get('/team', (req, res) => {
-  res.render('team' /* + req.query */, {
-    pageTestScript: "/views/team.handlebars"
-  });
+  var user = req.query.user; // Get the user from the query string
+  if (user) {
+    res.render('team', {
+      pageTestScript: '/views/' + user + '.handlebars'
+    });
+  } else {
+    res.render('team', {
+      pageTestScript: '/views/team.handlebars'
+    });
+  }
 });
 
 // Start the express app on port 3000
