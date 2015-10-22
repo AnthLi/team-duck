@@ -22,14 +22,13 @@ app.get('/about', (req, res) => {
 
 app.get('/team', (req, res) => {
   var user = req.query.user; // Get the user from the query string
+
+  // If there is a user in the query, render the handlebars for that user
+  // Othewise there is no query and it only refers to the main team page
   if (user) {
-    res.render('team', {
-      pageTestScript: '/views/' + user + '.handlebars'
-    });
+    res.render('layouts/teammates/' + user + '.handlebars');
   } else {
-    res.render('team', {
-      pageTestScript: '/views/team.handlebars'
-    });
+    res.render('team');
   }
 });
 
