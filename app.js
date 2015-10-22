@@ -15,12 +15,14 @@ app.use(express.static(__dirname + '/public'));
 
 // Defined routes
 app.get('/about', (req, res) => {
+
   res.render('about', {
     pageTestScript: "/views/about.handlebars"
   });
 });
 
 app.get('/team', (req, res) => {
+	var specificUser = req.query.user;
   res.render('team' /* + req.query */, {
     pageTestScript: "/views/team.handlebars"
   });
