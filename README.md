@@ -4,7 +4,7 @@
 Make sure you have Node.js installed on your system.
 
 You can download it [here](https://nodejs.org/en/download/)
-(required for Windows) or follow these commands in the terminal
+(required for Windows) or follow these commands in the terminal:
 
 On Linux:
 ```bash
