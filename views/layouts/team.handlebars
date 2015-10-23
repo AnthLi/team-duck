@@ -1,11 +1,13 @@
 <h1>Team Portfolio</h1>
 
 <h2>Meet the Members</h2>
-
+<!-- need to make the link add querystring to link to relevant page   -->
 
   {{#each members}}
-  <div class="memberName">{{this.fname}} {{this.lname}}</div>
+  <div class="memberName"><a href="">{{this.fname}} {{this.lname}}</a></div>
       <div class="Description">{{this.desc}} </div>
+      <div>. </div>
+      <div> </div>
   {{/each}}
 
 
