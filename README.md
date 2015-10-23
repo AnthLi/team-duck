@@ -27,7 +27,7 @@ $ npm install
 ## Usage
 ```bash
 $ cd path/to/repository
-$ node app.js
+$ nodemon app.js
 ```
 The application is now running on localhost:3000.
 
