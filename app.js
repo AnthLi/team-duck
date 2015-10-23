@@ -44,7 +44,9 @@ app.get('/team', (req, res) => {
   Otherwise, refer to the main team page.
   */
   if (member && members.indexOf(member) >= 0) {
-    res.render('teammates/' + 'apli', {memberx: single[0]});
+    res.render('teammates/' + 'apli', {
+      memberx: single[0]
+    });
   } else if (member && members.indexOf(member) < 0) {
     notFound404(req, res);
   } else {
