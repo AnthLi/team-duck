@@ -57,6 +57,18 @@
       padding-bottom: 15px;
     }
 
+    .Description{
+      background-color: #f2f2f2;
+      padding: 2%;
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    a:link{
+      text-decoration: none;
+    }
+
+
     </style>
 
   </head>
@@ -75,9 +87,10 @@
       <div id="tp">
 
   
-  <center><h1>{{memberx.fname}} {{memberx.lname}}</h1>
-  <div class="Description"> <p>{{memberx.desc}}</p> </div></center>
-        
+      <center><h1>{{memberx.fname}} {{memberx.lname}}</h1></center>
+      <div class="Description"> {{memberx.desc}}
+      </div>
+      <center><a href="team"> GO BACK </a></center>
 
       </div>
       <nav id="menu">
