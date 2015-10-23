@@ -27,6 +27,10 @@ app.get('/about', (req, res) => {
   res.render('layouts/about');
 });
 
+app.get('/mockups', (req, res) => {
+  res.render('layouts/mockups');
+});
+
 app.get('/team', (req, res) => {
   // Array of each team member
   var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
