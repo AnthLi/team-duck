@@ -24,12 +24,32 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
 
     <style type="text/css">
+    .memberName{
+      padding: 10px;
+    }  
+
+    .memberName a{
+      font-size: 20px;
+    }  
+
     .memberName a:link {
       text-decoration: none;
     }
 
     .memberName a:hover {
       color: #222;
+    }
+
+    h1{
+      font-size: 30px;
+    }
+
+    h2{
+      font-size: 25px;
+    }
+
+    #head2{
+      padding-bottom: 15px;
     }
 
     </style>
@@ -51,12 +71,12 @@
 
      <center> <h1>Team Portfolio</h1>
 
-      <h2>Meet the Members</h2>
+      <div id="head2"><h2>Meet the Members</h2></div>
       <!-- need to make the link add querystring to link to relevant page   -->
 
         {{#each members}}
         <div class="memberName"><a href="?user={{this.user}}">{{this.fname}} {{this.lname}}</a></div>
-          <div class="Description">{{this.desc}}</div>
+         <!-- <div class="Description">{{this.desc}}</div> -->
           <div></div>
           <div></div>
         {{/each}}</center>
