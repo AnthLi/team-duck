@@ -1,4 +1,4 @@
-# The Homework Project
+# Zembo
 
 ## Installation
 Make sure you have Node.js installed on your system.
