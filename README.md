@@ -4,7 +4,7 @@
 Make sure you have Node.js installed on your system.
 
 You can download it [here](https://nodejs.org/en/download/)
-(required for Windows) or follow these commands in the terminal
+(required for Windows) or follow these commands in the terminal:
 
 On Linux:
 ```bash
@@ -27,13 +27,21 @@ $ npm install
 ## Usage
 ```bash
 $ cd path/to/repository
-$ node app.js
+$ nodemon app.js
 ```
 The application is now running on localhost:3000.
 
-## If you're working on something specific
+## Branching
 ```bash
-$ git checkout -n [branch name]
+$ git checkout -b [branch name]
 $ git checkout [branch name]
 $ git branch
+```
+
+## Merging your branch to master
+```bash
+$ git checkout [your branch]
+$ git push origin [your branch]
+$ git checkout master
+$ git merge [your branch]
 ```

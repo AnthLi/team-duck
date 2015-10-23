@@ -47,6 +47,10 @@ app.get('/team', (req, res) => {
     res.render('teammates/' + 'apli', {
       memberx: single[0]
     });
+  	//only need one handlebar page since it's all dynamic. 
+  	//so currently linked to apli.handlebars since thats the 
+  	//one i changed
+    res.render('teammates/' + 'apli', {memberx: single[0]});
   } else if (member && members.indexOf(member) < 0) {
     notFound404(req, res);
   } else {
