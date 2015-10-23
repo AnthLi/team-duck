@@ -20,7 +20,7 @@ var team = [
 ];
 
 // Makes a copy of a member object
-function copy(memberl) {
+function copy(member) {
   return Object.assign({}, member);
 }
 
