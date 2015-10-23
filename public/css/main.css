@@ -95,11 +95,10 @@ p2{
 }
 
 #anthony{
-	list-style: none;
+	list-style: circle;
 }
 
 #list{
-	text-align: center;
 	margin: 0 auto;
 }
 
