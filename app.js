@@ -25,6 +25,11 @@ function notFound404(req, res) {
 
 // Defined routes
 
+// Splash page
+app.get('/', (req, res) => {
+  res.render('layouts/mockup', {imgURL: '/imgs/Splash.png'});
+});
+
 // About page
 app.get('/about', (req, res) => {
   res.render('layouts/about');
@@ -58,9 +63,6 @@ app.get('/team', (req, res) => {
 // Mockup pages for each mockup image
 app.get('/:mock', (req, res) => {
   switch(req.params.mock){
-    case '':
-      res.render('layouts/mockup', {imgURL: '/imgs/Splash.png'})
-      break;
     case 'home':
       res.render('layouts/mockup', {imgURL: '/imgs/Home.png'});
       break;
