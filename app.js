@@ -19,14 +19,12 @@ app.use(express.static(__dirname + '/public'));
 // Source: 02-basic-app-student
 function notFound404(req, res) {
   res.status(404);
-  res.render('404');
+  res.render('layouts/404');
 }
 
 // Defined routes
 app.get('/about', (req, res) => {
-  res.render('about', {
-    pageTestScript: '/views/about.handlebars'
-  });
+  res.render('layouts/about');
 });
 
 app.get('/team', (req, res) => {
@@ -41,11 +39,11 @@ app.get('/team', (req, res) => {
   Otherwise, refer to the main team page.
   */
   if (member && members.indexOf(member) >= 0) {
-    res.render('layouts/teammates/' + member);
-  } else if (members.indexOf(member) < 0) {
+    res.render('teammates/' + member);
+  } else if (member && members.indexOf(member) < 0) {
     notFound404(req, res);
   } else {
-    res.render('team');
+    res.render('layouts/team');
   }
 });
 
