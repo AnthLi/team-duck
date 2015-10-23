@@ -30,12 +30,12 @@ app.get('/about', (req, res) => {
 app.get('/mockups', (req, res) => {
   res.render('layouts/mockups');
 });
-
+var team = require('./team.js');
 app.get('/team', (req, res) => {
   // Array of each team member
   var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
   var member = req.query.user; // Get the user from the query string
-
+  var Mem = team.all().data;
   /* 
   If there is a user in the query and they are a valid user, 
   render the handlebars for that user.
@@ -43,11 +43,11 @@ app.get('/team', (req, res) => {
   Otherwise, refer to the main team page.
   */
   if (member && members.indexOf(member) >= 0) {
-    res.render('teammates/' + member);
+    res.render('teammates/' + member, {members: Mem});
   } else if (member && members.indexOf(member) < 0) {
     notFound404(req, res);
   } else {
-    res.render('layouts/team');
+    res.render('layouts/team', {members: Mem});
   }
 });
 

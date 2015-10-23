@@ -2,7 +2,18 @@
 
 <h2>Meet the Members</h2>
 
- <div class="memberName">Ben Cheung </div>
+
+  {{#each members}}
+  <div class="memberName">{{this.fname}} {{this.lname}}</div>
+      <div class="Description">{{this.desc}} </div>
+  {{/each}}
+
+
+
+
+
+
+ <!-- <div class="memberName">Ben Cheung </div>
 
   <div class = "PositionDiv">
   <p> Database and server </p>
@@ -47,5 +58,5 @@
  <div class="Description">
 <p></p>
  </div>
-
+ -->
 

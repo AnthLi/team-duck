@@ -1,17 +1,17 @@
 
-function member(user, fname, lname, year) {
+function member(user, fname, lname, desc) {
 	return {
 		user: user,
 		fname: fname,
 		lname: lname,
-		year: year
+		desc: desc
 	};
 }
 
-
+//Todo: Change 'junior' to your description 
 var team = [
 	// Keep this first member for testing please.
-	member('jdoe', 'John', 'Doe', 'senior'),
+	
 	member('bcheung', 'Benjamin', 'Cheung', 'junior'),
 	member('apli', 'Anthony', 'Li', 'junior'),
 	member('hkeswani', 'Harsh', 'Keswani', 'junior'),
@@ -23,7 +23,7 @@ var team = [
 
 function copy(memberl) {
 	// TODO
-	var res = member(memberl.user, memberl.fname, memberl.lname, memberl.year);
+	var res = member(memberl.user, memberl.fname, memberl.lname, memberl.desc);
 	return res;
 }
 
