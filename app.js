@@ -49,6 +49,24 @@ app.get('/team', (req, res) => {
   }
 });
 
+app.get('/:mock', (req, res) => {
+  switch(req.params.mock){
+    case 'home':
+        var imgURL = 'public/imgs/HomePage.png';
+        res.render('mockups');
+        break;
+    case 'login':
+        var imgURL = 'public/imgs/Login.png';
+        res.render('mockups');
+        break;
+    case 'profile':
+        var imgURL = 'public/imgs/ProfileView.png';
+        res.render('mockups');
+        break;
+    default :
+        break;      
+  }
+});
 // Start the express app on port 3000
 app.listen(app.get('port'), () => {
   console.log('Express application started on http://localhost:' +
