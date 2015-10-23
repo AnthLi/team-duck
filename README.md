@@ -31,9 +31,17 @@ $ node app.js
 ```
 The application is now running on localhost:3000.
 
-## If you're working on something specific
+## Branching
 ```bash
-$ git checkout -n [branch name]
+$ git checkout -b [branch name]
 $ git checkout [branch name]
 $ git branch
+```
+
+## Merging your branch to master
+```bash
+$ git checkout [your branch]
+$ git push origin [your branch]
+$ git checkout master
+$ git merge [your branch]
 ```
