@@ -1,16 +1,36 @@
 <style>
-test a:visited{
-  text-decoration: none;
+#images{
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
+
+#test a:link {
+    text-decoration: none;
+    color: white;
+    padding: 1%;
+    background-color: #444;
+}
+
+#test a:visited {
+	background-color: #444;
+    color: white;
+}
+
+
+#test a:hover{
+	background-color: white;
+    color: #444;
+}
+
 </style>
 
-<div>
+<div id="images">
   <center><img src = {{imgURL}}></center>
 </div>
 
 <div id = "test">
   <center>
-    <a href=splash>Splash</a>
+    <a href="http://localhost:3000">Splash</a>
     <a href=home>Home</a>
     <a href=login>Login</a>
     <a href=profile>Profile</a>
