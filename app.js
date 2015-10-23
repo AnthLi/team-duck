@@ -1,7 +1,7 @@
 // The necessary imports required for the web app
 var express = require('express');
 var handlebars = require('express-handlebars');
-var team = require('./team.js');
+var team = require('./lib/team.js');
 
 var app = express();
 
