@@ -90,7 +90,7 @@ p2{
 
 #test p3{
 	color: #333;
-	font-size: 15px;
+	font-size: 14px;
 
 }
 
@@ -105,6 +105,13 @@ p2{
 
 #login{
 	padding-top: 1%;
+}
+
+#content{
+	margin: 0 auto;
+	width: 80%;
+	padding: 2%;
+	background-color: #f2f2f2;
 }
 
 </style>
