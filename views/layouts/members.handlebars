@@ -48,9 +48,26 @@
       font-size: 25px;
     }
 
+    p{
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
     #head2{
       padding-bottom: 15px;
     }
+
+    .Description{
+      background-color: #f2f2f2;
+      padding: 2%;
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    a:link{
+      text-decoration: none;
+    }
+
 
     </style>
 
@@ -69,10 +86,18 @@
       <div id="cont">
       <div id="tp">
 
+      <div id="panel1">
+          <ul id="test">
+            <center><img src ="imgs/logo.png" width="200" height="125px"></center>
+            </div>
+          </ul>
+        </div>
+
   
-  <center><h1>{{memberx.fname}} {{memberx.lname}}</h1>
-  <div class="Description"> {{memberx.desc}} </div></center>
-        
+      <center><h1>{{memberx.fname}} {{memberx.lname}}</h1></center>
+      <div class="Description"> {{memberx.desc}}
+      </div>
+      <center><a href="team"> GO BACK </a></center>
 
       </div>
       <nav id="menu">
