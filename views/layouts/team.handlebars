@@ -1,56 +1,97 @@
-<h1>Team Portfolio</h1>
+<!DOCTYPE html>
 
-<h2>Meet the Members</h2>
-<!-- need to make the link add querystring to link to relevant page   -->
+<html>
+  <head>
+    <meta http-equiv="refresh" content="300" >
+    <meta charset="utf-8" />
+    <meta name="author" content="therealharsh" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 
-  {{#each members}}
-  <div class="memberName"><a href="team?user=">{{this.fname}} {{this.lname}}</a></div>
-    <div class="Description">{{this.desc}}</div>
-    <div></div>
-    <div></div>
-  {{/each}}
+    <link type="text/css" rel="stylesheet" href="css/demo.css" />
+    <link type="text/css" rel="stylesheet" href="dist/css/jquery.mmenu.all.css" />
+    <link type="text/css" rel="stylesheet" href="css/teamPage.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<!--   <div class="memberName">Ben Cheung</div>
 
-  <div class = "PositionDiv">
-    <p> Database and server </p>
-  </div>
-  <div class="Description">
-    <p></p>
-  </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('nav#menu').mmenu();
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-  <div class="memberName">Jonathan Gatley</div>
+    <style type="text/css">
+    .memberName{
+      padding: 10px;
+    }  
 
-  <div class = "PositionDiv">
-    <p> Database and server </p>
-  </div>
-  <div class="Description">
-    <p></p>
-  </div>
+    .memberName a{
+      font-size: 20px;
+    }  
 
-  <div class="memberName">Harsh Keswani</div>
+    .memberName a:link {
+      text-decoration: none;
+    }
 
-  <div class = "PositionDiv">
-    <p> Database and server </p>
-  </div>
-  <div class="Description">
-    <p></p>
-  </div>
+    .memberName a:hover {
+      color: #222;
+    }
 
-  <div class="memberName">Zach Milrod</div>
+    h1{
+      font-size: 30px;
+    }
 
-  <div class = "PositionDiv">
-    <p> Database and server </p>
-  </div>
-  <div class="Description">
-    <p></p>
-  </div>
+    h2{
+      font-size: 25px;
+    }
 
-  <div class="memberName">Anthony Li</div>
+    #head2{
+      padding-bottom: 15px;
+    }
 
-  <div class = "PositionDiv">
-    <p> Database and server </p>
-  </div>
-  <div class="Description">
-    <p></p>
-  </div> -->
+    </style>
+
+  </head>
+
+    <div id="page">
+      <div class="header">
+      <a href="#menu"></a>
+        Zembo
+      </div>
+      </div>
+      <div class="content"> 
+      
+      </div>
+    
+      <div id="cont">
+      <div id="tp">
+
+     <center> <h1>Team Portfolio</h1>
+
+      <div id="head2"><h2>Meet the Members</h2></div>
+      <!-- need to make the link add querystring to link to relevant page   -->
+
+        {{#each members}}
+        <div class="memberName"><a href="?user={{this.user}}">{{this.fname}} {{this.lname}}</a></div>
+        <div class="positionClass">{{this.pos}}</div>
+         <!-- <div class="Description">{{this.desc}}</div> -->
+          <div></div>
+          <div></div>
+        {{/each}}</center>
+        
+
+      </div>
+      <nav id="menu">
+        <ul>
+          <li><a href="http://localhost:3000">Home</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href="team">Team</a></li>
+          <li><a href="mockups">Layout</a></li>
+        </ul>
+      </nav>
+    </div>
+  
+</html>

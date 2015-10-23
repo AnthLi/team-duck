@@ -50,6 +50,7 @@ app.get('/team', (req, res) => {
   Otherwise, refer to the main team page.
   */
   if (member && members.indexOf(member) >= 0) {
+  	console.log(single[0].user);
     res.render('layouts/members', {
       memberx: single[0]
     });
