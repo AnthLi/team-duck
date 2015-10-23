@@ -1,6 +1,7 @@
-// The necessary libraries required for the web app
+// The necessary imports required for the web app
 var express = require('express');
 var handlebars = require('express-handlebars');
+var team = require('./team.js');
 
 var app = express();
 
@@ -22,20 +23,19 @@ function notFound404(req, res) {
   res.render('layouts/404');
 }
 
-// Defined routes
+/* Defined routes */
+// About page
 app.get('/about', (req, res) => {
   res.render('layouts/about');
 });
 
-app.get('/mockups', (req, res) => {
-  res.render('layouts/mockups');
-});
-var team = require('./team.js');
+// Team page
 app.get('/team', (req, res) => {
   // Array of each team member
   var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
   var member = req.query.user; // Get the user from the query string
   var Mem = team.all().data;
+
   /* 
   If there is a user in the query and they are a valid user, 
   render the handlebars for that user.
@@ -51,23 +51,25 @@ app.get('/team', (req, res) => {
   }
 });
 
-
+// Mockup pages for each mockup image
 app.get('/:mock', (req, res) => {
   switch(req.params.mock){
     case 'home':
-        res.render('mockups', {imgURL: '/imgs/HomePage.png'});
-        break;
+      res.render('layouts/mockup', {imgURL: '/imgs/HomePage.png'});
+      break;
     case 'login':
-        res.render('mockups', {imgURL: '/imgs/Login.png'});
-        break;
+      res.render('layouts/mockup', {imgURL: '/imgs/Login.png'});
+      break;
     case 'profile':
-        res.render('mockups', {imgURL: '/imgs/ProfileView.png'});
-        break;
+      res.render('layouts/mockup', {imgURL: '/imgs/ProfileView.png'});
+      break;
     case 'admin':
-        res.render('mockups', {imgURL: '/imgs/AdminView.png'});
-        break;    
-    default :
-        break;      
+      res.render('layouts/mockup', {imgURL: '/imgs/AdminView.png'});
+      break; 
+    case 'mockups':
+      res.render('layouts/mockups');
+    default:
+      break;
   }
 });
 // Start the express app on port 3000

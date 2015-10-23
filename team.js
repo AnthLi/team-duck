@@ -1,89 +1,71 @@
+// Source: 02-basic-app-student
 
+// Creates a new team member
 function member(user, fname, lname, desc) {
-	return {
-		user: user,
-		fname: fname,
-		lname: lname,
-		desc: desc
-	};
+  return {
+    user: user,
+    fname: fname,
+    lname: lname,
+    desc: desc
+  };
 }
 
 //Todo: Change 'junior' to your description 
-var team = [
-	// Keep this first member for testing please.
-	
-	member('bcheung', 'Benjamin', 'Cheung', 'junior'),
-	member('apli', 'Anthony', 'Li', 'junior'),
-	member('hkeswani', 'Harsh', 'Keswani', 'junior'),
-	member('zmilrod', 'Zachary', 'Milrod', 'junior'),
-	member('jgatley', 'Jonathan', 'Gatley', 'junior')
-	// TODO: add your team members here:
+var team = [ 
+  member('bcheung', 'Benjamin', 'Cheung', 'junior'),
+  member('apli', 'Anthony', 'Li', 'junior'),
+  member('hkeswani', 'Harsh', 'Keswani', 'junior'),
+  member('zmilrod', 'Zachary', 'Milrod', 'junior'),
+  member('jgatley', 'Jonathan', 'Gatley', 'junior')
 ];
 
-
+// Makes a copy of a member object
 function copy(memberl) {
-	// TODO
-	var res = member(memberl.user, memberl.fname, memberl.lname, memberl.desc);
-	return res;
+  return Object.assign({}, member);
 }
 
-
+// Returns a copy of all team members in a new array
 function copyAll(members) {
-	var nmembers = [];
-	members.forEach(m => {
-		nmembers.push(copy(m));
-	});
-	return nmembers;
+  var nmembers = [];
+  members.forEach(m => {
+    nmembers.push(copy(m));
+  });
+  return nmembers;
 }
 
 
 function result(success, message, data) {
-	return {
-		success: success,
-		message: message,
-		data: data,
-		count: data.length
-	};
+  return {
+    success: success,
+    message: message,
+    data: data,
+    count: data.length
+  };
 }
 
-
+// Lookup a member by their username
 function find(user) {
-	// TODO
-	
-	// team.forEach(m => {
-	// 	if (m.user === user)
-	// 		return m;
-	// });
-	// return null;
-	for(i = 0; i < team.length; i++) {
-		if(team[i].user === user)
-			return copy(team[i]);
-	}
-	return null;
+  for(i = 0; i < team.length; i++) {
+    if(team[i].user === user)
+      return copy(team[i]);
+  }
+  return null;
 }
 
-
+// Returns a result object containing all of the team members
 function all() {
-	// TODO
-	var thhe = 'team members';
-	var res = result(true, thhe, copyAll(team));
-	return res;
+  return result(true, 'team members', copyAll(team));;
 }
 
-
+// Returns a result object containing the team member that was found
 function one(user) {
-	// TODO
-	var arra = [];
-	if(  typeof user !== 'string') 
-		return result(false, "Input not a String", arra);
+  if (typeof user !== 'string') {
+    return result(false, 'input user is not a string', []);
+  } else if (find(user) === null){
+    return result(false, 'team member not found', []);
+  }
 
-	var found = find(user);
-
-	if (found != null) {
-		return result(true, "team member found", [found]);
-	}
-	else
-		return result(false, "team member not found", arra);
+  return result(true, 'team member found', [find(user)]);
 }
 
 // This exports public functions to the outside world.
