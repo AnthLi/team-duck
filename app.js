@@ -36,6 +36,8 @@ app.get('/team', (req, res) => {
   var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
   var member = req.query.user; // Get the user from the query string
   var Mem = team.all().data;
+  var single = team.one(member).data;
+
   /* 
   If there is a user in the query and they are a valid user, 
   render the handlebars for that user.
@@ -43,7 +45,7 @@ app.get('/team', (req, res) => {
   Otherwise, refer to the main team page.
   */
   if (member && members.indexOf(member) >= 0) {
-    res.render('teammates/' + member, {members: Mem});
+    res.render('teammates/' + 'apli', {memberx: single[0]});
   } else if (member && members.indexOf(member) < 0) {
     notFound404(req, res);
   } else {
