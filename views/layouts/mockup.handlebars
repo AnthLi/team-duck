@@ -1,39 +1,94 @@
-<style>
-#images{
-	padding-top: 1%;
-	padding-bottom: 1%;
-}
+<!DOCTYPE html>
 
-#test a:link {
-    text-decoration: none;
-    color: white;
-    padding: 1%;
-    background-color: #444;
-}
+<html>
+	<head>
+		<meta http-equiv="refresh" content="300" >
+		<meta charset="utf-8" />
+		<meta name="author" content="therealharsh" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 
-#test a:visited {
-	background-color: #444;
-    color: white;
-}
+		<link type="text/css" rel="stylesheet" href="css/demo.css" />
+		<link type="text/css" rel="stylesheet" href="dist/css/jquery.mmenu.all.css" />
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 
-#test a:hover{
-	background-color: white;
-    color: #444;
-}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="dist/js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('nav#menu').mmenu();
+			});
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
 
-</style>
+		<style>
+		#images{
+			padding-top: 1%;
+			padding-bottom: 1%;
+		}
 
-<div id="images">
-  <center><img src = {{imgURL}}></center>
-</div>
+		#test a:link {
+		    text-decoration: none;
+		    color: white;
+		    padding: 1%;
+		    background-color: #444;
+		}
 
-<div id = "test">
-  <center>
-    <a href="http://localhost:3000">Splash</a>
-    <a href=home>Home</a>
-    <a href=login>Login</a>
-    <a href=profile>Profile</a>
-    <a href=admin>Admin</a>
-  </center>
-</div>
+		#test a:visited {
+			background-color: #444;
+		    color: white;
+		}
+
+
+		#test a:hover{
+			background-color: white;
+		    color: #444;
+		}
+
+		</style>
+
+	</head>
+
+		<div id="page">
+			<div class="header">
+			<a href="#menu"></a>
+				Zembo
+			</div>
+			</div>
+			<div class="content">	
+			
+			</div>
+		
+			<div id="cont">
+			<div id="tp">
+
+			<div id="images">
+			  <center><img src = {{imgURL}}></center>
+			</div>
+
+			<div id = "test">
+			  <center>
+			    <a href="http://localhost:3000">Splash</a>
+			    <a href=home>Home</a>
+			    <a href=login>Login</a>
+			    <a href=profile>Profile</a>
+			    <a href=admin>Admin</a>
+			  </center>
+			</div>
+			
+				
+
+			</div>
+			<nav id="menu">
+				<ul>
+					<li><a href="http://localhost:3000">Home</a></li>
+					<li><a href="about">About</a></li>
+					<li><a href="team">Team</a></li>
+					<li><a href="mockups">Layout</a></li>
+				</ul>
+			</nav>
+		</div>
+	
+</html>
