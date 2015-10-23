@@ -47,20 +47,21 @@ app.get('/team', (req, res) => {
   }
 });
 
+
 app.get('/:mock', (req, res) => {
   switch(req.params.mock){
     case 'home':
-        var imgURL = 'public/imgs/HomePage.png';
-        res.render('mockups');
+        res.render('mockups', {imgURL: '/imgs/HomePage.png'});
         break;
     case 'login':
-        var imgURL = 'public/imgs/Login.png';
-        res.render('mockups');
+        res.render('mockups', {imgURL: '/imgs/Login.png'});
         break;
     case 'profile':
-        var imgURL = 'public/imgs/ProfileView.png';
-        res.render('mockups');
+        res.render('mockups', {imgURL: '/imgs/ProfileView.png'});
         break;
+    case 'admin':
+        res.render('mockups', {imgURL: '/imgs/AdminView.png'});
+        break;    
     default :
         break;      
   }
