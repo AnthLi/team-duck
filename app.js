@@ -42,7 +42,7 @@ app.get('/team', (req, res) => {
     res.render('teammates/' + member);
   } else if (member && members.indexOf(member) < 0) {
     notFound404(req, res);
-  }else {
+  } else {
     res.render('layouts/team');
   }
 });
