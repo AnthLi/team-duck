@@ -1,4 +1,5 @@
-
+//This was taken from the homework project 2. 
+//This is Ben Cheung's solution to that project
 function member(user, fname, lname, desc) {
 	return {
 		user: user,
