@@ -13,6 +13,15 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static(__dirname + '/public'));
 
+// Error middleware
+
+// Middleware function for when the requested path does not exist
+// Source: 02-basic-app-student
+function notFound404(req, res) {
+  res.status(404);
+  res.render('404');
+}
+
 // Defined routes
 app.get('/about', (req, res) => {
   res.render('about', {
@@ -21,12 +30,20 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/team', (req, res) => {
-  var user = req.query.user; // Get the user from the query string
+  // Array of each team member
+  var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
+  var member = req.query.user; // Get the user from the query string
 
-  // If there is a user in the query, render the handlebars for that user
-  // Othewise there is no query and it only refers to the main team page
-  if (user) {
-    res.render('layouts/teammates/' + user + '.handlebars');
+  /* 
+  If there is a user in the query and they are a valid user, 
+  render the handlebars for that user.
+  If the user is not a team member -> 404 error.
+  Otherwise, refer to the main team page.
+  */
+  if (member && members.indexOf(member) >= 0) {
+    res.render('layouts/teammates/' + member);
+  } else if (members.indexOf(member) < 0) {
+    notFound404(req, res);
   } else {
     res.render('team');
   }
