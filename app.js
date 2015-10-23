@@ -1,6 +1,7 @@
-// The necessary libraries required for the web app
+// The necessary imports required for the web app
 var express = require('express');
 var handlebars = require('express-handlebars');
+var team = require('./lib/team.js');
 
 var app = express();
 
@@ -23,14 +24,19 @@ function notFound404(req, res) {
 }
 
 // Defined routes
+
+// About page
 app.get('/about', (req, res) => {
   res.render('layouts/about');
 });
 
+// Team page
 app.get('/team', (req, res) => {
   // Array of each team member
   var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
   var member = req.query.user; // Get the user from the query string
+  var Mem = team.all().data;
+  var single = team.one(member).data;
 
   /* 
   If there is a user in the query and they are a valid user, 
@@ -39,11 +45,35 @@ app.get('/team', (req, res) => {
   Otherwise, refer to the main team page.
   */
   if (member && members.indexOf(member) >= 0) {
-    res.render('teammates/' + member);
+    res.render('layouts/members', {
+      memberx: single[0]
+    });
   } else if (member && members.indexOf(member) < 0) {
     notFound404(req, res);
   } else {
-    res.render('layouts/team');
+    res.render('layouts/team', {members: Mem});
+  }
+});
+
+// Mockup pages for each mockup image
+app.get('/:mock', (req, res) => {
+  switch(req.params.mock){
+    case 'home':
+      res.render('layouts/mockup', {imgURL: '/imgs/HomePage.png'});
+      break;
+    case 'login':
+      res.render('layouts/mockup', {imgURL: '/imgs/Login.png'});
+      break;
+    case 'profile':
+      res.render('layouts/mockup', {imgURL: '/imgs/ProfileView.png'});
+      break;
+    case 'admin':
+      res.render('layouts/mockup', {imgURL: '/imgs/AdminView.png'});
+      break; 
+    case 'mockups':
+      res.render('layouts/mockups');
+    default:
+      break;
   }
 });
 
