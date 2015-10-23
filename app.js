@@ -58,17 +58,20 @@ app.get('/team', (req, res) => {
 // Mockup pages for each mockup image
 app.get('/:mock', (req, res) => {
   switch(req.params.mock){
+    case '':
+      res.render('layouts/mockup', {imgURL: '/imgs/Splash.png'})
+      break;
     case 'home':
-      res.render('layouts/mockup', {imgURL: '/imgs/HomePage.png'});
+      res.render('layouts/mockup', {imgURL: '/imgs/Home.png'});
       break;
     case 'login':
       res.render('layouts/mockup', {imgURL: '/imgs/Login.png'});
       break;
     case 'profile':
-      res.render('layouts/mockup', {imgURL: '/imgs/ProfileView.png'});
+      res.render('layouts/mockup', {imgURL: '/imgs/Profile.png'});
       break;
     case 'admin':
-      res.render('layouts/mockup', {imgURL: '/imgs/AdminView.png'});
+      res.render('layouts/mockup', {imgURL: '/imgs/Admin.png'});
       break; 
     case 'mockups':
       res.render('layouts/mockups');
