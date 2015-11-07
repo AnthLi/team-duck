@@ -28,7 +28,16 @@ function notFound404(req, res) {
 // Splash page
 app.get('/', (req, res) => {
   //res.render('layouts/mockup', {imgURL: '/imgs/Splash.png'});
-  res.redirect('/user/login')
+  if(!req.session.user || !online[user])
+  res.redirect('/user/login');
+  else
+    res.redirect('/main');
+});
+
+app.get('/user/login', (req, res) =>{
+  //renderor redirect the login page in layouts/login 
+
+
 });
 
 // About page
