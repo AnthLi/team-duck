@@ -27,7 +27,8 @@ function notFound404(req, res) {
 
 // Splash page
 app.get('/', (req, res) => {
-  res.render('layouts/mockup', {imgURL: '/imgs/Splash.png'});
+  //res.render('layouts/mockup', {imgURL: '/imgs/Splash.png'});
+  res.redirect('/user/login')
 });
 
 // About page
