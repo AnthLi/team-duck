@@ -29,13 +29,13 @@ function notFound404(req, res) {
 app.get('/', (req, res) => {
   //res.render('layouts/mockup', {imgURL: '/imgs/Splash.png'});
   if(!req.session.user || !online[user])
-  res.redirect('/user/login');
+    res.redirect('/user/login');
   else
     res.redirect('/main');
 });
 
 app.get('/user/login', (req, res) =>{
-  //renderor redirect the login page in layouts/login 
+  //render or redirect the login page in layouts/login 
 
 
 });
@@ -74,7 +74,7 @@ app.get('/team', (req, res) => {
 
 // Mockup pages for each mockup image
 app.get('/:mock', (req, res) => {
-  switch(req.params.mock){
+  switch(req.params.mock) {
     case 'home':
       res.render('layouts/mockup', {imgURL: '/imgs/Home.png'});
       break;
