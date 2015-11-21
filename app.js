@@ -5,6 +5,8 @@ var team = require('./lib/team.js');
 
 var app = express();
 
+var db = require('./lib/database.js');
+
 // Set the port to 3000
 app.set('port', process.env.PORT || 3000);
 
