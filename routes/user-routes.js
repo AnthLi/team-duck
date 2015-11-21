@@ -9,30 +9,44 @@ var model = require('../lib/user2');
 // A list of users who are online:
 var online = require('../lib/online').online;
 
+// Performs **basic** user authentication.
 router.post('/auth', (req, res) => {
-  var name = req.body.name;
-  var pass = req.body.pass;
-  if(!name || !pass){
-    req.flash('login', 'Invalid Login Credentials, Please try Again.');
-    res.redirect('/user/login');
+  // Grab the session if the user is logged in.
+  var user = req.session.user;
+
+  // Redirect to main if session and user is online:
+  if (user && online[user]) {
+    res.redirect('/user/main');
   }
-  else{
-    model.lookup(name, pass, function(error, userr){
-      if(error){
-      	req.flash('login', error);
-      	res.redirect('/user/login')      
-      }
-      else{
+  else {
+    // Pull the values from the form:
+    var name = req.body.name;
+    var pass = req.body.pass;
 
-      	 online[userr.name] = userr;     
+    if (!name || !pass) {
+      req.flash('login', 'did not provide the proper credentials');
+      res.redirect('/user/login');
+    }
+    else {
+      model.lookup(name, pass, function(error, user) {
+        if (error) {
+          // Pass a message to login:
+          req.flash('login', error);
+          res.redirect('/user/login');
+        }
+        else {
+          // add the user to the map of online users:
+          online[user.name] = user;
 
-      	 //add to database
+          // create a session variable to represent stateful connection
+          req.session.user = user;
 
-      	 req.session.user = userr;
-
-      	 res.redirect('/user/home');
-      }
-    });
+          // Pass a message to main:
+          req.flash('main', 'authentication successful');
+          res.redirect('/user/main');
+        }
+      });
+    }
   }
 });
 

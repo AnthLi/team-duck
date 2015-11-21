@@ -48,17 +48,17 @@
             <center><img src ="../imgs/logo.png" width="350px" height="210px"></center>
             <center><p4><b>"Work alone no more"</b></p4></center>
             </div>
-          </ul>
-          
+          </ul>          
         </div>
 
-        <div id="panel1">
+         <div id="panel1">
           <center> <div id="form">
-              <form>
-                <input type="text" name="username" placeholder="username" required><br>
-                <input type="password" name="password" placeholder="password" required><br>
-                <button class="btn">Login</button>
-              </form>
+               <h2>{{message}}</h2>
+               <form method="post" action="/user/auth">
+                  <input type="text" name="name" placeholder="username" required><br> 
+                  <input type="password" name="pass" placeholder="password" required><br>
+                  <button class="btn">Login</button>
+               </form>
             </center>
           </div>
         </div>
@@ -75,4 +75,4 @@
       </nav>
     </div>
   
-</html>
+</html> -->
