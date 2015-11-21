@@ -5,8 +5,6 @@ var team = require('./lib/team.js');
 
 var app = express();
 
-var db = require('./lib/database.js');
-
 // Set the port to 3000
 app.set('port', process.env.PORT || 3000);
 
@@ -23,7 +21,7 @@ app.use(express.static(__dirname + '/public'));
 // Source: 02-basic-app-student
 function notFound404(req, res) {
   res.status(404);
-  res.render('layouts/404');
+  res.render('404');
 }
 
 // Defined routes
@@ -39,12 +37,12 @@ function notFound404(req, res) {
 
 app.get('/user/login', (req, res) =>{
   //render or redirect the login page in layouts/login 
-    res.render('layouts/login');
+    res.render('login');
 });
 
 // About page
 app.get('/about', (req, res) => {
-  res.render('layouts/about');
+  res.render('about');
 });
 
 // Team page
@@ -62,13 +60,13 @@ app.get('/team', (req, res) => {
   Otherwise, refer to the main team page.
   */
   if (member && members.indexOf(member) >= 0) {
-    res.render('layouts/members', {
+    res.render('members', {
       memberx: single[0]
     });
   } else if (member && members.indexOf(member) < 0) {
     notFound404(req, res);
   } else {
-    res.render('layouts/team', {
+    res.render('team', {
       members: Mem
     });
   }
@@ -78,19 +76,19 @@ app.get('/team', (req, res) => {
 app.get('/:mock', (req, res) => {
   switch(req.params.mock) {
     case 'home':
-      res.render('layouts/mockup', {imgURL: '/imgs/Home.png'});
+      res.render('mockup', {imgURL: '/imgs/Home.png'});
       break;
     case 'login':
-      res.render('layouts/mockup', {imgURL: '/imgs/Login.png'});
+      res.render('mockup', {imgURL: '/imgs/Login.png'});
       break;
     case 'profile':
-      res.render('layouts/mockup', {imgURL: '/imgs/Profile.png'});
+      res.render('mockup', {imgURL: '/imgs/Profile.png'});
       break;
     case 'admin':
-      res.render('layouts/mockup', {imgURL: '/imgs/Admin.png'});
+      res.render('mockup', {imgURL: '/imgs/Admin.png'});
       break; 
     case 'mockups':
-      res.render('layouts/mockups');
+      res.render('mockups');
     default:
       break;
   }
