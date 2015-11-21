@@ -1,8 +1,7 @@
 var express = require('express');
 
-var online = require('../lib/online').online; // List of online users
 var db = require('../lib/database.js');
-var user = require('../lib/user.js');
+var online = require('../lib/online').online; // List of online users
 
 var router = express.Router(); // "Router" to separate particular points
 
@@ -15,7 +14,7 @@ router.post('/auth', (req, res) => {
   if (user && online[user]) {
     res.redirect('/user/main');
   } else {
-    // Pull the values from the form:
+    // Pull the values from the form
     var name = req.body.name;
     var pass = req.body.pass;
 
@@ -23,7 +22,7 @@ router.post('/auth', (req, res) => {
       req.flash('login', 'did not provide the proper credentials');
       res.redirect('login');
     } else {
-      model.lookup(name, pass, function(error, user) {
+      db.lookup(name, pass, function(error, user) {
         if (error) {
           // Pass a message to login:
           req.flash('login', error);

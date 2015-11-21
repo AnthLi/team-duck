@@ -1,6 +1,6 @@
 var express = require('express');
 
-var online = require('./app.js').online; // List of online users
+// var online = require('../lib/online').online; // List of online users
 
 var router = express.Router(); // "Router" to separate particular points
 
@@ -21,7 +21,6 @@ router.get('/online', function(req, res) {
 });
 
 router.get('/admin', function(req, res){
-
   var user = req.session.user;
 
   if(!admin){
