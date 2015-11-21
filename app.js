@@ -14,6 +14,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static(__dirname + '/public'));
 
+
 // Error middleware
 
 // Middleware function for when the requested path does not exist
@@ -26,18 +27,17 @@ function notFound404(req, res) {
 // Defined routes
 
 // Splash page
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   //res.render('layouts/mockup', {imgURL: '/imgs/Splash.png'});
   if(!req.session.user || !online[user])
     res.redirect('/user/login');
   else
     res.redirect('/main');
-});
+});*/
 
 app.get('/user/login', (req, res) =>{
   //render or redirect the login page in layouts/login 
-
-
+    res.render('layouts/login');
 });
 
 // About page
