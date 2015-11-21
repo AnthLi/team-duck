@@ -1,11 +1,12 @@
 // The necessary imports required for the web app
-var express = require('express');
-var handlebars = require('express-handlebars');
-var team = require('./lib/team.js');
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
-var flash = require('connect-flash');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var express = require('express');
+var flash = require('connect-flash');
+var handlebars = require('express-handlebars');
+var session = require('express-session');
+
+var team = require('./lib/team.js');
 
 var app = express();
 
@@ -21,6 +22,10 @@ app.use(express.static(__dirname + '/public'));
 // Body Parser:
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(cookieParser());
+app.use(flash());
+
 // Session Support:
 app.use(session({
   secret: 'octocat',
@@ -30,12 +35,11 @@ app.use(session({
   saveUninitialized: false, // does not save uninitialized session.
   resave: false             // does not save session if not modified.
 }));
-app.use(cookieParser());
-app.use(flash());
+
 app.use('/user', require('./routes/user-routes'));
 app.use('/admin', require('./routes/admin-routes'));
 
-////// Error middleware //////
+////// Start Error Middleware
 
 // Middleware function for when the requested path does not exist
 // Source: 02-basic-app-student
@@ -44,7 +48,9 @@ function notFound404(req, res) {
   res.render('layouts/404');
 }
 
-//////////////////////////////
+////// End Error Middleware
+
+////// Start User-Defined Routes
 
 app.get('/', (req, res) => {
   res.redirect('/user/login');
@@ -71,6 +77,8 @@ app.get('/:mock', (req, res) => {
       break;
   }
 });
+
+////// End User-Defined Routes
 
 // Start the express app on port 3000
 app.listen(app.get('port'), () => {
