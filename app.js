@@ -56,6 +56,42 @@ app.get('/', (req, res) => {
   res.redirect('/user/login');
 });
 
+app.get('/user/signup', (req, res) => {
+  res.render('signup');
+});
+
+// About page
+app.get('/about', (req, res) => {
+  res.render('about');
+});
+
+// Team page
+app.get('/team', (req, res) => {
+  // Array of each team member
+  var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
+  var member = req.query.user; // Get the user from the query string
+  var Mem = team.all().data;
+  var single = team.one(member).data;
+
+  /* 
+  If there is a user in the query and they are a valid user, 
+  render the handlebars for that user.
+  If the user is not a team member -> 404 error.
+  Otherwise, refer to the main team page.
+  */
+  if (member && members.indexOf(member) >= 0) {
+    res.render('layouts/members', {
+      memberx: single[0]
+    });
+  } else if (member && members.indexOf(member) < 0) {
+    notFound404(req, res);
+  } else {
+    res.render('team', {
+      members: Mem
+    });
+  }
+});
+
 // Mockup pages for each mockup image
 app.get('/:mock', (req, res) => {
   switch(req.params.mock){

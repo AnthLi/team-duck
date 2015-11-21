@@ -2,8 +2,20 @@ var express = require('express');
 
 var db = require('../lib/database.js');
 var online = require('../lib/online').online; // List of online users
+var user = require('../lib/user.js');
 
 var router = express.Router(); // "Router" to separate particular points
+
+//account creation
+router.post('/signup', (req, res) => {
+  var fname = req.body.fname;
+  var lname = req.body.lname;
+  var email = req.body.email;
+  var pass = req.body.pass;
+  var dob = req.body.dob;
+
+  db.add(user(fname, lname, email, pass, dob), () => {});
+});
 
 // Performs **basic** user authentication.
 router.post('/auth', (req, res) => {
