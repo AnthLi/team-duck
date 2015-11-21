@@ -32,7 +32,7 @@ router.get('/admin', function(req, res){
       delete req.session.user;
       res.redirect('/user/login');
     } else if(admin.admin == false){
-      req.flash('main', "You don't have the proper admin credentials to access this route");
+      req.flash('main', "You do not have the proper admin credentials");
       res.redirect('/user/main');
     } else { 
       // User is an admin

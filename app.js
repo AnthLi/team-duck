@@ -56,27 +56,82 @@ app.get('/', (req, res) => {
   res.redirect('/user/login');
 });
 
-// Mockup pages for each mockup image
-app.get('/:mock', (req, res) => {
-  switch(req.params.mock){
-    case 'home':
-      res.render('mockup', {imgURL: '/imgs/Home.png'});
+app.get('/:view', (req, res) => {
+  switch (req.params.view) {
+    // Home page
+    case 'home': {
+      var user = req.session.user;
+      res.render('mockup', {title: "Home Screen"});    
       break;
-    case 'login':
-      res.render('login', {imgURL: '/imgs/Login.png'});
+    }
+    // Main Page
+    case 'main': {
+      // If no session, redirect to login.
+      if (!user) {
+        req.flash('login', 'Not logged in');
+        res.redirect('/user/login');
+      } else if (user && !online[user.name]) {
+        req.flash('login', 'Login Expired');
+        delete req.session.user;
+        res.redirect('/user/login')
+      } else {
+        // capture the user object or create a default.
+        var message = req.flash('main') || 'Login Successful';
+        res.render('layouts/main', {
+          title: 'User Main',
+          message: message,
+          name: user.name
+        });
+      }
+
       break;
-    case 'profile':
-      res.render('mockup', {imgURL: '/imgs/Profile.png'});
+    }
+    // Team page
+    case 'team': {
+      // Array of each team member
+      var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
+      var user = req.query.user; // Get the user from the query string
+      var memberData = team.one(user).data;
+      var teamData = team.all().data;
+
+      if (user && members.indexOf(user) >= 0) {
+        res.render('members', {
+          memberx: memberData[0]
+        });
+      } else if (user && members.indexOf(user) < 0) {
+        notFound404(req, res);
+      } else {
+        res.render('team', {
+          members: teamData
+        });
+      }
+
       break;
-    case 'admin':
-      res.render('mockup', {imgURL: '/imgs/Admin.png'});
-      break; 
-    case 'mockups':
-      res.render('mockups');
-    default:
-      break;
+    }
   }
 });
+
+// Mockup pages for each mockup image
+// app.get('/:mock', (req, res) => {
+//   switch(req.params.mock){
+//     case 'home':
+//       res.render('mockup', {imgURL: '/imgs/Home.png'});
+//       break;
+//     case 'login':
+//       res.render('login', {imgURL: '/imgs/Login.png'});
+//       break;
+//     case 'profile':
+//       res.render('mockup', {imgURL: '/imgs/Profile.png'});
+//       break;
+//     case 'admin':
+//       res.render('mockup', {imgURL: '/imgs/Admin.png'});
+//       break; 
+//     case 'mockups':
+//       res.render('mockups');
+//     default:
+//       break;
+//   }
+// });
 
 ////// End User-Defined Routes
 
