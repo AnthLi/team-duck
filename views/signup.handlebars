@@ -46,7 +46,7 @@
         <div id="panel1">
           <ul id="test">
             <center><img src ="../imgs/logo.png" width="350px" height="210px"></center>
-            <center><p4><b>"Work alone no more"</b></p4></center>
+            <center><p4><b>Create an account. It's free!</b></p4></center>
             </div>
           </ul>          
         </div>
@@ -54,12 +54,14 @@
          <div id="panel1">
           <center> <div id="form">
                <p>{{message}}</p>
-               <form method="post" action="/user/auth">
+               <form method="post" action="/user/signup">
+                  <input type="text" name="fname" placeholder="first name" required><br> 
+                  <input type="text" name="lname" placeholder="last name" required><br> 
                   <input type="text" name="email" placeholder="email" required><br> 
                   <input type="password" name="pass" placeholder="password" required><br>
-                  <button class="btn">Login</button>
+                  <input type="date" name="dob" required><br>
+                  <button class="btn">Sign Up</button>
                </form>
-               Don't have an account? <a href="signup">Click here</a>
             </center>
           </div>
         </div>
@@ -69,9 +71,9 @@
       <nav id="menu">
         <ul>
           <li><a href="http://localhost:3000">Home</a></li>
-          <li><a href="../about">About</a></li>
-          <li><a href="../team">Team</a></li>
-          <li><a href="../mockups">Layout</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href="team">Team</a></li>
+          <li><a href="mockups">Layout</a></li>
         </ul>
       </nav>
     </div>
