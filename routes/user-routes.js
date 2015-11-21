@@ -15,6 +15,7 @@ router.post('/signup', (req, res) => {
   var dob = req.body.dob;
 
   db.add(user(fname, lname, email, pass, dob), () => {});
+  res.redirect('../main');
 });
 
 // Performs **basic** user authentication.
@@ -24,7 +25,7 @@ router.post('/auth', (req, res) => {
 
   // Redirect to main if session and user is online:
   if (user && online[user]) {
-    res.redirect('/user/main');
+    res.redirect('../main');
   } else {
     // Pull the values from the form
     var name = req.body.name;
@@ -48,7 +49,7 @@ router.post('/auth', (req, res) => {
 
           // Pass a message to main:
           req.flash('main', 'authentication successful');
-          res.redirect('/user/main');
+          res.redirect('../main');
         }
       });
     }
