@@ -56,52 +56,44 @@ app.get('/', (req, res) => {
   res.redirect('/user/login');
 });
 
-app.get('/:view', (req, res) => {
-  switch (req.params.view) {
-    // Home page
-    case 'home': {
-      var user = req.session.user;
-      if (!user) {
-        req.flash('login', 'Not logged in');
-        res.redirect('/user/login');
-      } else if (user && !online[user.name]) {
-        req.flash('login', 'Login Expired');
-        delete req.session.user;
-        res.redirect('/user/login')
-      } else {    
-        // capture the user object or create a default.
-        var message = req.flash('main') || 'Login Successful';
-        res.render('layouts/main', {
-          title: 'User Main',
-          message: message,
-          name: user.name
-        });
-      }
+// Home page
+app.get('/home', (req, res) => {
+  var user = req.session.user;
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('/user/login');
+  } else if (user && !online[user.name]) {
+    req.flash('login', 'Login Expired');
+    delete req.session.user;
+    res.redirect('/user/login')
+  } else {    
+    // capture the user object or create a default.
+    var message = req.flash('main') || 'Login Successful';
+    res.render('layouts/main', {
+      title: 'User Main',
+      message: message,
+      name: user.name
+    });
+  }
+});
 
-      break;
-    }
-    // Team page
-    case 'team': {
-      // Array of each team member
-      var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
-      var user = req.query.user; // Get the user from the query string
-      var memberData = team.one(user).data;
-      var teamData = team.all().data;
+// Team page
+app.get('/team', (req, res) => {
+  var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
+  var user = req.query.user;
+  var memberData = team.one(user).data;
+  var teamData = team.all().data;
 
-      if (user && members.indexOf(user) >= 0) {
-        res.render('members', {
-          member: memberData[0]
-        });
-      } else if (user && members.indexOf(user) < 0) {
-        notFound404(req, res);
-      } else {
-        res.render('team', {
-          members: teamData
-        });
-      }
-
-      break;
-    }
+  if (user && members.indexOf(user) >= 0) {
+    res.render('members', {
+      member: memberData[0]
+    });
+  } else if (user && members.indexOf(user) < 0) {
+    notFound404(req, res);
+  } else {
+    res.render('team', {
+      members: teamData
+    });
   }
 });
 

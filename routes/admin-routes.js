@@ -23,7 +23,7 @@ router.get('/online', function(req, res) {
 router.get('/admin', function(req, res){
   var user = req.session.user;
 
-  if(!admin){
+  if(!admin) {
       req.flash('login', 'Not logged in');
       res.redirect('/user/login');
     } else if(admin && !online[admin.name]){
@@ -32,7 +32,7 @@ router.get('/admin', function(req, res){
       delete req.session.user;
       res.redirect('/user/login');
     } else if(admin.admin == false){
-      req.flash('main', "You don't have the proper admin credentials to access this route");
+      req.flash('main', "You don't have the proper admin credentials");
       res.redirect('/main');
     } else { 
       // User is an admin

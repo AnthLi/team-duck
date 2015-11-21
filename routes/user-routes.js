@@ -6,24 +6,12 @@ var user = require('../lib/user.js');
 
 var router = express.Router(); // "Router" to separate particular points
 
-//account creation
-router.post('/signup', (req, res) => {
-  var fname = req.body.fname;
-  var lname = req.body.lname;
-  var email = req.body.email;
-  var pass = req.body.pass;
-  var dob = req.body.dob;
-
-  db.add(user(fname, lname, email, pass, dob), () => {});
-  res.redirect('/home');
-});
-
 // Performs **basic** user authentication.
 router.post('/auth', (req, res) => {
   var user = req.session.user;
 
   if (user && online[user]) {
-    res.redirect('/user/main');
+    res.redirect('/home');
   } else {
     var email = req.body.email;
     var pass = req.body.pass;
@@ -39,7 +27,7 @@ router.post('/auth', (req, res) => {
         } else {
           online[user.email] = user;
           req.session.user = user;
-          res.render('/about');
+          res.render('/home');
         }
       });
     }
@@ -77,6 +65,26 @@ router.get('/logout', function(req, res) {
 
   // Redirect to login regardless.
   res.redirect('login');
+});
+ 
+// Registration page
+router.get('/registration', (req, res) => {
+  res.render('register');
+});
+
+// Account creation
+router.post('/register', (req, res) => {
+  var form = req.body;
+
+  db.add(user(form.fname, form.lname, form.email, form.pass, form.dob), 
+    (err, data) => {
+    if (err) {
+      req.flash('registration', err);
+      res.redirect('registration');
+    } else {
+      res.redirect('/home');
+    }
+  });
 });
 
 module.exports = router;
