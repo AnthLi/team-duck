@@ -4,12 +4,10 @@ var handlebars = require('express-handlebars');
 var team = require('./lib/team.js');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-var flash      = require('connect-flash');
+var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 
-
 var app = express();
-
 
 // Set the port to 3000
 app.set('port', process.env.PORT || 3000);
@@ -23,7 +21,6 @@ app.use(express.static(__dirname + '/public'));
 // Body Parser:
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 // Session Support:
 app.use(session({
   secret: 'octocat',
@@ -33,9 +30,13 @@ app.use(session({
   saveUninitialized: false, // does not save uninitialized session.
   resave: false             // does not save session if not modified.
 }));
-
-// Error middleware
 app.use(cookieParser());
+app.use(flash());
+app.use('/user', require('./routes/user-routes'));
+app.use('/admin', require('./routes/admin-routes'));
+
+////// Error middleware //////
+
 // Middleware function for when the requested path does not exist
 // Source: 02-basic-app-student
 function notFound404(req, res) {
@@ -43,51 +44,33 @@ function notFound404(req, res) {
   res.render('layouts/404');
 }
 
-app.use(flash());
-
-app.use('/user', require('./routes/user-routes'));
-app.use('/admin', require('./routes/admin-routes'));
+//////////////////////////////
 
 app.get('/', (req, res) => {
-  res.redirect('/login');
-});
-
-app.get('/:mock', (req, res) => {
-  switch(req.params.mock){
-    case 'login':
-      res.render('layouts/login');
-      break;
-    // case 'main':
-    //   res.render('layouts/main');
-    //   break;
-  }
-
-
+  res.redirect('/user/login');
 });
 
 // Mockup pages for each mockup image
 app.get('/:mock', (req, res) => {
   switch(req.params.mock){
     case 'home':
-      res.render('layouts/mockup', {imgURL: '/imgs/Home.png'});
+      res.render('mockup', {imgURL: '/imgs/Home.png'});
       break;
     case 'login':
-      res.render('layouts/login', {imgURL: '/imgs/Login.png'});
+      res.render('login', {imgURL: '/imgs/Login.png'});
       break;
     case 'profile':
-      res.render('layouts/mockup', {imgURL: '/imgs/Profile.png'});
+      res.render('mockup', {imgURL: '/imgs/Profile.png'});
       break;
     case 'admin':
-      res.render('layouts/mockup', {imgURL: '/imgs/Admin.png'});
+      res.render('mockup', {imgURL: '/imgs/Admin.png'});
       break; 
     case 'mockups':
-      res.render('layouts/mockups');
+      res.render('mockups');
     default:
       break;
   }
 });
-
-
 
 // Start the express app on port 3000
 app.listen(app.get('port'), () => {
