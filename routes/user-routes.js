@@ -15,46 +15,20 @@ router.post('/signup', (req, res) => {
   var dob = req.body.dob;
 
   db.add(user(fname, lname, email, pass, dob), () => {});
-  res.redirect('../main');
+  res.redirect('../home');
 });
 
 // Performs **basic** user authentication.
 router.post('/auth', (req, res) => {
   // Grab the session if the user is logged in.
-  var user = req.session.user;
-
-  // Redirect to main if session and user is online:
-  if (user && online[user]) {
-    res.redirect('../main');
-  } else {
-    // Pull the values from the form
-    var name = req.body.name;
+    // Pull the values from the form:
+    var email = req.body.email;
     var pass = req.body.pass;
 
-    if (!name || !pass) {
-      req.flash('login', 'did not provide the proper credentials');
-      res.redirect('login');
-    } else {
-      db.lookup(name, pass, function(error, user) {
-        if (error) {
-          // Pass a message to login:
-          req.flash('login', error);
-          res.redirect('login');
-        } else {
-          // add the user to the map of online users:
-          online[user.name] = user;
-
-          // create a session variable to represent stateful connection
-          req.session.user = user;
-
-          // Pass a message to main:
-          req.flash('main', 'authentication successful');
-          res.redirect('../main');
-        }
-      });
-    }
-  }
-});
+    var search = db.lookup(email, pass, (result) => {return result;});
+    console.log(search.pass);
+    res.redirect('../home');
+  });
 
 router.get('/login', (req, res) =>{
   // Grab the session if the user is logged in.
