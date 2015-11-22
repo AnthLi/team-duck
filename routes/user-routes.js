@@ -1,8 +1,8 @@
 var express = require('express');
 
-var db = require('../lib/database.js');
+var db = require('../lib/database.js'); // Database library
 var online = require('../lib/online').online; // List of online users
-var user = require('../lib/user.js');
+var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
 
@@ -17,17 +17,17 @@ router.post('/auth', (req, res) => {
     var pass = req.body.pass;
 
     if (!email || !pass) {
-      req.flash('login', 'did not provide the proper credentials');
-      res.redirect('/user/login');
+      req.flash('login', 'Invalid credentials');
+      res.redirect('login');
     } else {
       db.lookup(email, pass, (err, user) => {
         if (err) {
           req.flash('login', err);
-          res.redirect('/login');
+          res.redirect('login');
         } else {
           online[user.email] = user;
           req.session.user = user;
-          res.render('/home');
+          res.redirect('/home');
         }
       });
     }
@@ -41,10 +41,9 @@ router.get('/login', (req, res) =>{
   if (user && online[user.name]) {
     res.redirect('/home');
   } else {
-    var message = req.flash('login') || '';
     res.render('login', { 
-      title: 'User Login',
-      message: message
+      title: 'Login',
+      message: req.flash('login') || ''
     });
   }
 });
@@ -69,20 +68,34 @@ router.get('/logout', function(req, res) {
  
 // Registration page
 router.get('/registration', (req, res) => {
-  res.render('register');
+  res.render('registration', {
+    title: 'Registration',
+    message: req.flash('registration') || ''
+  });
 });
 
 // Account creation
 router.post('/register', (req, res) => {
   var form = req.body;
 
-  db.add(user(form.fname, form.lname, form.email, form.pass, form.dob), 
-    (err, data) => {
+  // Check if the user is already in the database.
+  // If there is an error when looking, then the user does not exist
+  // and can be created.
+  db.lookup(form.email, form.pass, (err, data) => {
     if (err) {
-      req.flash('registration', err);
-      res.redirect('registration');
+      db.add(user(form.fname, form.lname, form.email, form.pass, form.dob), 
+        (err, data) => {
+        if (err) {
+          req.flash('registration', err);
+          res.redirect('registration');
+        } else {
+          req.flash('login', 'Your account has been created!');
+          res.redirect('login');
+        }
+      });
     } else {
-      res.redirect('/home');
+      req.flash('registration', 'An account for this email already exists!');
+      res.redirect('registration');
     }
   });
 });
