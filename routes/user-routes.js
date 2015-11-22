@@ -69,7 +69,7 @@ router.get('/logout', function(req, res) {
  
 // Registration page
 router.get('/registration', (req, res) => {
-  res.render('register');
+  res.render('registration');
 });
 
 // Account creation
@@ -82,7 +82,8 @@ router.post('/register', (req, res) => {
       req.flash('registration', err);
       res.redirect('registration');
     } else {
-      res.redirect('/home');
+      req.flash('login', 'Your account has been created!');
+      res.redirect('login');
     }
   });
 });
