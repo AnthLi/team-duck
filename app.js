@@ -98,26 +98,26 @@ app.get('/team', (req, res) => {
 });
 
 // Mockup pages for each mockup image
-// app.get('/:mock', (req, res) => {
-//   switch(req.params.mock){
-//     case 'home':
-//       res.render('mockup', {imgURL: '/imgs/Home.png'});
-//       break;
-//     case 'login':
-//       res.render('login', {imgURL: '/imgs/Login.png'});
-//       break;
-//     case 'profile':
-//       res.render('mockup', {imgURL: '/imgs/Profile.png'});
-//       break;
-//     case 'admin':
-//       res.render('mockup', {imgURL: '/imgs/Admin.png'});
-//       break; 
-//     case 'mockups':
-//       res.render('mockups');
-//     default:
-//       break;
-//   }
-// });
+app.get('/:mock', (req, res) => {
+  switch(req.params.mock){
+    case 'home':
+      res.render('mockup', {imgURL: '/imgs/Home.png'});
+      break;
+    case 'login':
+      res.render('login', {imgURL: '/imgs/Login.png'});
+      break;
+    case 'profile':
+      res.render('mockup', {imgURL: '/imgs/Profile.png'});
+      break;
+    case 'admin':
+      res.render('mockup', {imgURL: '/imgs/Admin.png'});
+      break; 
+    case 'mockups':
+      res.render('mockups');
+    default:
+      break;
+  }
+});
 
 ////// End User-Defined Routes
 
