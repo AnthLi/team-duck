@@ -6,7 +6,8 @@ var flash = require('connect-flash');
 var handlebars = require('express-handlebars');
 var session = require('express-session');
 
-var team = require('./lib/team.js');
+var online = require('./lib/online').online; // List of online users
+var team = require('./lib/team.js'); // Team library
 
 var app = express();
 
@@ -62,18 +63,17 @@ app.get('/home', (req, res) => {
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
-  } else if (user && !online[user.name]) {
+  } else if (user && !online[user.email]) {
     req.flash('login', 'Login Expired');
     delete req.session.user;
     res.redirect('/user/login')
   } else {    
-    // capture the user object or create a default.
-    var message = req.flash('main') || 'Login Successful';
-    res.render('layouts/main', {
-      title: 'User Main',
-      message: message,
-      name: user.name
-    });
+    // res.render('home', {
+    //   title: 'Home Page',
+    //   message: req.flash('main') || 'Login Successful',
+    //   name: user.email
+    // });
+    res.render('mockup', {imgURL: '/imgs/Home.png'});
   }
 });
 
@@ -100,22 +100,31 @@ app.get('/team', (req, res) => {
 // Mockup pages for each mockup image
 app.get('/:mock', (req, res) => {
   switch(req.params.mock){
-    case 'home':
-      res.render('mockup', {imgURL: '/imgs/Home.png'});
+    // case 'home':
+    //   res.render('mockup', {imgURL: '/imgs/Home.png'});
+    //   break;
+    case 'about': {
+      res.render('about');
       break;
-    case 'login':
-      res.render('login', {imgURL: '/imgs/Login.png'});
+    }
+    case 'login': {
+      res.redirect('/user/login');
       break;
-    case 'profile':
+    }
+    case 'profile': {
       res.render('mockup', {imgURL: '/imgs/Profile.png'});
       break;
-    case 'admin':
+    }
+    case 'admin': {
       res.render('mockup', {imgURL: '/imgs/Admin.png'});
       break; 
-    case 'mockups':
+    }
+    case 'mockups': {
       res.render('mockups');
-    default:
+    }
+    default: {
       break;
+    }
   }
 });
 
