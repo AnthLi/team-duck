@@ -6,37 +6,6 @@ var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
 
-// Performs **basic** user authentication.
-router.post('/auth', (req, res) => {
-  var user = req.session.user;
-
-  if (user && online[user]) {
-    res.redirect('/index');
-    return;
-  }
-
-  var email = req.body.email;
-  var pass = req.body.pass;
-
-  if (!email || !pass) {
-    req.flash('login', 'Invalid credentials');
-    res.redirect('login');
-    return;
-  }
-
-  db.authorize(email, pass, (err, user) => {
-    if (err) {
-      req.flash('login', err);
-      res.redirect('login');
-      return;
-    }
-
-    online[user.email] = user;
-    req.session.user = user;
-    res.redirect('/index');
-  });
-});
-
 // Login page
 router.get('/login', (req, res) =>{
   var user = req.session.user;
@@ -75,6 +44,38 @@ router.get('/registration', (req, res) => {
   res.render('registration', {
     title: 'Registration',
     message: req.flash('registration') || ''
+  });
+});
+
+// Performs **basic** user authentication.
+router.post('/auth', (req, res) => {
+  var user = req.session.user;
+
+  if (user && online[user]) {
+    res.redirect('/index');
+    return;
+  }
+
+  var email = req.body.email;
+  var pass = req.body.pass;
+
+  if (!email || !pass) {
+    req.flash('login', 'Invalid credentials');
+    res.redirect('login');
+    return;
+  }
+
+  db.authorize(email, pass, (err, user) => {
+    if (err) {
+      req.flash('login', err);
+      res.redirect('login');
+      return;
+    }
+
+    online[user.email] = user;
+    req.session.user = user;
+    req.flash('index', 'Login successful');
+    res.redirect('/index');
   });
 });
 

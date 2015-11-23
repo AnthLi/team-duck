@@ -68,12 +68,12 @@ app.get('/index', (req, res) => {
     delete req.session.user;
     res.redirect('/user/login')
   } else {    
-    // res.render('index', {
-    //   title: 'Home Page',
-    //   message: req.flash('main') || 'Login Successful',
-    //   name: user.email
-    // });
-    res.render('mockup', {imgURL: '/imgs/Home.png'});
+    res.render('index', {
+      title: 'Home Page',
+      message: req.flash('index') || '',
+      name: user.email,
+      indicator: true
+    });
   }
 });
 
@@ -112,11 +112,15 @@ app.get('/:mock', (req, res) => {
       break;
     }
     case 'profile': {
-      res.render('mockup', {imgURL: '/imgs/Profile.png'});
+      res.render('mockup', {
+        imgURL: '/imgs/Profile.png'
+      });
       break;
     }
     case 'admin': {
-      res.render('mockup', {imgURL: '/imgs/Admin.png'});
+      res.render('mockup', {
+        imgURL: '/imgs/Admin.png'
+      });
       break; 
     }
     case 'mockups': {

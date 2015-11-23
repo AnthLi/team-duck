@@ -30,8 +30,8 @@ router.get('/admin', function(req, res){
       delete req.session.user;
       res.redirect('/user/login');
     } else if (admin.admin == false){
-      req.flash('home', "Invalid admin credentials");
-      res.redirect('/home');
+      req.flash('index', "Invalid admin credentials");
+      res.redirect('/index');
     } else { 
       res.render('admin', '');
     }
