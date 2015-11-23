@@ -1,11 +1,220 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <center><p1><b>{{title}}</b></p1></center>
-    <body>
-      {{message}}
-      {{name}}
-      {{indicator}}
-    </body>
-  </head>
+	<head>
+		<meta http-equiv="refresh" content="300" >
+		<meta charset="utf-8" />
+		<meta name="author" content="therealharsh" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+		<link type="text/css" rel="stylesheet" href="css/demo.css" />
+		<link type="text/css" rel="stylesheet" href="dist/css/jquery.mmenu.all.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+		<script> 
+		$(document).ready(function(){
+		    $("#class").click(function(){
+		        $("#extend").slideToggle("slow");
+		    });
+		});
+		</script>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="dist/js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('nav#menu').mmenu();
+			});
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<style>
+			#topbar{
+				background-color: #458de2;
+				height: 25px;
+				width: 100%;
+			}
+
+			#class{
+				background-color: #2878d8;
+				height: 130px;
+				width: 100%;
+				border-top: 1px solid #444;
+			}
+
+			#class p1{
+				font-size: 20px;
+				color: white;
+				position: absolute;
+				margin-top: 40px;
+				padding-left: 1%;
+			}
+
+			#classname{
+				float:left;
+				width:13%;
+				height:130px;
+				background-color: #444;
+			}
+
+			#classname p2{
+				width: 166px;
+				position: absolute;
+				color: white;
+				font-size: 10px;
+				margin: 70px auto;
+				text-align: center;
+			}
+
+			#students{
+				float:left;
+				width:70%;
+				height:130px;
+			}
+
+			#studentBody{
+				float: left;
+				width: 16%;
+				height: 130px;
+			}
+
+			#studentImage{
+				display: block;
+				position: absolute;
+				height: 90px;
+				width: 90px;
+				border-radius: 50px;
+				border: 2px #444 solid;
+				margin: 17px 30px;
+			}
+
+			#studentBody p2{
+				width: 136px;
+				position: absolute;
+				color: white;
+				font-size: 15px;
+				margin: 105px auto;
+				text-align: center;
+			}
+
+			#dropdown{
+				color: white;
+				font-size: 30px;
+				margin:50px 0 0 90px;
+				float: left;
+			}
+			#extend {
+			    display: none;
+			    background-color: #fff;
+			    height: 150px;
+			    width: 100%;
+			}
+		</style>
+
+	</head>
+
+		<div id="page">
+			<div class="header">
+			<a href="#menu"></a>
+				Zembo
+			</div>
+			</div>
+			<div class="content">	
+			
+			</div>
+		
+			<div id="cont">
+			<div id="tp">
+
+				<!--<ul id = "topbar"></ul>-->
+				<ul id = "class">
+					<div id="classname">
+						<p1>COMPSCI 311</p1>
+						<p2>Algorithms - Ramesh Sitaraman</p2>
+					</div>
+					<div id="students">
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/anthony.jpg" alt="Anthony">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/harsh.jpg" alt="Harsh">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/ben.jpg" alt="Ben">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/zach.jpg" alt="Zachary">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/jon.jpg" alt="John">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/dylan.jpg" alt="Dylan">
+							
+						</div>
+					</div>
+					<i id="dropdown" class="fa fa-plus-circle"></i>
+				</ul>
+
+				<div id = "extend">
+					<ul>
+						
+					</ul>
+				</div>
+
+				<ul id = "class">
+					<div id="classname">
+						<p1>COMPSCI 326</p1>
+						<p2>Web Programming - Tim Richards</p2>
+					</div>
+					<div id="students">
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/anthony.jpg" alt="Anthony">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/harsh.jpg" alt="Harsh">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/ben.jpg" alt="Ben">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/zach.jpg" alt="Zachary">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/jon.jpg" alt="John">
+							
+						</div>
+						<div id="studentBody">
+							<img id="studentImage" src="imgs/users/dylan.jpg" alt="Dylan">
+							
+						</div>
+					</div>
+					<i id="dropdown" class="fa fa-plus-circle"></i>
+				</ul>
+
+
+
+			</div>
+			</div>
+			<nav id="menu">
+				<ul>
+					<li><a href="http://localhost:3000">Home</a></li>
+					<li><a href="about">About</a></li>
+					<li><a href="team">Team</a></li>
+					<li><a href="mockups">Layout</a></li>
+				</ul>
+			</nav>
+		</div>
+	
 </html>
