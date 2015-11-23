@@ -58,7 +58,7 @@ app.get('/', (req, res) => {
 });
 
 // Home page
-app.get('/home', (req, res) => {
+app.get('/index', (req, res) => {
   var user = req.session.user;
   if (!user) {
     req.flash('login', 'Not logged in');
@@ -68,7 +68,7 @@ app.get('/home', (req, res) => {
     delete req.session.user;
     res.redirect('/user/login')
   } else {    
-    // res.render('home', {
+    // res.render('index', {
     //   title: 'Home Page',
     //   message: req.flash('main') || 'Login Successful',
     //   name: user.email

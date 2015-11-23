@@ -11,7 +11,7 @@ router.post('/auth', (req, res) => {
   var user = req.session.user;
 
   if (user && online[user]) {
-    res.redirect('/home');
+    res.redirect('/index');
     return;
   }
 
@@ -33,7 +33,7 @@ router.post('/auth', (req, res) => {
 
     online[user.email] = user;
     req.session.user = user;
-    res.redirect('/home');
+    res.redirect('/index');
   });
 });
 
@@ -42,7 +42,7 @@ router.get('/login', (req, res) =>{
   var user = req.session.user;
 
   if (user && online[user.name]) {
-    res.redirect('/home');
+    res.redirect('/index');
     return;
   }
 
