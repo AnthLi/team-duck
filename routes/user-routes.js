@@ -10,6 +10,7 @@ var router = express.Router(); // "Router" to separate particular points
 router.get('/login', (req, res) =>{
   var user = req.session.user;
 
+  // The user is already logged in
   if (user && online[user.name]) {
     res.redirect('/index');
     return;
@@ -25,18 +26,16 @@ router.get('/login', (req, res) =>{
 router.get('/logout', function(req, res) {
   var user = req.session.user;
 
-  // If the client has a session, but is not online it
-  // could mean that the server restarted, so a subsequent login is required.
-  // Otherwise, delete both.
+  // The user session expired
   if (user && !online[user.name]) {
-    delete req.session.user;
+    delete req.session.user; // Delete only the user from the session
   } else if (user) {
+    // Delete from map of online users and the session
     delete online[user.name];
     delete req.session.user;
   }
 
-  // Redirect to login regardless.
-  res.redirect('login');
+  res.redirect('login'); // Redirect to login regardless.
 });
  
 // Registration page
@@ -56,24 +55,26 @@ router.post('/auth', (req, res) => {
     return;
   }
 
-  var email = req.body.email;
-  var pass = req.body.pass;
+  var email = req.body.email; // Email of the user
+  var pass = req.body.pass; // Password of the user
 
+  // Either the email, password, or both are empty
   if (!email || !pass) {
     req.flash('login', 'Invalid credentials');
     res.redirect('login');
     return;
   }
 
-  db.authorize(email, pass, (err, user) => {
+  // Authorize the user's credentials
+  db.authorizeUser(email, pass, (err, user) => {
     if (err) {
       req.flash('login', err);
       res.redirect('login');
       return;
     }
 
-    online[user.email] = user;
-    req.session.user = user;
+    online[user.email] = user; // Add user to map of online users
+    req.session.user = user; // Create session variable
     req.flash('index', 'Login successful');
     res.redirect('/index');
   });
@@ -83,12 +84,11 @@ router.post('/auth', (req, res) => {
 router.post('/register', (req, res) => {
   var form = req.body;
 
-  // Check if the user is already in the database.
-  // If there is an error when looking, then the user does not exist
-  // and can be created.
-  db.lookup(form.email, (err, data) => {
+  // Check if the user is already in the database
+  db.lookupUser(form.email, (err, data) => {
     if (err) {
-      db.add(user(form.fname, form.lname, form.email, form.pass, form.dob), 
+      // The user was not found in the datbase, free to add them
+      db.addUser(user(form.fname, form.lname, form.email, form.pass, form.dob), 
         (err, data) => {
         if (err) {
           req.flash('registration', err);
@@ -103,6 +103,7 @@ router.post('/register', (req, res) => {
       return;
     }
 
+    // THe user was found in the database, no need to add them again
     req.flash('registration', 'An account for this email already exists!');
     res.redirect('registration');
   });

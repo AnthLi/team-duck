@@ -7,34 +7,43 @@ var router = express.Router(); // "Router" to separate particular points
 router.get('/online', function(req, res) {
   var user = req.session.user;
 
+  // The user session does not exist, redirect to login
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
-  } else {
-    res.render('online', {
-      title: 'Online Users',
-      online: online
-    });
-  }
+    return;
+  } 
+
+  res.render('online', {
+    title: 'Online Users',
+    online: online
+  });
 });
 
 router.get('/admin', function(req, res){
   var user = req.session.user;
 
-  if (!admin) {
-      req.flash('login', 'Not logged in');
-      res.redirect('/user/login');
-    } else if (admin && !online[admin.name]){
-      // Server has been restarted
-      req.flash('login', 'Login expired');
-      delete req.session.user;
-      res.redirect('/user/login');
-    } else if (admin.admin == false){
-      req.flash('index', "Invalid admin credentials");
-      res.redirect('/index');
-    } else { 
-      res.render('admin', '');
-    }
+  // The user session does not exist
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('/user/login');
+    return;
+  }
+  // The user session expired
+  if (user && !online[user.name]){
+    req.flash('login', 'Login expired');
+    delete req.session.user;
+    res.redirect('/user/login');
+    return;
+  }
+  // The user is not an admin
+  if (!user.admin){
+    req.flash('index', "Invalid admin credentials");
+    res.redirect('/index');
+    return;
+  }
+    
+  res.render('admin', ''); // The user is an admin
 });
 
 module.exports = router;
