@@ -88,7 +88,7 @@ router.post('/register', (req, res) => {
   // and can be created.
   db.lookup(form.email, (err, data) => {
     if (err) {
-      db.add(user(form.fname, form.lname, form.email, form.pass, form.dob), 
+      db.addUser(user(form.fname, form.lname, form.email, form.pass, form.dob), 
         (err, data) => {
         if (err) {
           req.flash('registration', err);
