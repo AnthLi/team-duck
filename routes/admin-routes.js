@@ -21,15 +21,15 @@ router.get('/online', function(req, res) {
 router.get('/admin', function(req, res){
   var user = req.session.user;
 
-  if(!admin) {
+  if (!admin) {
       req.flash('login', 'Not logged in');
       res.redirect('/user/login');
-    } else if(admin && !online[admin.name]){
+    } else if (admin && !online[admin.name]){
       // Server has been restarted
       req.flash('login', 'Login expired');
       delete req.session.user;
       res.redirect('/user/login');
-    } else if(admin.admin == false){
+    } else if (admin.admin == false){
       req.flash('home', "Invalid admin credentials");
       res.redirect('/home');
     } else { 

@@ -12,26 +12,29 @@ router.post('/auth', (req, res) => {
 
   if (user && online[user]) {
     res.redirect('/home');
-  } else {
-    var email = req.body.email;
-    var pass = req.body.pass;
-
-    if (!email || !pass) {
-      req.flash('login', 'Invalid credentials');
-      res.redirect('login');
-    } else {
-      db.lookup(email, pass, (err, user) => {
-        if (err) {
-          req.flash('login', err);
-          res.redirect('login');
-        } else {
-          online[user.email] = user;
-          req.session.user = user;
-          res.redirect('/home');
-        }
-      });
-    }
+    return;
   }
+
+  var email = req.body.email;
+  var pass = req.body.pass;
+
+  if (!email || !pass) {
+    req.flash('login', 'Invalid credentials');
+    res.redirect('login');
+    return;
+  }
+
+  db.authorize(email, pass, (err, user) => {
+    if (err) {
+      req.flash('login', err);
+      res.redirect('login');
+      return;
+    }
+
+    online[user.email] = user;
+    req.session.user = user;
+    res.redirect('/home');
+  });
 });
 
 // Login page
@@ -40,12 +43,13 @@ router.get('/login', (req, res) =>{
 
   if (user && online[user.name]) {
     res.redirect('/home');
-  } else {
-    res.render('login', { 
-      title: 'Login',
-      message: req.flash('login') || ''
-    });
+    return;
   }
+
+  res.render('login', { 
+    title: 'Login',
+    message: req.flash('login') || ''
+  });
 });
 
 // Log the user out of their session
@@ -81,22 +85,25 @@ router.post('/register', (req, res) => {
   // Check if the user is already in the database.
   // If there is an error when looking, then the user does not exist
   // and can be created.
-  db.lookup(form.email, form.pass, (err, data) => {
+  db.lookup(form.email, (err, data) => {
     if (err) {
       db.add(user(form.fname, form.lname, form.email, form.pass, form.dob), 
         (err, data) => {
         if (err) {
           req.flash('registration', err);
           res.redirect('registration');
-        } else {
-          req.flash('login', 'Your account has been created!');
-          res.redirect('login');
+          return;
         }
+
+        req.flash('login', 'Your account has been created!');
+        res.redirect('login');
       });
-    } else {
-      req.flash('registration', 'An account for this email already exists!');
-      res.redirect('registration');
+
+      return;
     }
+
+    req.flash('registration', 'An account for this email already exists!');
+    res.redirect('registration');
   });
 });
 
