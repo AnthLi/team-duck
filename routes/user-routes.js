@@ -84,6 +84,13 @@ router.post('/auth', (req, res) => {
 router.post('/register', (req, res) => {
   var form = req.body;
 
+  // Check if the user did not fill out the entire form
+  if (!form.fname | !form.lname | !form.email | !form.pass | !form.dob) {
+    req.flash('registration', 'Please fill out all fields');
+    res.redirect('registration');
+    return;
+  }
+
   // Check if the user is already in the database
   db.lookupUser(form.email, (err, data) => {
     if (err) {
@@ -103,7 +110,7 @@ router.post('/register', (req, res) => {
       return;
     }
 
-    // THe user was found in the database, no need to add them again
+    // The user was found in the database, no need to add them again
     req.flash('registration', 'An account for this email already exists!');
     res.redirect('registration');
   });
