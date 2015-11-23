@@ -4,6 +4,7 @@ var online = require('../lib/online').online; // List of online users
 
 var router = express.Router(); // "Router" to separate particular points
 
+// List of online users
 router.get('/online', function(req, res) {
   var user = req.session.user;
 
@@ -20,7 +21,8 @@ router.get('/online', function(req, res) {
   });
 });
 
-router.get('/admin', function(req, res){
+// Admin authorization
+router.get('/auth', function(req, res){
   var user = req.session.user;
 
   // The user session does not exist
