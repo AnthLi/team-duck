@@ -35,6 +35,7 @@ router.get('/logout', function(req, res) {
     delete req.session.user;
   }
 
+  req.flash('login', 'Successfully logged out!')
   res.redirect('login'); // Redirect to login regardless.
 });
  
