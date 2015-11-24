@@ -97,41 +97,6 @@ app.get('/team', (req, res) => {
   }
 });
 
-// Mockup pages for each mockup image
-app.get('/:mock', (req, res) => {
-  switch(req.params.mock){
-    // case 'home':
-    //   res.render('mockup', {imgURL: '/imgs/Home.png'});
-    //   break;
-    case 'about': {
-      res.render('about');
-      break;
-    }
-    case 'login': {
-      res.redirect('/user/login');
-      break;
-    }
-    case 'profile': {
-      res.render('mockup', {
-        imgURL: '/imgs/Profile.png'
-      });
-      break;
-    }
-    case 'admin': {
-      res.render('mockup', {
-        imgURL: '/imgs/Admin.png'
-      });
-      break; 
-    }
-    case 'mockups': {
-      res.render('mockups');
-    }
-    default: {
-      break;
-    }
-  }
-});
-
 ////// End User-Defined Routes
 
 // Start the express app on port 3000

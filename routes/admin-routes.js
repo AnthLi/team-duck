@@ -32,14 +32,14 @@ router.get('/auth', function(req, res){
     return;
   }
   // The user session expired
-  if (user && !online[user.name]){
+  if (user && !online[user.name]) {
     req.flash('login', 'Login expired');
     delete req.session.user;
     res.redirect('/user/login');
     return;
   }
   // The user is not an admin
-  if (!user.admin){
+  if (!user.admin) {
     req.flash('index', "Invalid admin credentials");
     res.redirect('/index');
     return;
