@@ -47,6 +47,20 @@ router.get('/registration', (req, res) => {
   });
 });
 
+// Profile page
+router.get('/profile', (req, res) => {
+  var user = req.session.user;
+
+  if (user && online[user]) {
+    res.redirect('/index');
+    return;
+  } else {
+    res.render('profile', {
+      title: 'Profile'
+    });
+  }
+});
+
 // Performs **basic** user authentication.
 router.post('/auth', (req, res) => {
   var user = req.session.user;
