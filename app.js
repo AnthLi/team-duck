@@ -77,6 +77,12 @@ app.get('/index', (req, res) => {
   }
 });
 
+app.get('/adminControls', (req, res) =>{
+
+  res.render('adminControls');
+
+});
+
 // Team page
 app.get('/team', (req, res) => {
   var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
