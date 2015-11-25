@@ -22,7 +22,19 @@ router.get('/online', function(req, res) {
   });
 });
 
-router.get('/users', function(req, res) {
+router.post('/ban/:user_email', function(req,res) => {
+  db.deleteUser(req.params.user_email, (err) => {
+    if(err){
+      req.flash('userList', err);
+      res.redirect('userList');
+      return;
+    }
+    req.flash('userList' ,'deleted user: ' + req.params.user_email);
+    res.redirect('userList');
+  });
+});
+
+router.get('/userList', function(req, res) {
   var user = req.session.user;
 
   if(!user){
@@ -37,17 +49,15 @@ router.get('/users', function(req, res) {
   }
   db.users( (err, data) => {
      if (err) {
-          req.flash('adminControls', err);
-          res.redirect('/adminControls');
+          req.flash('userList', err);
+          res.redirect('/userList');
           return;
         }
-      res.render('/adminControls', {
+      res.render('/userList', {
         title : 'Users in Database',
         users : data
       })
   });
-
-
 
 });
 
