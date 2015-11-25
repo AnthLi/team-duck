@@ -57,6 +57,11 @@ app.get('/', (req, res) => {
   res.redirect('/user/login');
 });
 
+// About page
+app.get('/about', (req, res) => {
+  res.render('about');
+});
+
 // Home page
 app.get('/index', (req, res) => {
   var user = req.session.user;
