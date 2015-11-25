@@ -37,6 +37,7 @@ The application is now running on localhost:3000.
 If ```nodemon app.js``` isn't working, try ```npm install -g nodemon```, then re-run ```nodemon app.js```.
 
 ## Libraries
+- [body-parser](https://github.com/expressjs/body-parser) to retrieve submitted form data
 - [connect-flash](https://github.com/jaredhanson/connect-flash) to flash messages to certain pages
 - [express](http://expressjs.com/) to provide the main web framework
 - [express-handlebars](https://github.com/ericf/express-handlebars) to provide templating and styling via injection
