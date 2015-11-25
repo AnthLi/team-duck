@@ -41,6 +41,10 @@ router.get('/users', function(req, res) {
           res.redirect('/adminControls');
           return;
         }
+      res.render('/adminControls', {
+        title : 'Users in Database',
+        users : data
+      })
   });
 
 
