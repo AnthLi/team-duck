@@ -56,7 +56,7 @@ router.get('/userList', function(req, res) {
       res.render('userList', {
         title : 'Users in Database',
         users : data
-      })
+      });
   });
 
 });
@@ -77,6 +77,25 @@ router.get('/adminControls', (req, res) =>{
   }
 
   res.render('adminControls', {title: 'Admin Controls'});
+
+});
+
+router.get('/classes', function(req, res){
+
+  var user = req.session.user;
+
+  if(!user){
+    req.flash('login', 'Not logged in');
+    res.redirect('/user/login');
+    return;
+  }
+   if (!user.admin) {
+    req.flash('index', "Invalid admin credentials");
+    res.redirect('/index');
+    return;
+  }
+
+  res.render('classes', {title: 'Classes'})
 
 });
 

@@ -2,10 +2,10 @@
 
 <html>
   <head>
-
+  	<link rel="stylesheet" type="text/css" href="../css/adminControls.css" />
   </head>
 
-  <body>
+  <body id="cont">
 
   	<div id="page">
     <div class="header">
@@ -17,18 +17,18 @@
   		<table>
   			
   		<tr>
-  			<td>
+  			<th>
   				Name
-  			</td>
-  			<td>
+  			</th>
+  			<th>
   				Email
-  			</td>
-  			<td>
+  			</th>
+  			<th>
   				Flags
-  			</td>
-  			<td>
+  			</th>
+  			<th>
   				BAN?
-  			</td>
+  			</th>
   		</tr>
 
   		{{#each users}}
@@ -41,7 +41,7 @@
   				{{this.email}}
   			</td>
   			<td>
-  				Flag
+  				{{this.flags}}
   			</td>
   			<td>
   				<button method="post" action="/admin/ban/{{this.email}}">BAN</button>
