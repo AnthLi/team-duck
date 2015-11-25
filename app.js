@@ -37,6 +37,7 @@ app.use(session({
   resave: false             // does not save session if not modified.
 }));
 
+// Separate routes for users and admins
 app.use('/user', require('./routes/user-routes'));
 app.use('/admin', require('./routes/admin-routes'));
 
