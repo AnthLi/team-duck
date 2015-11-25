@@ -48,4 +48,5 @@ router.get('/auth', function(req, res){
   res.render('admin', ''); // The user is an admin
 });
 
+
 module.exports = router;
