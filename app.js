@@ -56,15 +56,7 @@ function notFound404(req, res) {
 
 // Root directory that redirects to the home page
 app.get('/', (req, res) => {
-  var user = req.session.user;
-  console.log(user);
-
-  if (user && online[user.name]) {
-    res.redirect('/index');
-    return;
-  }
-
-  res.redirect('/user/login');
+  res.redirect('index');
 });
 
 // About page
