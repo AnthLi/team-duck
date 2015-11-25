@@ -24,11 +24,12 @@ router.get('/online', function(req, res) {
 
 router.post('/ban/:user_email', function(req,res) {
   db.deleteUser(req.params.user_email, (err) => {
-    if(err){
+    if (err) {
       req.flash('userList', err);
       res.redirect('userList');
       return;
     }
+
     req.flash('userList' ,'deleted user: ' + req.params.user_email);
     res.redirect('userList');
   });
@@ -37,66 +38,69 @@ router.post('/ban/:user_email', function(req,res) {
 router.get('/userList', function(req, res) {
   var user = req.session.user;
 
-  if(!user){
+  if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
     return;
   }
-   if (!user.admin) {
+
+  if (!user.admin) {
     req.flash('index', "Invalid admin credentials");
     res.redirect('/index');
     return;
   }
-  db.users( (err, data) => {
-     if (err) {
-          req.flash('userList', err);
-          res.redirect('userList');
-          return;
-        }
-      res.render('userList', {
-        title : 'Users in Database',
-        users : data
-      });
-  });
 
+  db.users((err, data) => {
+    if (err) {
+      req.flash('userList', err);
+      res.redirect('userList');
+      return;
+    }
+
+    res.render('userList', {
+      title : 'Users in Database',
+      users : data
+    });
+  });
 });
 
 router.get('/adminControls', (req, res) =>{
-
   var user = req.session.user;
 
-  if(!user){
+  if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
     return;
   }
-   if (!user.admin) {
+
+  if (!user.admin) {
     req.flash('index', "Invalid admin credentials");
     res.redirect('/index');
     return;
   }
 
-  res.render('adminControls', {title: 'Admin Controls'});
-
+  res.render('adminControls', {
+    title: 'Admin Controls'
+  });
 });
 
 router.get('/classes', function(req, res){
 
   var user = req.session.user;
 
-  if(!user){
+  if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
     return;
-  }
-   if (!user.admin) {
+  } else if (!user.admin) {
     req.flash('index', "Invalid admin credentials");
     res.redirect('/index');
     return;
   }
 
-  res.render('classes', {title: 'Classes'})
-
+  res.render('classes', {
+    title: 'Classes'
+  });
 });
 
 // Admin authorization

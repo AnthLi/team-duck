@@ -57,12 +57,14 @@ function notFound404(req, res) {
 // Root directory that redirects to the home page
 app.get('/', (req, res) => {
   var user = req.session.user;
+  console.log(user);
+
   if (user && online[user.name]) {
     res.redirect('/index');
     return;
   }
-  res.redirect('/index');
 
+  res.redirect('/user/login');
 });
 
 // About page
@@ -77,18 +79,22 @@ app.get('/index', (req, res) => {
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
-  } else if (user && !online[user.email]) {
+    return;
+  }
+
+  if (user && !online[user.email]) {
     req.flash('login', 'Login Expired');
     delete req.session.user;
-    res.redirect('/user/login')
-  } else {
-    res.render('index', {
-      title: 'Home Page',
-      message: req.flash('index') || '',
-      name: user.email,
-      indicator: true
-    });
+    res.redirect('/user/login');
+    return;
   }
+
+  res.render('index', {
+    title: 'Home Page',
+    message: req.flash('index') || '',
+    name: user.email,
+    indicator: true
+  });
 });
 
 // Team page
@@ -102,13 +108,17 @@ app.get('/team', (req, res) => {
     res.render('members', {
       member: memberData[0]
     });
-  } else if (user && members.indexOf(user) < 0) {
-    notFound404(req, res);
-  } else {
-    res.render('team', {
-      members: teamData
-    });
+    return;
   }
+
+  if (user && members.indexOf(user) < 0) {
+    notFound404(req, res);
+    return;
+  }
+
+  res.render('team', {
+    members: teamData
+  });
 });
 
 ////// End User-Defined Routes
