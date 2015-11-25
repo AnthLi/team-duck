@@ -1,78 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="300" >
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
-
-    <link type="text/css" rel="stylesheet" href="../css/demo.css" />
-    <link type="text/css" rel="stylesheet" href="../dist/css/jquery.mmenu.all.css" />
     
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="../dist/js/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript">
-      $(function() {
-        $('nav#menu').mmenu();
-      });
-    </script>
-    <link rel="stylesheet" type="text/css" href="../css/main.css" />
-
   </head>
 
-    <div id="page">
-      <div class="header">
-      <a href="#menu"></a>
-        Zembo
-      </div>
-      </div>
-      <div class="content"> 
-      
-      </div>
-    
-      <div id="cont">
-      <div id="tp">
-
-        <div id="head">
-          <ul id="logo">
-            <center><p1><b>{{title}}</b></p1></center>
-          </ul>
-        </div>
-
-        <div id="panel1">
-          <ul id="test">
-            <center><img src ="../imgs/logo.png" width="350px" height="210px"></center>
-            <center><p4><b>"Work alone no more"</b></p4></center>
-            </div>
-          </ul>          
-        </div>
-
-         <div id="panel1">
-          <center> <div id="form">
-               <p>{{message}}</p>
-               <form method="post" action="/user/auth">
-                  <input type="text" name="email" placeholder="email" required><br> 
-                  <input type="password" name="pass" placeholder="password" required><br>
-                  <button class="btn">Login</button>
-               </form>
-               Don't have an account? <a href="registration">Click here</a>
-            </center>
-          </div>
-        </div>
-
-
-      </div>
-      <nav id="menu">
-        <ul>
-          <li><a href="http://localhost:3000">Home</a></li>
-          <li><a href="../about">About</a></li>
-          <li><a href="../team">Team</a></li>
-          <li><a href="../mockups">Layout</a></li>
-        </ul>
-      </nav>
+  <div id="page">
+    <div class="header">
+    <a href="#menu"></a>
+      Zembo
     </div>
+    </div>
+    <div class="content"> 
+    
+    </div>
+  
+    <div id="cont">
+    <div id="tp">
+
+      <div id="head">
+        <ul id="logo">
+          <center><p1><b>{{title}}</b></p1></center>
+        </ul>
+      </div>
+
+      <div id="panel1">
+        <ul id="test">
+          <center><img src ="../imgs/logo.png" width="350px" height="210px"></center>
+          <center><p4><b>"Work alone no more"</b></p4></center>
+          </div>
+        </ul>          
+      </div>
+
+       <div id="panel1">
+        <center> <div id="form">
+             <p>{{message}}</p>
+             <form method="post" action="/user/auth">
+                <input type="text" name="email" placeholder="email" required><br> 
+                <input type="password" name="pass" placeholder="password" required><br>
+                <button class="btn">Login</button>
+             </form>
+             Don't have an account? <a href="registration">Click here</a>
+          </center>
+        </div>
+      </div>
+
+
+    </div>
+    <nav id="menu">
+      <ul>
+        <li><a href="http://localhost:3000">Home</a></li>
+        <li><a href="../about">About</a></li>
+        <li><a href="../team">Team</a></li>
+        <li><a href="../mockups">Layout</a></li>
+      </ul>
+    </nav>
+  </div>
   
 </html>
