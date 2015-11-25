@@ -1,4 +1,5 @@
 // The necessary imports required for the web app
+var bodyParser = require('body-parser');
 var express = require('express');
 var flash = require('connect-flash');
 var handlebars = require('express-handlebars');
@@ -18,7 +19,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static(__dirname + '/public'));
 app.use(flash());
-// Session state support:
+// Session state support
 app.use(session({
   secret: 'octocat',
   // Both of the options below are deprecated, but should be false
@@ -27,6 +28,9 @@ app.use(session({
   saveUninitialized: false, // does not save uninitialized session.
   resave: false             // does not save session if not modified.
 }));
+// Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
 
