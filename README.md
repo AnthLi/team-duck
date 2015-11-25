@@ -52,7 +52,7 @@ If ```nodemon app.js``` isn't working, try ```npm install -g nodemon```, then re
 - /user/login: logging into the application
 - /user/registration: registering for an account
 - /user/profile: the user profile (work in progress)
-- /admin/online: a list of all online users
+- /admin/online: a list of all online users (work in progress)
 - /admin/users: a list of every user and all of their attributes (work in progress)
 - /admin/controls: various admin controls (work in progress)
 - /admin/classes: a list of all classes (work in progress)
