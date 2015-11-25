@@ -1,0 +1,19 @@
+h1{
+	text-align: center;
+}
+
+.link{
+	text-decoration: none;
+}
+
+.linkText{
+	background-color: #2878d8;
+	color: white;
+	font-family: ubuntu, helvetica, arial;
+	margin-top: 3%;
+	padding: 3%;
+	text-align: center;
+	margin-left: 20%;
+	margin-right: 20%;
+	font-size: 2em;
+}
