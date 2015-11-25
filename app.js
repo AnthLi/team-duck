@@ -5,8 +5,8 @@ var flash = require('connect-flash');
 var handlebars = require('express-handlebars');
 var session = require('express-session');
 
+var db = require('./lib/database.js'); // Database library
 var online = require('./lib/online').online; // List of online users
-var team = require('./lib/team.js'); // Team library
 
 var app = express();
 
@@ -84,26 +84,16 @@ app.get('/about', (req, res) => {
 
 // Team page
 app.get('/team', (req, res) => {
-  var members = ['apli', 'bcheung', 'hkeswani', 'jgatley', 'zmilrod'];
-  var user = req.query.user;
-  var memberData = team.one(user).data;
-  var teamData = team.all().data;
+  db.team((err, data) => {
+    if (err) {
+      notFound404(req, res);
+      return;
+    }
 
-  if (user && members.indexOf(user) >= 0) {
-    res.render('members', {
-      member: memberData[0]
+    res.render('team', {
+      title: 'Meet the team',
+      members: data
     });
-    return;
-  }
-
-  if (user && members.indexOf(user) < 0) {
-    notFound404(req, res);
-    return;
-  }
-
-  res.render('team', {
-    title: 'Meet the team',
-    members: teamData
   });
 });
 
