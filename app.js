@@ -109,6 +109,7 @@ app.get('/team', (req, res) => {
   }
 
   res.render('team', {
+    title: 'Meet the team',
     members: teamData
   });
 });

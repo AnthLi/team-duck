@@ -49,9 +49,16 @@ router.get('/registration', (req, res) => {
 
 // Profile page
 router.get('/profile', (req, res) => {
-  res.render('profile', {
-    title: 'Profile'
-  });
+  var user = req.session.user;
+  console.log(user);
+  console.log(online);
+  console.log(online[user.name]);
+  
+  if (user && online[user.name]) {
+    console.log(user);
+  }
+
+  res.render('profile');
 });
 
 // Performs **basic** user authentication.
