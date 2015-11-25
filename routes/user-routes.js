@@ -6,12 +6,13 @@ var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
 
+////// Start GET Requests
+
 // Login page
 router.get('/login', (req, res) =>{
   var user = req.session.user;
 
-  // The user is already logged in
-  if (user && online[user.name]) {
+  if (user && online[user.email]) {
     res.redirect('/index');
     return;
   }
@@ -23,20 +24,18 @@ router.get('/login', (req, res) =>{
 });
 
 // Log the user out of their session
-router.get('/logout', function(req, res) {
+router.get('/logout', (req, res) => {
   var user = req.session.user;
 
-  // The user session expired
-  if (user && !online[user.name]) {
-    delete req.session.user; // Delete only the user from the session
+  if (user && !online[user.email]) {
+    delete req.session.user;
   } else if (user) {
-    // Delete from map of online users and the session
-    delete online[user.name];
+    delete online[user.email];
     delete req.session.user;
   }
 
   req.flash('login', 'Successfully logged out!')
-  res.redirect('login'); // Redirect to login regardless.
+  res.redirect('login');
 });
  
 // Registration page
@@ -50,16 +49,28 @@ router.get('/registration', (req, res) => {
 // Profile page
 router.get('/profile', (req, res) => {
   var user = req.session.user;
-  console.log(user);
-  console.log(online);
-  console.log(online[user.name]);
   
-  if (user && online[user.name]) {
-    console.log(user);
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('login');
+    return;
   }
 
-  res.render('profile');
+  if (user && !online[user.email]) {
+    req.flash('login', 'Login expired');
+    delete req.session.user;
+    res.redirect('login');
+    return;
+  }
+
+  res.render('profile', {
+    title: 'Profile'
+  });
 });
+
+////// End GET Requests
+
+////// Start POST Requests
 
 // Performs **basic** user authentication.
 router.post('/auth', (req, res) => {
@@ -70,8 +81,8 @@ router.post('/auth', (req, res) => {
     return;
   }
 
-  var email = req.body.email; // Email of the user
-  var pass = req.body.pass; // Password of the user
+  var email = req.body.email;
+  var pass = req.body.pass;
 
   // Either the email, password, or both are empty
   if (!email || !pass) {
@@ -130,5 +141,7 @@ router.post('/register', (req, res) => {
     res.redirect('registration');
   });
 });
+
+////// End POST Requests
 
 module.exports = router;

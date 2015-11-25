@@ -59,11 +59,6 @@ app.get('/', (req, res) => {
   res.redirect('index');
 });
 
-// About page
-app.get('/about', (req, res) => {
-  res.render('about');
-});
-
 // Home page
 app.get('/index', (req, res) => {
   var user = req.session.user;
@@ -87,6 +82,11 @@ app.get('/index', (req, res) => {
     name: user.email,
     indicator: true
   });
+});
+
+// About page
+app.get('/about', (req, res) => {
+  res.render('about');
 });
 
 // Team page

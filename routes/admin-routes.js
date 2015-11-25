@@ -4,12 +4,12 @@ var online = require('../lib/online').online; // List of online users
 var db = require('../lib/database.js');
 var router = express.Router(); // "Router" to separate particular points
 
+////// Start GET Requests
 
 // List of online users
-router.get('/online', function(req, res) {
+router.get('/online', (req, res) => {
   var user = req.session.user;
 
-  // The user session does not exist, redirect to login
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
@@ -22,20 +22,7 @@ router.get('/online', function(req, res) {
   });
 });
 
-router.post('/ban/:user_email', function(req,res) {
-  db.deleteUser(req.params.user_email, (err) => {
-    if (err) {
-      req.flash('userList', err);
-      res.redirect('userList');
-      return;
-    }
-
-    req.flash('userList' ,'deleted user: ' + req.params.user_email);
-    res.redirect('userList');
-  });
-});
-
-router.get('/userList', function(req, res) {
+router.get('/users', (req, res) => {
   var user = req.session.user;
 
   if (!user) {
@@ -58,13 +45,13 @@ router.get('/userList', function(req, res) {
     }
 
     res.render('userList', {
-      title : 'Users in Database',
-      users : data
+      title: 'Users in Database',
+      users: data
     });
   });
 });
 
-router.get('/adminControls', (req, res) =>{
+router.get('/controls', (req, res) =>{
   var user = req.session.user;
 
   if (!user) {
@@ -84,7 +71,7 @@ router.get('/adminControls', (req, res) =>{
   });
 });
 
-router.get('/classes', function(req, res){
+router.get('/classes', (req, res) => {
 
   var user = req.session.user;
 
@@ -104,7 +91,7 @@ router.get('/classes', function(req, res){
 });
 
 // Admin authorization
-router.get('/auth', function(req, res){
+router.get('/auth', (req, res) => {
   var user = req.session.user;
 
   // The user session does not exist
@@ -114,7 +101,7 @@ router.get('/auth', function(req, res){
     return;
   }
   // The user session expired
-  if (user && !online[user.name]) {
+  if (user && !online[user.email]) {
     req.flash('login', 'Login expired');
     delete req.session.user;
     res.redirect('/user/login');
@@ -129,5 +116,24 @@ router.get('/auth', function(req, res){
     
   res.render('admin', ''); // The user is an admin
 });
+
+////// End GET Requests
+
+////// Start POST Requests
+
+router.post('/ban/:user_email', (req,res) => {
+  db.deleteUser(req.params.user_email, (err) => {
+    if (err) {
+      req.flash('userList', err);
+      res.redirect('userList');
+      return;
+    }
+
+    req.flash('userList' ,'deleted user: ' + req.params.user_email);
+    res.redirect('userList');
+  });
+});
+
+////// End POST Requests
 
 module.exports = router;
