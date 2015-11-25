@@ -27,11 +27,21 @@ router.get('/login', (req, res) => {
 router.get('/logout', (req, res) => {
   var user = req.session.user;
 
-  if (user && !online[user.email]) {
-    delete req.session.user;
-  } else if (user) {
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('login');
+    return;
+  }
+
+  if (user) {
     delete online[user.email];
     delete req.session.user;
+    return;
+  }
+
+  if (user && !online[user.email]) {
+    delete req.session.user;
+    return;
   }
 
   req.flash('login', 'Successfully logged out!')
@@ -57,8 +67,8 @@ router.get('/profile', (req, res) => {
   }
 
   if (user && !online[user.email]) {
-    req.flash('login', 'Login expired');
     delete req.session.user;
+    req.flash('login', 'Login expired');
     res.redirect('login');
     return;
   }
@@ -76,7 +86,7 @@ router.get('/profile', (req, res) => {
 router.post('/auth', (req, res) => {
   var user = req.session.user;
 
-  if (user && online[user]) {
+  if (user && online[user.email]) {
     res.redirect('/index');
     return;
   }
