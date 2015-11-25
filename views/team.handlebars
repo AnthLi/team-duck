@@ -2,40 +2,40 @@
 <html>
   
   <head>
-    <link type = "text/css" rel = "stylesheet" href = "dist/css/jquery.mmenu.all.css" />
-    <link type = "text/css" rel = "stylesheet" href = "css/team.css">
-    <link type = "text/css" rel = "stylesheet" href = "css/member.css">
+    <link type="text/css" rel="stylesheet" href="dist/css/jquery.mmenu.all.css" />
+    <link type="text/css" rel="stylesheet" href="css/team.css">
+    <link type="text/css" rel="stylesheet" href="css/member.css">
   </head>
 
-  <div id = "page">
-    <div class = "header">
-      <a href = "#menu"></a>
+  <div id="page">
+    <div class="header">
+      <a href="#menu"></a>
       Zembo
     </div>
   </div>
     
-  <div class = "content"></div>
+  <div class="content"></div>
 
-  <div id = "cont">
-    <div id = "tp">
-      <div id = "head">
-        <ul id = "logo">
+  <div id="cont">
+    <div id="tp">
+      <div id="head">
+        <ul id="logo">
           <center><p1><b>{{title}}</b></p1></center>
         </ul>
       </div>
 
       <center>
-        <div id = "panel1">
-          <ul id = "test">
-            <img src = "imgs/logo.png" width = "350px" height = "210px">
+        <div id="panel1">
+          <ul id="test">
+            <img src="imgs/logo.png" width="350px" height="210px">
             <center><p4><b>"Work alone no more"</b></p4></center>
           </ul>
         </div>
     
         {{#each members}}
-        <div class = "memberName"><a href = "?user = {{this.user}}">{{this.fname}} {{this.lname}}</a></div>
-        <div class = "positionClass">{{this.role}}</div>
-        <div class = "Description">{{this.description}}</div> 
+        <div class="memberName"><a href="?user={{this.user}}">{{this.fname}} {{this.lname}}</a></div>
+        <div class="positionClass">{{this.role}}</div>
+        <div class="Description">{{this.description}}</div> 
         {{/each}}
       </center>
     </div>
