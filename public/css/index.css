@@ -20,9 +20,9 @@
 }
 
 #classname{
-	float:left;
-	width:13%;
-	height:130px;
+	float: left;
+	width: 13%;
+	height: 130px;
 	background-color: #444;
 }
 
@@ -36,9 +36,9 @@
 }
 
 #students{
-	float:left;
-	width:70%;
-	height:130px;
+	float: left;
+	width: 70%;
+	height: 130px;
 }
 
 #studentBody{
@@ -69,10 +69,11 @@
 #dropdown{
 	color: white;
 	font-size: 30px;
-	margin:50px 0 0 90px;
+	margin: 50px 0 0 90px;
 	float: left;
 }
-#extend {
+
+#extend{
     display: none;
     background-color: #fff;
     height: 150px;

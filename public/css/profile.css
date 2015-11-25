@@ -1,0 +1,21 @@
+#studentImage{
+  display: block;
+  position: absolute;
+  height: 90px;
+  width: 90px;
+  border-radius: 50px;
+  border: 2px #444 solid;
+  margin: 17px 30px;
+}
+
+#students{
+  float: left;
+  width: 70%;
+  height: 130px;
+}
+
+#studentBody{
+  float: left;
+  width: 16%;
+  height: 130px;
+}
