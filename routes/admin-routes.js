@@ -22,7 +22,7 @@ router.get('/online', function(req, res) {
   });
 });
 
-router.post('/ban/:user_email', function(req,res) => {
+router.post('/ban/:user_email', function(req,res) {
   db.deleteUser(req.params.user_email, (err) => {
     if(err){
       req.flash('userList', err);
@@ -58,6 +58,25 @@ router.get('/userList', function(req, res) {
         users : data
       })
   });
+
+});
+
+router.get('/adminControls', (req, res) =>{
+
+  var user = req.session.user;
+
+  if(!user){
+    req.flash('login', 'Not logged in');
+    res.redirect('/user/login');
+    return;
+  }
+   if (!user.admin) {
+    req.flash('index', "Invalid admin credentials");
+    res.redirect('/index');
+    return;
+  }
+
+  res.render('adminControls');
 
 });
 
