@@ -4,17 +4,38 @@ var online = require('../lib/online').online; // List of online users
 var db = require('../lib/database.js');
 var router = express.Router(); // "Router" to separate particular points
 
+// Verification process to see if the user is logged in, online, or an admin
+function verify(user, req, res) {
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('/user/login');
+    return false;
+  }
+
+  if (user && !online[user.email]) {
+    req.flash('login', 'Login expired');
+    delete req.session.user;
+    res.redirect('/user/login');
+    return false;
+  }
+
+  if (!user.admin) {
+    res.redirect('/index');
+    return false;
+  }
+
+  return true;
+}
+
 ////// Start GET Requests
 
 // List of online users
 router.get('/online', (req, res) => {
   var user = req.session.user;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('/user/login');
+  if (!verify(user, req, res)) {
     return;
-  } 
+  }
 
   res.render('online', {
     title: 'Online Users',
@@ -26,15 +47,7 @@ router.get('/online', (req, res) => {
 router.get('/users', (req, res) => {
   var user = req.session.user;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('/user/login');
-    return;
-  }
-
-  if (!user.admin) {
-    req.flash('index', "Invalid admin credentials");
-    res.redirect('/index');
+  if (!verify(user, req, res)) {
     return;
   }
 
@@ -56,14 +69,7 @@ router.get('/users', (req, res) => {
 router.get('/controls', (req, res) =>{
   var user = req.session.user;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('/user/login');
-    return;
-  }
-
-  if (!user.admin) {
-    res.redirect('/index');
+  if (!verify(user, req, res)) {
     return;
   }
 
@@ -76,13 +82,7 @@ router.get('/controls', (req, res) =>{
 router.get('/classes', (req, res) => {
   var user = req.session.user;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('/user/login');
-    return;
-  } else if (!user.admin) {
-    req.flash('index', "Invalid admin credentials");
-    res.redirect('/index');
+  if (!verify(user, req, res)) {
     return;
   }
 
@@ -99,25 +99,20 @@ router.get('/classes', (req, res) => {
 router.post('/auth', (req, res) => {
   var user = req.session.user;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('/user/login');
+  if (!verify(user, req, res)) {
     return;
   }
 
-  if (user && !online[user.email]) {
-    req.flash('login', 'Login expired');
-    delete req.session.user;
-    res.redirect('/user/login');
-    return;
-  }
+  var email = req.body.email;
 
-  if (!user.admin) {
-    res.redirect('/index');
-    return;
-  }
-    
-  res.redirect('controls');
+  db.authorizeAdmin(email, (err, user) => {
+    if (err) {
+      res.redirect('/index');
+      return;
+    }
+
+    res.redirect('controls');
+  });
 });
 
 // Banhammer
