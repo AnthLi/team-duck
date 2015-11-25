@@ -76,7 +76,7 @@ router.get('/adminControls', (req, res) =>{
     return;
   }
 
-  res.render('adminControls');
+  res.render('adminControls', {title: 'Admin Controls'});
 
 });
 

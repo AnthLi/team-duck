@@ -54,6 +54,11 @@ function notFound404(req, res) {
 ////// Start User-Defined Routes
 
 app.get('/', (req, res) => {
+  var user = req.session.user;
+  if (user && online[user.name]) {
+    res.redirect('/index');
+    return;
+  }
   res.redirect('/user/login');
 });
 
