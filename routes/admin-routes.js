@@ -22,6 +22,7 @@ router.get('/online', (req, res) => {
   });
 });
 
+// List of all users in the database and their attributes
 router.get('/users', (req, res) => {
   var user = req.session.user;
 
@@ -51,6 +52,7 @@ router.get('/users', (req, res) => {
   });
 });
 
+// Admin controls page
 router.get('/controls', (req, res) =>{
   var user = req.session.user;
 
@@ -71,8 +73,8 @@ router.get('/controls', (req, res) =>{
   });
 });
 
+// List of all classes
 router.get('/classes', (req, res) => {
-
   var user = req.session.user;
 
   if (!user) {
@@ -94,33 +96,33 @@ router.get('/classes', (req, res) => {
 router.get('/auth', (req, res) => {
   var user = req.session.user;
 
-  // The user session does not exist
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
     return;
   }
-  // The user session expired
+
   if (user && !online[user.email]) {
     req.flash('login', 'Login expired');
     delete req.session.user;
     res.redirect('/user/login');
     return;
   }
-  // The user is not an admin
+
   if (!user.admin) {
     req.flash('index', "Invalid admin credentials");
     res.redirect('/index');
     return;
   }
     
-  res.render('admin', ''); // The user is an admin
+  res.render('admin', '');
 });
 
 ////// End GET Requests
 
 ////// Start POST Requests
 
+// Banhammer
 router.post('/ban/:user_email', (req,res) => {
   db.deleteUser(req.params.user_email, (err) => {
     if (err) {
