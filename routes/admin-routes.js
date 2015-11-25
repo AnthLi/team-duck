@@ -50,10 +50,10 @@ router.get('/userList', function(req, res) {
   db.users( (err, data) => {
      if (err) {
           req.flash('userList', err);
-          res.redirect('/userList');
+          res.redirect('userList');
           return;
         }
-      res.render('/userList', {
+      res.render('userList', {
         title : 'Users in Database',
         users : data
       })

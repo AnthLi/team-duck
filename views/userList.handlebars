@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+  </head>
+
+  <body>
+
+  	<div id="page">
+    <div class="header">
+    <a href="#menu"></a>
+      {{title}}
+    </div>
+    </div>
+
+  		<table>
+  			
+  		<tr>
+  			<td>
+  				Name
+  			</td>
+  			<td>
+  				Email
+  			</td>
+  			<td>
+  				Flags
+  			</td>
+  			<td>
+  				BAN?
+  			</td>
+  		</tr>
+
+  		{{#each users}}
+
+  		<tr>
+  			<td>
+  				{{this.fname}} {{this.lname}}
+  			</td>
+  			<td>
+  				{{this.email}}
+  			</td>
+  			<td>
+  				Flag
+  			</td>
+  			<td>
+  				<button method="post" action="/admin/ban/{{this.email}}">BAN</button>
+  			</td>
+  		</tr>
+
+
+  		{{/each}}
+
+
+
+  		</table>
+  	
+  </body>
+
+  </html>
