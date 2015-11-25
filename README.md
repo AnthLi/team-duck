@@ -1,5 +1,8 @@
 # Zembo
 
+## Overview
+The idea for this web-based software application is to assist college students in getting together to collaborate on group-based assignments and engage in study sessions, allowing for better learning techniques. This web application will utilize location-based services to determine where you are located on campus, and it will give you notifications of anyone nearby looking to meet up and form a study group.
+
 ## How To Run
 Make sure you have Node.js installed on your system.
 
