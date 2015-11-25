@@ -63,7 +63,6 @@ router.get('/controls', (req, res) =>{
   }
 
   if (!user.admin) {
-    req.flash('index', "Invalid admin credentials");
     res.redirect('/index');
     return;
   }
@@ -92,8 +91,12 @@ router.get('/classes', (req, res) => {
   });
 });
 
+////// End GET Requests
+
+////// Start POST Requests
+
 // Admin authorization
-router.get('/auth', (req, res) => {
+router.post('/auth', (req, res) => {
   var user = req.session.user;
 
   if (!user) {
@@ -110,17 +113,12 @@ router.get('/auth', (req, res) => {
   }
 
   if (!user.admin) {
-    req.flash('index', "Invalid admin credentials");
     res.redirect('/index');
     return;
   }
     
-  res.render('admin', '');
+  res.redirect('controls');
 });
-
-////// End GET Requests
-
-////// Start POST Requests
 
 // Banhammer
 router.post('/ban/:user_email', (req,res) => {
