@@ -66,7 +66,7 @@ router.get('/users', (req, res) => {
 });
 
 // Admin controls page
-router.get('/controls', (req, res) =>{
+router.get('/controls', (req, res) => {
   var user = req.session.user;
 
   if (!verify(user, req, res)) {

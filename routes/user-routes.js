@@ -9,7 +9,7 @@ var router = express.Router(); // "Router" to separate particular points
 ////// Start GET Requests
 
 // Login page
-router.get('/login', (req, res) =>{
+router.get('/login', (req, res) => {
   var user = req.session.user;
 
   if (user && online[user.email]) {
