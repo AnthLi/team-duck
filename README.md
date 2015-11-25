@@ -46,16 +46,16 @@ If ```nodemon app.js``` isn't working, try ```npm install -g nodemon```, then re
 - [pg](https://github.com/brianc/node-postgres) to access the PostgreSQL database
 
 ## Views
-- /index: the home page
-- /about: what we're about
-- /team: the devs and who we are
-- /user/login: logging into the application
-- /user/registration: registering for an account
-- /user/profile: the user profile (work in progress)
-- /admin/online: a list of all online users (work in progress)
-- /admin/users: a list of every user and all of their attributes (work in progress)
-- /admin/controls: various admin controls (work in progress)
-- /admin/classes: a list of all classes (work in progress)
+- ```/index```: the home page
+- ```/about```: what we're about
+- ```/team```: the devs and who we are
+- ```/user/login```: logging into the application
+- ```/user/registration```: registering for an account
+- ```/user/profile```: the user profile (work in progress)
+- ```/admin/online```: a list of all online users (work in progress)
+- ```/admin/users```: a list of every user and all of their attributes (work in progress)
+- ```/admin/controls```: various admin controls (work in progress)
+- ```/admin/classes```: a list of all classes (work in progress)
 
 ## Statefulness
 Statefulness is maintained by using the [express-session](https://www.npmjs.com/package/express-session) library. In ```app.js```, ```/routes/user-routes.js```, and ```/routes/admin-routes.js```, there are various GET requests that check both the user session state through ```req.session.user``` and if the user is online through ```/lib/online.js```.
