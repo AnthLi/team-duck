@@ -77,7 +77,7 @@ app.get('/index', (req, res) => {
     req.flash('login', 'Login Expired');
     delete req.session.user;
     res.redirect('/user/login')
-  } else {    
+  } else {
     res.render('index', {
       title: 'Home Page',
       message: req.flash('index') || '',
