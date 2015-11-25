@@ -53,8 +53,9 @@ function notFound404(req, res) {
 
 ////// Start User-Defined Routes
 
+// Root directory that redirects to the home page
 app.get('/', (req, res) => {
-  res.redirect('/user/login');
+  res.redirect('/index');
 });
 
 // About page
@@ -65,6 +66,7 @@ app.get('/about', (req, res) => {
 // Home page
 app.get('/index', (req, res) => {
   var user = req.session.user;
+
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
