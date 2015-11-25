@@ -37,6 +37,7 @@ app.use(session({
   resave: false             // does not save session if not modified.
 }));
 
+// Separate routes for users and admins
 app.use('/user', require('./routes/user-routes'));
 app.use('/admin', require('./routes/admin-routes'));
 
@@ -53,13 +54,15 @@ function notFound404(req, res) {
 
 ////// Start User-Defined Routes
 
+// Root directory that redirects to the home page
 app.get('/', (req, res) => {
   var user = req.session.user;
   if (user && online[user.name]) {
     res.redirect('/index');
     return;
   }
-  res.redirect('/user/login');
+  res.redirect('/index');
+
 });
 
 // About page
@@ -70,6 +73,7 @@ app.get('/about', (req, res) => {
 // Home page
 app.get('/index', (req, res) => {
   var user = req.session.user;
+
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
