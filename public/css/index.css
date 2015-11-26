@@ -4,14 +4,59 @@
 	width: 100%;
 }
 
-#class{
+#class1{
 	background-color: #2878d8;
 	height: 130px;
 	width: 100%;
 	border-top: 1px solid #444;
 }
 
-#class p1{
+#class2{
+	background-color: #2878d8;
+	height: 130px;
+	width: 100%;
+	border-top: 1px solid #444;
+}
+
+#class3{
+	background-color: #2878d8;
+	height: 130px;
+	width: 100%;
+	border-top: 1px solid #444;
+}
+
+#class4{
+	background-color: #2878d8;
+	height: 130px;
+	width: 100%;
+	border-top: 1px solid #444;
+}
+
+#class1 p1{
+	font-size: 20px;
+	color: white;
+	position: absolute;
+	margin-top: 40px;
+	padding-left: 1%;
+}
+
+#class2 p1{
+	font-size: 20px;
+	color: white;
+	position: absolute;
+	margin-top: 40px;
+	padding-left: 1%;
+}
+
+#class3 p1{
+	font-size: 20px;
+	color: white;
+	position: absolute;
+	margin-top: 40px;
+	padding-left: 1%;
+}
+
+#class4 p1{
 	font-size: 20px;
 	color: white;
 	position: absolute;
@@ -73,7 +118,28 @@
 	float: left;
 }
 
-#extend{
+#extend1{
+    display: none;
+    background-color: #fff;
+    height: 150px;
+    width: 100%;
+}
+
+#extend2{
+    display: none;
+    background-color: #fff;
+    height: 150px;
+    width: 100%;
+}
+
+#extend3{
+    display: none;
+    background-color: #fff;
+    height: 150px;
+    width: 100%;
+}
+
+#extend4{
     display: none;
     background-color: #fff;
     height: 150px;
