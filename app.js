@@ -62,7 +62,7 @@ app.get('/index', (req, res) => {
     return;
   }
 
-  if (user && !online[user.email]) {
+  if (user && !online[user.uid]) {
     req.flash('login', 'Login Expired');
     delete req.session.user;
     res.redirect('/user/login');

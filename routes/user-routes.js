@@ -12,7 +12,7 @@ var router = express.Router(); // "Router" to separate particular points
 router.get('/login', (req, res) => {
   var user = req.session.user;
 
-  if (user && online[user.email]) {
+  if (user && online[user.uid]) {
     res.redirect('/index');
     return;
   }
@@ -34,11 +34,11 @@ router.get('/logout', (req, res) => {
   }
 
   if (user) {
-    delete online[user.email];
+    delete online[user.uid];
     delete req.session.user;
   }
 
-  if (user && !online[user.email]) {
+  if (user && !online[user.uid]) {
     delete req.session.user;
   }
 
@@ -84,7 +84,7 @@ router.get('/profile', (req, res) => {
 router.post('/auth', (req, res) => {
   var user = req.session.user;
 
-  if (user && online[user.email]) {
+  if (user && online[user.uid]) {
     res.redirect('/index');
     return;
   }
@@ -107,7 +107,7 @@ router.post('/auth', (req, res) => {
       return;
     }
 
-    online[user.email] = user; // Add user to map of online users
+    online[user.uid] = user; // Add user to map of online users
     req.session.user = user; // Create session variable
     req.flash('index', 'Login successful');
     res.redirect('/index');
