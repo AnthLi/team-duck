@@ -64,7 +64,7 @@ router.get('/profile', (req, res) => {
     return;
   }
 
-  if (user && !online[user.email]) {
+  if (user && !online[user.uid]) {
     delete req.session.user;
     req.flash('login', 'Login expired');
     res.redirect('login');
