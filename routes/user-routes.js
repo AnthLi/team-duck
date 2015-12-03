@@ -130,7 +130,7 @@ router.post('/register', (req, res) => {
     if (err) {
       // The user was not found in the datbase, free to add them
       db.addUser(user(form.major, form.year, form.fname, form.lname, form.email,
-        form.pass, form.dob), (err, data) => {
+        form.pass, form.dob, form.spireid), (err, data) => {
         if (err) {
           req.flash('registration', err);
           res.redirect('registration');
