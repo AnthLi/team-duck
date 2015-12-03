@@ -36,12 +36,10 @@ router.get('/logout', (req, res) => {
   if (user) {
     delete online[user.email];
     delete req.session.user;
-    return;
   }
 
   if (user && !online[user.email]) {
     delete req.session.user;
-    return;
   }
 
   req.flash('login', 'Successfully logged out!')
