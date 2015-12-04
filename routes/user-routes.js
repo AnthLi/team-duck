@@ -70,9 +70,17 @@ router.get('/profile', (req, res) => {
     res.redirect('login');
     return;
   }
+  
+  db.lookupUser(user.email, (err, data) => {
+    if (err) {
 
-  res.render('profile', {
-    title: 'Profile'
+      return;
+    }
+
+    res.render('profile', {
+      title: 'Profile',
+      uid: data.uid
+    });  
   });
 });
 
