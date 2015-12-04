@@ -73,7 +73,7 @@ router.get('/profile', (req, res) => {
   
   db.lookupUser(user.email, (err, data) => {
     if (err) {
-
+      res.redirect(req.header('Referer'));
       return;
     }
 
