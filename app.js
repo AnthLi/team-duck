@@ -69,12 +69,15 @@ app.get('/index', (req, res) => {
     return;
   }
 
+  //****NEED PICTURE PASSED THROUGH******
   res.render('index', {
     title: 'Home Page',
     message: req.flash('index') || '',
-    name: user.email,
+    namef: user.fname,
+    namel: user.lname,
     indicator: true
   });
+  //****NEED PICTURE PASSED THROUGH******
 });
 
 // About page

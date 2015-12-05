@@ -151,4 +151,18 @@
 	margin-top: 3%;
 }
 
+#profRight{
+	float: right;
+}
+
+#profRight > a{
+	text-decoration: none;
+	float: right;
+}
+
+
+
+
+
+
 
