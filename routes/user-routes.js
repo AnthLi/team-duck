@@ -56,7 +56,7 @@ router.get('/registration', (req, res) => {
 
 // Profile page
 router.get('/profile', (req, res) => {
-  var result = req.session.user.uid;
+  // var result = req.session.user.uid;
   var user = req.session.user;
   
   if (!user) {
