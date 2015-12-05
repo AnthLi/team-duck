@@ -78,8 +78,6 @@ router.get('/profile', (req, res) => {
       return;
     }
 
-    console.log(data);
-
     res.render('profile', {
       title: 'Profile',
       data: data
