@@ -34,17 +34,6 @@ app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
 
-////// Start Error Middleware
-
-// Middleware function for when the requested path does not exist
-// Source: 02-basic-app-student
-function notFound404(req, res) {
-  res.status(404);
-  res.render('layouts/404');
-}
-
-////// End Error Middleware
-
 ////// Start User-Defined Routes
 
 // Root directory that redirects to the home page
@@ -86,7 +75,7 @@ app.get('/about', (req, res) => {
 app.get('/team', (req, res) => {
   db.team((err, data) => {
     if (err) {
-      notFound404(req, res);
+      // notFound404(req, res);
       return;
     }
 
@@ -96,6 +85,16 @@ app.get('/team', (req, res) => {
     });
   });
 });
+
+////// Start Error Middleware
+
+// Middleware function for when the requested route does not exist
+app.use(function(req, res, next) {
+  res.status(404);
+  res.render('404');
+});
+
+////// End Error Middleware
 
 ////// End User-Defined Routes
 
