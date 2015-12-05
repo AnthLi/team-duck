@@ -17,7 +17,7 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login', { 
+  res.render('login', {
     title: 'Login',
     message: req.flash('login') || ''
   });
@@ -56,6 +56,7 @@ router.get('/registration', (req, res) => {
 
 // Profile page
 router.get('/profile', (req, res) => {
+  var result = req.session.user.uid;
   var user = req.session.user;
   
   if (!user) {
@@ -70,17 +71,19 @@ router.get('/profile', (req, res) => {
     res.redirect('login');
     return;
   }
-  
-  db.lookupUser(user.email, (err, data) => {
+
+  db.getProfile(user.uid, (err, data) => {
     if (err) {
       res.redirect(req.header('Referer'));
       return;
     }
 
+    console.log(data);
+
     res.render('profile', {
       title: 'Profile',
-      uid: data.uid
-    });  
+      data: data
+    });
   });
 });
 
