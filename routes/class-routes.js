@@ -4,3 +4,10 @@ var online = require('../lib/online').online; // List of online users
 var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
+
+
+
+
+
+
+module.exports = router;
