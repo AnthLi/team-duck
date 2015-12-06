@@ -159,6 +159,21 @@ router.post('/register', (req, res) => {
   });
 });
 
+router.post('/update', (req, res) => {
+
+      // The user was not found in the datbase, free to add them
+      db.updateAbout(req.body.about, user.spireid, (err, data) => {
+        if (err) {
+          req.flash('profile', err);
+          res.redirect('profile');
+          return;
+        }
+
+        req.flash('/profile', 'about has been updated');
+        res.redirect('/profle');
+  });
+});
+
 ////// End POST Requests
 
 module.exports = router;
