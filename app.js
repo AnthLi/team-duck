@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
 app.use('/group', require('./routes/group-routes'));
+app.use('/classes', require('./routes/classes-routes'));
 
 ////// Start User-Defined Routes
 

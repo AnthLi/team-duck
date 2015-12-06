@@ -1,48 +1,22 @@
 <!DOCTYPE html>
-
 <html>
-  <head>
-  	<link rel="stylesheet" type="text/css" href="../css/adminControls.css" />
-  </head>
 
-	<div id="page">
+
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  
+  <div id="page">
     <div class="header">
       <a href="#menu"></a>
-      {{title}}
+      Zembo
     </div>
   </div>
-
-  <table>
-      
-    <tr>
-      <th>
-        Name
-      </th>
-      <th>
-        Class ID
-      </th>
-      <th>
-        Students
-      </th>
-    </tr>
-
-    {{#each classes}}
-
-    <tr>
-      <td>
-        {{this.name}}
-      </td>
-      <td>
-        {{this.id}}
-      </td>
-      <td>
-        {{this.students}}
-      </td>
-    </tr>
-
-
-    {{/each}}
-
-    </table>
-
+  <div id="cont">
+      <div id="tp">
+      {{#each classes}}  
+         {{this.num}}
+      {{/each}}
+      </div>
+  </div>
 </html>

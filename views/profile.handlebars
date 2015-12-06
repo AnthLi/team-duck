@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <html>
+
+		
+	<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script> 
+      $(document).ready(function() {
+        $("#update").click(function() {
+          $("#extend1").slideToggle("fast");
+        });
+      });
+      </script> -->
+
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  
 
 	<style>
 
@@ -29,6 +42,16 @@
 	#update{
 		color: #444;
 		text-decoration: none;
+	}
+
+	#update{
+		padding: 0.5%;
+		background-color: #444;
+		color: white;
+	}
+
+	#extend1{
+		display: none;
 	}
 
 	</style>
@@ -60,7 +83,13 @@
 	     </div>
 
 	     <hr/>
-	     <center><a id="update" href="updateProfile">Click here to update your profile</a></center>
+	     <center><a id="update">update about</a></center>
+	     <div id="extend1">
+	     	 <center> <form id="updateform" method="post" action="/user/update">
+                <input type="text" name="about" required><br>
+                <button class="btn">update</button>
+             </form> </center>
+	     </div>
      </div>
      {{/each}}
 </html>
