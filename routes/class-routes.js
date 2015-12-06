@@ -6,7 +6,17 @@ var user = require('../lib/user.js'); // User library
 var router = express.Router(); // "Router" to separate particular points
 
 
+router.get('/:class', (req, res) => {
+	var class_id = req.params.class;
+	db.classLookup(class_id, (err, data) => {
+		if(err){
+			console.log("err: " + err);
+			return;
+		}
+		
 
+	});
+});
 
 
 

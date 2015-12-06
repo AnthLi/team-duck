@@ -73,7 +73,7 @@ app.get('/about', (req, res) => {
 });
 
 // Team page
-app.get('/team/', (req, res) => {
+app.get('/team', (req, res) => {
   db.team((err, data) => {
     if (err) {
       // notFound404(req, res);
