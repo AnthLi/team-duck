@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
+<<<<<<< HEAD
 app.use('/group', require('./routes/group-routes'));
 ////// Start Error Middleware
 
@@ -44,6 +45,8 @@ function notFound404(req, res) {
 }
 
 ////// End Error Middleware
+=======
+>>>>>>> ec196cadca3028b4e8044063962a586b7b5ca331
 
 ////// Start User-Defined Routes
 
@@ -95,7 +98,7 @@ app.get('/about', (req, res) => {
 app.get('/team', (req, res) => {
   db.team((err, data) => {
     if (err) {
-      notFound404(req, res);
+      // notFound404(req, res);
       return;
     }
 
@@ -105,6 +108,16 @@ app.get('/team', (req, res) => {
     });
   });
 });
+
+////// Start Error Middleware
+
+// Middleware function for when the requested route does not exist
+app.use(function(req, res, next) {
+  res.status(404);
+  res.render('404');
+});
+
+////// End Error Middleware
 
 ////// End User-Defined Routes
 

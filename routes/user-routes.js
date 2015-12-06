@@ -17,7 +17,7 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login', { 
+  res.render('login', {
     title: 'Login',
     message: req.flash('login') || ''
   });
@@ -56,6 +56,7 @@ router.get('/registration', (req, res) => {
 
 // Profile page
 router.get('/profile', (req, res) => {
+  // var result = req.session.user.uid;
   var user = req.session.user;
   
   if (!user) {
@@ -71,11 +72,19 @@ router.get('/profile', (req, res) => {
     return;
   }
 
+<<<<<<< HEAD
   db.getProfile(user.spireid, (err, data) => {
     if (err) {
       notFound404(req, res);
       return;
     } 
+=======
+  db.getProfile(user.uid, (err, data) => {
+    if (err) {
+      res.redirect(req.header('Referer'));
+      return;
+    }
+>>>>>>> ec196cadca3028b4e8044063962a586b7b5ca331
 
     res.render('profile', {
       title: 'Profile',
