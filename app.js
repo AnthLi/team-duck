@@ -33,7 +33,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
-<<<<<<< HEAD
 app.use('/group', require('./routes/group-routes'));
 ////// Start Error Middleware
 
@@ -45,8 +44,6 @@ function notFound404(req, res) {
 }
 
 ////// End Error Middleware
-=======
->>>>>>> ec196cadca3028b4e8044063962a586b7b5ca331
 
 ////// Start User-Defined Routes
 
