@@ -56,7 +56,6 @@ router.get('/registration', (req, res) => {
 
 // Profile page
 router.get('/profile', (req, res) => {
-  // var result = req.session.user.uid;
   var user = req.session.user;
   
   if (!user) {
@@ -74,7 +73,6 @@ router.get('/profile', (req, res) => {
 
   db.getProfile(user.spireid, (err, data) => {
     if (err) {
-      notFound404(req, res);
       return;
     } 
 
