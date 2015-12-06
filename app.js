@@ -35,16 +35,6 @@ app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
 app.use('/group', require('./routes/group-routes'));
 app.use('/classes', require('./routes/classes-routes'));
-////// Start Error Middleware
-
-// Middleware function for when the requested path does not exist
-// Source: 02-basic-app-student
-function notFound404(req, res) {
-  res.status(404);
-  res.render('404');
-}
-
-////// End Error Middleware
 
 ////// Start User-Defined Routes
 
