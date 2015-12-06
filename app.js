@@ -33,14 +33,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
-
+app.use('/group', require('./routes/group-routes'));
 ////// Start Error Middleware
 
 // Middleware function for when the requested path does not exist
 // Source: 02-basic-app-student
 function notFound404(req, res) {
   res.status(404);
-  res.render('layouts/404');
+  res.render('404');
 }
 
 ////// End Error Middleware
@@ -69,11 +69,20 @@ app.get('/index', (req, res) => {
     return;
   }
 
-  res.render('index', {
-    title: 'Home Page',
-    message: req.flash('index') || '',
-    name: user.email,
-    indicator: true
+  db.getUserClasses((err, data) => {
+    if (err) {
+      console.log(err);
+      notFound404(req, res);
+      return;
+    }
+
+    res.render('index', {
+      title: 'Home Page',
+      message: req.flash('index') || '',
+      name: user.email,
+      indicator: true,
+      classes: data
+    });
   });
 });
 

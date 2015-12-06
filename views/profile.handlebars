@@ -1,5 +1,37 @@
 <!DOCTYPE html>
 <html>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<style>
+
+	#profilepicture{
+		margin: 0 auto;
+	}
+
+	#studentImage{
+		height: 250px;
+		width: 250px;
+	}
+	#details{
+		margin: 0 auto;
+	}
+
+	#details ul{
+		list-style: none;
+	}
+
+	#details li{
+		border-bottom: 1px solid #444;
+		width: 15%;
+	}
+
+	#update{
+		color: #444;
+		text-decoration: none;
+	}
+
+	</style>
   
   <div id="page">
     <div class="header">
@@ -7,5 +39,31 @@
       Zembo
     </div>
   </div>
+  <div id="cont">
+  	{{#each data}}
+      <div id="tp">
+	     <div id="profilepicture">
+	     	<center><img id="studentImage" src="../imgs/users/{{this.spireid}}.jpg" alt="{{this.fname}}"></center>
+	     </div>
+	     <div id="details">
+	     <center><ul>
+	     		<p3><li>{{this.fname}} {{this.lname}}</li>
+	     		<li>{{this.major}}</li>
+	     		<li>{{this.year}}</li>
+	     		<li>Birthdate: {{this.dob}}</li>
+	     		<li>SPIRE: {{this.spireid}}</li></p3>
+	     	</ul></center>
+	     </div>
+	     <div id="about">
+	     <center><p3><b>About</b><br></p3>
+	     	{{this.about}}</p3>
+	     </div>
 
+	     <hr/>
+	     <center><a id="update" href="updateProfile">Click here to update your profile</a></center>
+     </div>
+     {{/each}}
+
+      </div>
+  </div>
 </html>

@@ -41,7 +41,17 @@
   <div class="content"></div>
     <div id="cont">
       <div id="tp">
+        {{#each classes}}
         <ul id="class1">
+          <div id="classname">
+            <p2>{{this.num}}</p2>
+          </div>
+         
+          <i id="dropdown" class="fa fa-chevron-down"></i>
+        </ul>
+        {{/each}}
+
+        <!--<ul id="class1">
           <div id="classname">
             <p1>COMPSCI 311</p1>
             <p2>Introduction to Algorithms</p2>
@@ -80,8 +90,8 @@
             <li>
               <i id="cap" class="icon fa fa-graduation-cap fa-5x"></i>
               <i id="pencil" class="icon fa fa-pencil-square-o fa-5x"></i>
-              <i id="calendar" class="icon fa fa-calendar fa-5x"></i>
-              <i id="event" class="icon fa fa-plus-square-o fa-5x"></i>
+              <a href="/group/schedule"><i id="calendar" class="icon fa fa-calendar fa-5x"></i></a>
+              <a href="createpost"><i id="event" class="icon fa fa-plus-square-o fa-5x"></i></a>
             </li>
           </ul>
         </div>
@@ -219,8 +229,8 @@
               <i id="event" class="icon fa fa-plus-square-o fa-5x"></i>
             </li>
           </ul>
-        </div>
-      </div>
+        </div>-->
+      </div> 
     </div>
   </div>
 </html>

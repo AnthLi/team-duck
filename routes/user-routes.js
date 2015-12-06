@@ -71,8 +71,16 @@ router.get('/profile', (req, res) => {
     return;
   }
 
-  res.render('profile', {
-    title: 'Profile'
+  db.getProfile(user.spireid, (err, data) => {
+    if (err) {
+      notFound404(req, res);
+      return;
+    } 
+
+    res.render('profile', {
+      title: 'Profile',
+      data: data
+    });
   });
 });
 
