@@ -77,11 +77,6 @@ router.get('/profile', (req, res) => {
       notFound404(req, res);
       return;
     } 
-  db.getProfile(user.uid, (err, data) => {
-    if (err) {
-      res.redirect(req.header('Referer'));
-      return;
-    }
 
     res.render('profile', {
       title: 'Profile',
