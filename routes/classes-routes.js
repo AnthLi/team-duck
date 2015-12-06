@@ -10,6 +10,21 @@ var router = express.Router(); // "Router" to separate particular points
 
 // Login page
 router.get('/classes', (req, res) => {
+  var user = req.session.user;
+
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('/user/login');
+    return;
+  }
+
+  if (user && !online[user.uid]) {
+    delete req.session.user;
+    req.flash('login', 'Login expired');
+    res.redirect('/user/login');
+    return;
+  }
+
   db.GetClassDetails(id, (err, data) => {
     if (err) {
       console.log(err);
