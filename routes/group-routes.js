@@ -12,15 +12,8 @@ var router = express.Router(); // "Router" to separate particular points
 router.get('/schedule', (req, res) => {
   var user = req.session.user;
 
-  db.getClassID((err, data) => {
-    if (err) {
-      notFound404(req, res);
-      return;
-    }
   	res.render('schedule', { 
-    	title: 'Create a Meet-up',
-    	classes: data
-  	});
+    	title: 'Create a Meet-up'
   });
 });
 

@@ -6,14 +6,19 @@ var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
 
+function notFound404(req, res) {
+  res.status(404);
+  res.render('404');
+}
+
 ////// Start GET Requests
 
 // Login page
 router.get('/classes', (req, res) => {
-  var user = req.session.user;
-
-  db.getClassID((err, data) => {
+  db.GetClassDetails(id, (err, data) => {
     if (err) {
+      console.log(err);
+      console.log(id);
       notFound404(req, res);
       return;
     }
