@@ -6,6 +6,7 @@ var user = require('../lib/user.js'); // User library
 var router = express.Router(); // "Router" to separate particular points
 
 router.get('/:class', (req, res) => {
+  var user = req.session.user;
   var class_id = req.params.class;
 
   if (!user) {
@@ -20,7 +21,7 @@ router.get('/:class', (req, res) => {
     res.redirect('/user/login');
     return;
   }  
-  
+
   db.classLookup(class_id, (err, data) => {
     if (err) {
       console.log(err);
