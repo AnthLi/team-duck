@@ -62,9 +62,7 @@ app.get('/index', (req, res) => {
     return;
   }
 
-  //var personaldata;
-  db.getPersonalClasses( user.spireid, (err, data) => {
-
+  db.getPersonalClasses(user.spireid, (err, data) => {
     db.getUserClasses((err, data2) => {
       if (err) {
         return;
@@ -75,41 +73,22 @@ app.get('/index', (req, res) => {
         message: req.flash('index') || '',
         namef: user.fname,
         namel: user.lname,
-        indicator: true,
         classes: data,
         data: data2
       });
     });
 
   });
-
-
-  // var userdata;
-  // db.getUserClasses((err,data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     return;
-  //   }
-  //   userdata = data;
-  //
-  // });
-
-
-
-
-  //****NEED PICTURE PASSED THROUGH******
 });
 
 // About page
 app.get('/about', (req, res) => {
   var user = req.session.user;
 
-//****NEED PICTURE PASSED THROUGH******
   res.render('about', {
     namef: user.fname,
     namel: user.lname
   });
-  //****NEED PICTURE PASSED THROUGH******
 });
 
 // Team page
@@ -120,22 +99,19 @@ app.get('/team', (req, res) => {
     if (err) {
       return;
     }
-//****NEED PICTURE PASSED THROUGH******
-  if(user){
-    res.render('team', {
-      title: 'Meet the team',
-      members: data,
-      namef: user.fname,
-      namel: user.lname
-    });
-    //****NEED PICTURE PASSED THROUGH******
-  }
-  else{
-    res.render('team', {
-      title: 'Meet the team',
-      members: data
-    });
-  }
+    if(user) {
+      res.render('team', {
+        title: 'Meet the team',
+        members: data,
+        namef: user.fname,
+        namel: user.lname
+      });
+    } else {
+      res.render('team', {
+        title: 'Meet the team',
+        members: data
+      });
+    }
   });
 });
 
