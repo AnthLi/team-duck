@@ -33,17 +33,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
+app.use('/class', require('./routes/class-routes')); // Separate class routes
+app.use('/group', require('./routes/group-routes'));
+app.use('/classes', require('./routes/classes-routes'));
 
-////// Start Error Middleware
-
-// Middleware function for when the requested path does not exist
-// Source: 02-basic-app-student
-function notFound404(req, res) {
-  res.status(404);
-  res.render('layouts/404');
-}
-
-////// End Error Middleware
 
 ////// Start User-Defined Routes
 
@@ -69,13 +62,22 @@ app.get('/index', (req, res) => {
     return;
   }
 
-  //****NEED PICTURE PASSED THROUGH******
-  res.render('index', {
-    title: 'Home Page',
-    message: req.flash('index') || '',
-    namef: user.fname,
-    namel: user.lname,
-    indicator: true
+  db.getUserClasses((err, data) => {
+    if (err) {
+      console.log(err);
+      notFound404(req, res);
+      return;
+    }
+
+    //****NEED PICTURE PASSED THROUGH******
+    res.render('index', {
+      title: 'Home Page',
+      message: req.flash('index') || '',
+      namef: user.fname,
+      namel: user.lname,
+      indicator: true,
+      classes: data
+    });
   });
   //****NEED PICTURE PASSED THROUGH******
 });
@@ -98,7 +100,7 @@ app.get('/team', (req, res) => {
 
   db.team((err, data) => {
     if (err) {
-      notFound404(req, res);
+      // notFound404(req, res);
       return;
     }
 //****NEED PICTURE PASSED THROUGH******
@@ -119,6 +121,33 @@ app.get('/team', (req, res) => {
   } 
   });
 });
+
+app.get('/team/:fname', (req, res) => {
+  var fname = req.params.fname; 
+  console.log(fname);
+  db.lookupMember(fname, (err, data) => {
+    if (err) {
+      // notFound404(req, res);
+      console.log("err" + err);
+      return;
+    }
+
+    res.render('members', {
+      title: data.fname,
+      member: data
+    });
+  });
+});
+
+////// Start Error Middleware
+
+// Middleware function for when the requested route does not exist
+app.use(function(req, res, next) {
+  res.status(404);
+  res.render('404');
+});
+
+////// End Error Middleware
 
 ////// End User-Defined Routes
 

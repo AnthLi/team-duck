@@ -34,7 +34,7 @@ router.get('/online', (req, res) => {
 
   db.authorizeAdmin(user.email, (err, data) => {
     if (err) {
-      res.redirect('/index');
+      res.redirect(req.header('Referer'));  // Redirect to the previous page
       return;
     }
 
@@ -55,7 +55,7 @@ router.get('/users', (req, res) => {
 
   db.authorizeAdmin(user.email, (err, data) => {
     if (err) {
-      res.redirect('/index');
+      res.redirect(req.header('Referer'));  // Redirect to the previous page
       return;
     }
 
@@ -83,7 +83,7 @@ router.get('/controls', (req, res) => {
 
   db.authorizeAdmin(user.email, (err, data) => {
     if (err) {
-      res.redirect('/index');
+      res.redirect(req.header('Referer'));  // Redirect to the previous page
       return;
     }
 

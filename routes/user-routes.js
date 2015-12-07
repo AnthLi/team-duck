@@ -56,7 +56,6 @@ router.get('/registration', (req, res) => {
 
 // Profile page
 router.get('/profile', (req, res) => {
-  var result = req.session.user.uid;
   var user = req.session.user;
   
   if (!user) {
@@ -72,13 +71,10 @@ router.get('/profile', (req, res) => {
     return;
   }
 
-  db.getProfile(user.uid, (err, data) => {
+  db.getProfile(user.spireid, (err, data) => {
     if (err) {
-      res.redirect(req.header('Referer'));
       return;
-    }
-
-    console.log(data);
+    } 
 
 //****NEED PICTURE PASSED THROUGH******
     res.render('profile', {
@@ -162,6 +158,19 @@ router.post('/register', (req, res) => {
     // The user was found in the database, no need to add them again
     req.flash('registration', 'An account for this email already exists!');
     res.redirect('registration');
+  });
+});
+
+router.post('/update', (req, res) => {
+  db.updateAbout(req.body.about, user.spireid, (err, data) => {
+    if (err) {
+      req.flash('profile', err);
+      res.redirect('profile');
+      return;
+    }
+
+    req.flash('/profile', 'About has been updated');
+    res.redirect('/profle');
   });
 });
 

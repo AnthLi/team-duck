@@ -3,8 +3,8 @@
   
   <head>
     <link type="text/css" rel="stylesheet" href="dist/css/jquery.mmenu.all.css" />
-    <link type="text/css" rel="stylesheet" href="css/team.css">
-    <link type="text/css" rel="stylesheet" href="css/member.css">
+    <link type="text/css" rel="stylesheet" href="../css/team.css">
+    <link type="text/css" rel="stylesheet" href="../css/member.css">
   </head>
 
   <div id="page">
@@ -36,7 +36,7 @@
         </div>
     
         {{#each members}}
-        <div class="memberName"><a href="?user={{this.user}}">{{this.fname}} {{this.lname}}</a></div>
+        <div class="memberName"><a href="/team/{{this.fname}}">{{this.fname}} {{this.lname}}</a></div>
         <div class="positionClass">{{this.role}}</div>
         <div class="Description">{{this.description}}</div> 
         {{/each}}
