@@ -2,12 +2,12 @@ h1{
 	text-align: center;
 }
 
-#boxlinks{
+#boxlinks {
 	text-decoration: none;
 	padding: 1%;
 }
 
-.linkText{
+.linkText {
 	background-color: #2878d8;
 	color: white;
 	font-family: ubuntu, helvetica, arial;
@@ -21,13 +21,13 @@ h1{
 }
 
 th, td {
-  	border: 1px solid black;
+  border: 1px solid black;
 	padding: 2%;
 	text-align: center;
 }
 
 table {
-  	border-collapse: collapse;
+  border-collapse: collapse;
 	text-align: center;
 }
 
