@@ -33,8 +33,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
+app.use('/class', require('./routes/class-routes')); // Separate class routes
 app.use('/group', require('./routes/group-routes'));
 app.use('/classes', require('./routes/classes-routes'));
+
 
 ////// Start User-Defined Routes
 
@@ -93,6 +95,23 @@ app.get('/team', (req, res) => {
     res.render('team', {
       title: 'Meet the team',
       members: data
+    });
+  });
+});
+
+app.get('/team/:fname', (req, res) => {
+  var fname = req.params.fname; 
+  console.log(fname);
+  db.lookupMember(fname, (err, data) => {
+    if (err) {
+      // notFound404(req, res);
+      console.log("err" + err);
+      return;
+    }
+
+    res.render('members', {
+      title: data.fname,
+      member: data
     });
   });
 });

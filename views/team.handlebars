@@ -33,7 +33,7 @@
         </div>
     
         {{#each members}}
-        <div class="memberName"><a href="?user={{this.user}}">{{this.fname}} {{this.lname}}</a></div>
+        <div class="memberName"><a href="/team/{{this.fname}}">{{this.fname}} {{this.lname}}</a></div>
         <div class="positionClass">{{this.role}}</div>
         <div class="Description">{{this.description}}</div> 
         {{/each}}
