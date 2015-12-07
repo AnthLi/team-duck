@@ -14,7 +14,9 @@ router.get('/:class', (req, res) => {
 			return;
 		}
 		
-
+	res.render('classes', { 
+    	classes: data
+  	});
 	});
 });
 
