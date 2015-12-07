@@ -8,7 +8,6 @@ var router = express.Router(); // "Router" to separate particular points
 
 ////// Start GET Requests
 
-// Login page
 router.get('/classes', (req, res) => {
   var user = req.session.user;
 
@@ -31,9 +30,9 @@ router.get('/classes', (req, res) => {
       console.log(id);
       return;
     }
-  	res.render('classes', { 
-    	classes: data
-  	});
+    res.render('classes', { 
+      classes: data
+    });
   });
 });
 
