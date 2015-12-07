@@ -168,7 +168,31 @@
 	cursor: pointer;
 }
 
+#drawerImage{
+	height: 130px;
+	width: 130px;
+	border-radius: 90px;
+	border: 2px #444 solid;
+	margin: 17px 30px;
+	margin-bottom: -1%;
+	margin-top: -.0000000001%;
+}
 
+#drawerProfPic{
+	background-color: #9f9f9f;
+}
+
+#prof{
+	background-color: #2878d8;
+}
+
+#drawerName{
+	color: white;
+	font-weight: bolder;
+	padding-bottom: 5%;
+	padding-top: 5%;
+	font-size: 2em;
+}
 
 
 

@@ -70,6 +70,7 @@ app.get('/index', (req, res) => {
       message: req.flash('index') || '',
       namef: user.fname,
       namel: user.lname,
+      userId: user.spireid,
       indicator: true,
       classes: data
     });
