@@ -6,6 +6,14 @@
 
     <script>
       $(document).ready(function() {
+        $("#addclass").click(function() {
+          $("#addclassdropdown").slideToggle("fast");
+        });
+      });
+     </script> 
+
+    <script>
+      $(document).ready(function() {
         $("#class1").click(function() {
           $("#extend1").slideToggle("fast");
         });
@@ -29,14 +37,46 @@
         });
       });
     </script>
+    <style>
+    #addclass{
+      float: right;
+      padding: 0.9%;
+    }
+
+    #addclassdropdown{
+      display: none;
+    }
+
+    </style>
+
   </head>
+
+
 
   <div id="page">
     <div class="header">
       <a href="#menu"></a>
         Zembo
+         <i id="addclass" class="fa fa-plus-circle"></i>
     </div>
+
+       <!-- add class dropdown -->
+    <div id="addclassdropdown">
+       <center> <div id="form">
+         <form method="post" action="/user/addClass2">
+            <select name="class">
+              {{#each data}}
+                <option value={{this.class_id}}>{{this.num}}</option>
+              {{/each}}
+            </select><br>
+            <button class="btn">Add Class</button>
+         </form>
+      </center>
+    </div>
+
   </div>
+
+   
 
 
   <div class="content"></div>
@@ -244,6 +284,6 @@
      <button class="btn">Sign Up</button>
   </form> -->
 
-  <a href="/user/addClass">Add Class</a>
+  
 
 </html>
