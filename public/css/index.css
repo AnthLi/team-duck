@@ -1,121 +1,121 @@
 #topbar{
-	background-color: #458de2;
-	height: 25px;
-	width: 100%;
+  background-color: #458de2;
+  height: 25px;
+  width: 100%;
 }
 
 #class1{
-	background-color: #2878d8;
-	height: 130px;
-	width: 100%;
-	border-top: 1px solid #444;
+  background-color: #2878d8;
+  height: 130px;
+  width: 100%;
+  border-top: 1px solid #444;
 }
 
 #class2{
-	background-color: #2878d8;
-	height: 130px;
-	width: 100%;
-	border-top: 1px solid #444;
+  background-color: #2878d8;
+  height: 130px;
+  width: 100%;
+  border-top: 1px solid #444;
 }
 
 #class3{
-	background-color: #2878d8;
-	height: 130px;
-	width: 100%;
-	border-top: 1px solid #444;
+  background-color: #2878d8;
+  height: 130px;
+  width: 100%;
+  border-top: 1px solid #444;
 }
 
 #class4{
-	background-color: #2878d8;
-	height: 130px;
-	width: 100%;
-	border-top: 1px solid #444;
+  background-color: #2878d8;
+  height: 130px;
+  width: 100%;
+  border-top: 1px solid #444;
 }
 
 #class1 p1{
-	font-size: 20px;
-	color: white;
-	position: absolute;
-	margin-top: 40px;
-	padding-left: 1%;
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  margin-top: 40px;
+  padding-left: 1%;
 }
 
 #class2 p1{
-	font-size: 20px;
-	color: white;
-	position: absolute;
-	margin-top: 40px;
-	padding-left: 1%;
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  margin-top: 40px;
+  padding-left: 1%;
 }
 
 #class3 p1{
-	font-size: 20px;
-	color: white;
-	position: absolute;
-	margin-top: 40px;
-	padding-left: 1%;
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  margin-top: 40px;
+  padding-left: 1%;
 }
 
 #class4 p1{
-	font-size: 20px;
-	color: white;
-	position: absolute;
-	margin-top: 40px;
-	padding-left: 1%;
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  margin-top: 40px;
+  padding-left: 1%;
 }
 
 #classname{
-	float: left;
-	width: 13%;
-	height: 130px;
-	background-color: #444;
+  float: left;
+  width: 13%;
+  height: 130px;
+  background-color: #444;
 }
 
 #classname p2{
-	width: 166px;
-	position: absolute;
-	color: white;
-	font-size: 10px;
-	margin: 70px auto;
-	text-align: center;
+  width: 166px;
+  position: absolute;
+  color: white;
+  font-size: 10px;
+  margin: 70px auto;
+  text-align: center;
 }
 
 #students{
-	float: left;
-	width: 70%;
-	height: 130px;
+  float: left;
+  width: 70%;
+  height: 130px;
 }
 
 #studentBody{
-	float: left;
-	width: 16%;
-	height: 130px;
+  float: left;
+  width: 16%;
+  height: 130px;
 }
 
 #studentImage{
-	display: block;
-	position: absolute;
-	height: 90px;
-	width: 90px;
-	border-radius: 50px;
-	border: 2px #444 solid;
-	margin: 17px 30px;
+  display: block;
+  position: absolute;
+  height: 90px;
+  width: 90px;
+  border-radius: 50px;
+  border: 2px #444 solid;
+  margin: 17px 30px;
 }
 
 #studentBody p2{
-	width: 136px;
-	position: absolute;
-	color: white;
-	font-size: 15px;
-	margin: 105px auto;
-	text-align: center;
+  width: 136px;
+  position: absolute;
+  color: white;
+  font-size: 15px;
+  margin: 105px auto;
+  text-align: center;
 }
 
 #dropdown{
-	color: white;
-	font-size: 30px;
-	margin: 50px 0 0 90px;
-	float: left;
+  color: white;
+  font-size: 30px;
+  margin: 50px 0 0 90px;
+  float: left;
 }
 
 #extend1{
@@ -147,54 +147,61 @@
 }
 
 .icon{
-	margin-left: 14.5%;
-	margin-top: 3%;
+  margin-left: 14.5%;
+  margin-top: 3%;
 }
 
 #profRight{
-	float: right !important;
+  float: right !important;
 }
 
 #daZem{
-	margin-left: 7.5%;
+  margin-left: 7.5%;
 }
 
 #daButt{
-	background-color: inherit;
-	color: white;
-	font-weight: bold;
-	font-size: .86em;
-	border: none;
-	cursor: pointer;
+  background-color: inherit;
+  color: white;
+  font-weight: bold;
+  font-size: .86em;
+  border: none;
+  cursor: pointer;
 }
 
 #drawerImage{
-	height: 130px;
-	width: 130px;
-	border-radius: 90px;
-	border: 2px #444 solid;
-	margin: 17px 30px;
-	margin-bottom: -1%;
-	margin-top: -.0000000001%;
+  height: 130px;
+  width: 130px;
+  border-radius: 90px;
+  border: 2px #444 solid;
+  margin: 17px 30px;
+  margin-bottom: -1%;
+  margin-top: -.0000000001%;
 }
 
 #drawerProfPic{
-	background-color: #9f9f9f;
+  background-color: #9f9f9f;
 }
 
 #prof{
-	background-color: #2878d8;
+  background-color: #2878d8;
 }
 
 #drawerName{
-	color: white;
-	font-weight: bolder;
-	padding-bottom: 5%;
-	padding-top: 5%;
-	font-size: 2em;
+  color: white;
+  font-weight: bolder;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  font-size: 2em;
 }
 
+#addclass{
+  float: right;
+  padding: 0.9%;
+}
 
+#addclassdropdown{
+  display: none;
+}
 
 
 

@@ -184,6 +184,7 @@ router.post('/update', (req, res) => {
 // Adds a user class to 'students' table in database
 router.post('/addClass', (req,res) => {
   var user = req.session.user;
+  var form = req.body.values.split(',');
 
   if (!user) {
     req.flash('login', 'Not logged in');
@@ -199,30 +200,15 @@ router.post('/addClass', (req,res) => {
     return;
   }
 
-  var class_id = req.body.class;
-  db.classLookup(class_id, (err, data) => {
+  db.addStudentClass(user.spireid, Number(form[0]), form[1], (err,data) => {
     if (err) {
-      req.flash('/index', err);
+      console.log(err);
+      req.flash('index', err);
       res.redirect('/index');
       return;
     }
 
-    if (!data) {
-      db.addStudentClass(user.spireid, class_id, data.num, (err,data) => {
-        if (err) {
-          req.flash('/index', err);
-          res.redirect('/index');
-          return;
-        }
-
-        req.flash('/index', 'Successfully added a class!')
-        res.redirect('/index');
-      });
-
-      return;
-    }
-
-    req.flash('/index', 'You are already in this class!');
+    req.flash('index', 'Successfully added a class!')
     res.redirect('/index');
   });
 });

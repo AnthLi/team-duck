@@ -37,21 +37,7 @@
         });
       });
     </script>
-    <style>
-    #addclass{
-      float: right;
-      padding: 0.9%;
-    }
-
-    #addclassdropdown{
-      display: none;
-    }
-
-    </style>
-
   </head>
-
-
 
   <div id="page">
     <div class="header">
@@ -64,9 +50,11 @@
     <div id="addclassdropdown">
        <center> <div id="form">
          <form method="post" action="/user/addClass">
-            <select name="class">
+            <select name="values">
               {{#each data}}
-                <option value={{this.class_id}}>{{this.num}}</option>
+                <option value="{{this.class_id}}, {{this.num}}">
+                  {{this.num}}
+                </option>
               {{/each}}
             </select><br>
             <button class="btn">Add Class</button>
@@ -78,15 +66,16 @@
   <div class="content"></div>
     <div id="cont">
       <div id="tp">
+        {{#if classes.length}}
         {{#each classes}}
-        <ul id="class1">
-          <div id="classname">
-            <p2><a href="/class/{{this.class_id}}">{{this.num}}</a></p2>
-          </div>
-
-          <i id="dropdown" class="fa fa-chevron-down"></i>
-        </ul>
+          <ul id="class1">
+            <div id="classname">
+              <p2><a href="/class/{{this.class_id}}">{{this.num}}</a></p2>
+            </div>
+            <i id="dropdown" class="fa fa-chevron-down"></i>
+          </ul>
         {{/each}}
+        {{/if}}
       </div>
     </div>
   </div>

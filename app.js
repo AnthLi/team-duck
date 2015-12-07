@@ -68,8 +68,6 @@ app.get('/index', (req, res) => {
         return;
       }
 
-      // console.log(data2);
-
       res.render('index', {
         title: 'Home Page',
         message: req.flash('index') || '',
