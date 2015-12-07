@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    </head>
+  </head>
 
   <div id="page">
     <div class="header">
@@ -11,11 +11,16 @@
       Zembo
     </div>
   </div>
+
   <div id="cont">
     <div id="tp">
-    {{#each classes}}
-      {{this.num}}
-    {{/each}}
+      {{#each classes}}
+         {{this.num}}
+      {{/each}}
+
+      {{#each students}}
+        <ul>{{this.spireid}}</ul>
+      {{/each}} 
     </div>
   </div>
 </html>
