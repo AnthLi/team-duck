@@ -9,10 +9,7 @@ var router = express.Router(); // "Router" to separate particular points
 ////// Start GET Requests
 
 // Login page
-/*router.get('/classes', (req, res) => {
-=======
 router.get('/classes', (req, res) => {
->>>>>>> 57478ff0015d1b5284ca695e474f0c680557ea4a
   var user = req.session.user;
 
   if (!user) {
@@ -46,6 +43,6 @@ router.get('/classes', (req, res) => {
     	});
     });
   });
-});*/
+});
 
 module.exports = router;
