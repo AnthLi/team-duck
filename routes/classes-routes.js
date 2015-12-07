@@ -10,6 +10,9 @@ var router = express.Router(); // "Router" to separate particular points
 
 // Login page
 /*router.get('/classes', (req, res) => {
+=======
+router.get('/classes', (req, res) => {
+>>>>>>> 57478ff0015d1b5284ca695e474f0c680557ea4a
   var user = req.session.user;
 
   if (!user) {
@@ -34,7 +37,7 @@ var router = express.Router(); // "Router" to separate particular points
 
     db.GetClassStudents(id, (err, data2) => {
       if (err) {
-       return;
+        return;
       }
 
     	res.render('classes', { 
