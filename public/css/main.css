@@ -122,4 +122,21 @@ p4{
 	font-size: 25px;
 }
 
+#profRight{
+	float: right !important;
+}
+
+#daZem{
+	margin-left: 7.5%;
+}
+
+#daButt{
+	background-color: inherit;
+	color: white;
+	font-weight: bold;
+	font-size: .86em;
+	border: none;
+	cursor: pointer;
+}
+
 </style>

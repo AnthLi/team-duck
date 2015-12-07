@@ -82,21 +82,41 @@ app.get('/index', (req, res) => {
 
 // About page
 app.get('/about', (req, res) => {
-  res.render('about');
+  var user = req.session.user;
+
+//****NEED PICTURE PASSED THROUGH******
+  res.render('about', {
+    namef: user.fname,
+    namel: user.lname
+  });
+  //****NEED PICTURE PASSED THROUGH******
 });
 
 // Team page
 app.get('/team', (req, res) => {
+  var user = req.session.user;
+
   db.team((err, data) => {
     if (err) {
       notFound404(req, res);
       return;
     }
-
+//****NEED PICTURE PASSED THROUGH******
+  if(user){
+    res.render('team', {
+      title: 'Meet the team',
+      members: data,
+      namef: user.fname,
+      namel: user.lname
+    });
+    //****NEED PICTURE PASSED THROUGH******
+  }
+  else{
     res.render('team', {
       title: 'Meet the team',
       members: data
     });
+  } 
   });
 });
 
