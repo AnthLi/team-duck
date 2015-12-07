@@ -27,7 +27,9 @@ router.get('/schedule', (req, res) => {
 
   res.render('schedule', { 
     title: 'Create an Event',
-    user: user.fname,
+    namef: user.fname,
+    namel: user.lname,
+    userId: user.uid,
     message: req.flash('schedule') || ''
   });
 });
