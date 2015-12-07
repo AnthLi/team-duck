@@ -10,9 +10,9 @@ router.get('/:class', (req, res) => {
   var user = req.session.user;
 
   if (!user) {
-      req.flash('login', 'Not logged in');
-      res.redirect('/user/login');
-      return;
+    req.flash('login', 'Not logged in');
+    res.redirect('/user/login');
+    return;
   }
 
   if (user && !online[user.uid]) {
@@ -22,14 +22,16 @@ router.get('/:class', (req, res) => {
     return;
   }
 
-  db.classLookup(class_id, (err, data) => {
-    if(err){
-      console.log("err: " + err);
+  db.getClassDetails(class_id, (err, data) => {
+    if (err) {
+      res.redirect('/index');
+      console.log(err);
       return;
     }
-    
-    res.render('classes', { 
-      classes: data,
+
+    res.render('class', { 
+      class_id: data[0],
+      students: data
     });
   });
 });
