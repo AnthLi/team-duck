@@ -65,13 +65,20 @@ app.get('/index', (req, res) => {
   //var personaldata;
   db.getPersonalClasses( user.spireid, (err, data) => {
 
-    res.render('index', {
-      title: 'Home Page',
-      message: req.flash('index') || '',
-      namef: user.fname,
-      namel: user.lname,
-      indicator: true,
-      classes: data
+    db.getUserClasses((err, data2) => {
+      if (err) {
+        return;
+      }
+
+      res.render('index', {
+        title: 'Home Page',
+        message: req.flash('index') || '',
+        namef: user.fname,
+        namel: user.lname,
+        indicator: true,
+        classes: data,
+        data: data2
+      });
     });
 
   });
