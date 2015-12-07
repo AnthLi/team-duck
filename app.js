@@ -64,11 +64,6 @@ app.get('/index', (req, res) => {
 
   //var personaldata;
   db.getPersonalClasses( user.spireid, (err, data) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    //****NEED PICTURE PASSED THROUGH******
     res.render('index', {
       title: 'Home Page',
       message: req.flash('index') || '',
