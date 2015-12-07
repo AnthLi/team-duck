@@ -45,7 +45,7 @@ router.get('/logout', (req, res) => {
   req.flash('login', 'Successfully logged out!')
   res.redirect('login');
 });
- 
+
 // Registration page
 router.get('/registration', (req, res) => {
   res.render('registration', {
@@ -54,10 +54,33 @@ router.get('/registration', (req, res) => {
   });
 });
 
+//Add new class page
+router.get('/addClass', (req,res) => {
+  var user = req.session.user;
+
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('login');
+    return;
+  }
+
+  if (user && !online[user.uid]) {
+    delete req.session.user;
+    req.flash('login', 'Login expired');
+    res.redirect('login');
+    return;
+  }
+
+  res.render('addClass', {
+    title: 'Add New Class'
+  });
+
+});
+
 // Profile page
 router.get('/profile', (req, res) => {
   var user = req.session.user;
-  
+
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('login');
@@ -74,7 +97,7 @@ router.get('/profile', (req, res) => {
   db.getProfile(user.spireid, (err, data) => {
     if (err) {
       return;
-    } 
+    }
 
 //****NEED PICTURE PASSED THROUGH******
     res.render('profile', {
