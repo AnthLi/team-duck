@@ -27,9 +27,14 @@
     <nav id="menu">
       <ul>
         <!-- USER PICTURE HERE -->
-        <img src="/public/imgs/users/{{id}}.jpg">
-        <br>
-        <div id="prof"><a href="/user/profile">{{namef}} {{namel}}</a></div>
+        <div id="prof">
+          <a href="/user/profile">
+            <div id="drawerProfPic">
+              <img id="drawerImage" src="/imgs/users/{{userId}}.jpg">
+            </div>
+            <div id="drawerName">{{namef}} {{namel}}</div>
+          </a>
+        </div>
         <br>
         <li><a href="/index">Home</a></li>
         <li><a href="/group/schedule">Schedule</a></li>
