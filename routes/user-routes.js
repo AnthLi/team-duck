@@ -139,7 +139,13 @@ router.post('/register', (req, res) => {
   // Check if the user is already in the database
   db.lookupUser(form.email, (err, data) => {
     if (err) {
-      // The user was not found in the datbase, free to add them
+      req.flash('registration', err);
+      res.redirect('registration');
+      return;
+    }
+
+    // The user was not found in the database, free to add them
+    if (!data) {
       db.addUser(user(form.major, form.year, form.fname, form.lname, form.email,
         form.pass, form.dob, form.spireid), (err, data) => {
         if (err) {
@@ -175,7 +181,7 @@ router.post('/update', (req, res) => {
 });
 
 
-//Adds personal user class to 'students' table in database
+// Adds a user class to 'students' table in database
 router.post('/addClass', (req,res) => {
   var user = req.session.user;
 
@@ -194,16 +200,30 @@ router.post('/addClass', (req,res) => {
   }
 
   var class_id = req.body.class;
-  db.classLookup(class_id, (err,classname) => {
-    db.addStudentClass(class_id, classname.num, user.spireid, (err,data) => {
-      if (err) {
-        console.log(err);
-        req.flash('/index', err);
-        res.redirect('/index');
-        return;
-      }
+  db.classLookup(class_id, (err, data) => {
+    if (err) {
+      req.flash('/index', err);
       res.redirect('/index');
-    });
+      return;
+    }
+
+    if (!data) {
+      db.addStudentClass(user.spireid, class_id, data.num, (err,data) => {
+        if (err) {
+          req.flash('/index', err);
+          res.redirect('/index');
+          return;
+        }
+
+        req.flash('/index', 'Successfully added a class!')
+        res.redirect('/index');
+      });
+
+      return;
+    }
+
+    req.flash('/index', 'You are already in this class!');
+    res.redirect('/index');
   });
 });
 

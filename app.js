@@ -63,8 +63,12 @@ app.get('/index', (req, res) => {
   db.getPersonalClasses(user.spireid, (err, data) => {
     db.getUserClasses((err, data2) => {
       if (err) {
+        req.flash('index', err);
+        // res.redirect('index');
         return;
       }
+
+      // console.log(data2);
 
       res.render('index', {
         title: 'Home Page',
@@ -75,7 +79,6 @@ app.get('/index', (req, res) => {
         data: data2
       });
     });
-
   });
 });
 

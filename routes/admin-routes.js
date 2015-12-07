@@ -127,6 +127,7 @@ router.post('/auth', (req, res) => {
 
   db.authorizeAdmin(user.email, (err, data) => {
     if (err) {
+      console.log(err);
       res.redirect(req.header('Referer')); // Redirect to the previous page
       return;
     }
@@ -136,16 +137,17 @@ router.post('/auth', (req, res) => {
 });
 
 // Banhammer
-router.post('/ban/:user_email', (req,res) => {
-  db.deleteUser(req.params.user_email, (err) => {
+router.post('/ban/:email', (req,res) => {
+  var result = req.params.email;
+  db.deleteUser(result, (err) => {
     if (err) {
       req.flash('userList', err);
-      res.redirect('userList');
+      res.redirect('../users');
       return;
     }
 
-    req.flash('userList' ,'deleted user: ' + req.params.user_email);
-    res.redirect('userList');
+    req.flash('userList' ,'Deleted user: ' + result);
+    res.redirect('../users');
   });
 });
 
