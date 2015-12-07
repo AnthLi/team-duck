@@ -34,6 +34,9 @@ app.use(bodyParser.json());
 app.use('/user', require('./routes/user-routes')); // Separate user routes
 app.use('/admin', require('./routes/admin-routes')); // Separate admin routes
 app.use('/class', require('./routes/class-routes')); // Separate class routes
+app.use('/group', require('./routes/group-routes'));
+app.use('/classes', require('./routes/classes-routes'));
+
 
 ////// Start User-Defined Routes
 
@@ -59,11 +62,20 @@ app.get('/index', (req, res) => {
     return;
   }
 
-  res.render('index', {
-    title: 'Home Page',
-    message: req.flash('index') || '',
-    name: user.email,
-    indicator: true
+  db.getUserClasses((err, data) => {
+    if (err) {
+      console.log(err);
+      notFound404(req, res);
+      return;
+    }
+
+    res.render('index', {
+      title: 'Home Page',
+      message: req.flash('index') || '',
+      name: user.email,
+      indicator: true,
+      classes: data
+    });
   });
 });
 

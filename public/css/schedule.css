@@ -1,0 +1,23 @@
+#schedule{
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#basic{
+  font-family: Arial;
+  color: #929292;
+}
+
+#inputholder{
+  width: 50%;
+  padding: 1%;
+
+}
+
+#createbutton{
+  padding: 0.5% 0.5% 0.5% 0.5%;
+  text-decoration: none;
+}
