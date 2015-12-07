@@ -135,17 +135,18 @@ app.get('/team/:fname', (req, res) => {
   });
 });
 
+////// End User-Defined Routes
+
 ////// Start Error Middleware
 
 // Middleware function for when the requested route does not exist
+
 app.use(function(req, res, next) {
   res.status(404);
   res.render('404');
 });
 
 ////// End Error Middleware
-
-////// End User-Defined Routes
 
 // Start the express app on port 3000
 app.listen(app.get('port'), () => {
