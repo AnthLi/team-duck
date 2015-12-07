@@ -11,7 +11,6 @@ var router = express.Router(); // "Router" to separate particular points
 // Schedule page
 router.get('/schedule', (req, res) => {
   var user = req.session.user;
-  console.log(req.body);
 
   if (!user) {
     req.flash('login', 'Not logged in');
