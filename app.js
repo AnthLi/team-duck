@@ -61,14 +61,14 @@ app.get('/index', (req, res) => {
   }
 
   db.getPersonalClasses(user.spireid, (err, data) => {
-    db.getUserClasses((err, data2) => {
+    db.getClassList((err, data2) => {
       if (err) {
         return;
       }
 
       res.render('index', {
         classes: data,
-        data: data2
+        classList: data2
       });
     });
   });
