@@ -31,9 +31,17 @@ router.get('/classes', (req, res) => {
       console.log(id);
       return;
     }
-  	res.render('classes', { 
-    	classes: data
-  	});
+
+    db.GetClassStudents(id, (err, data2) => {
+      if (err) {
+       return;
+      }
+
+    	res.render('classes', { 
+      	classes: data,
+        students: data2
+    	});
+    });
   });
 });
 
