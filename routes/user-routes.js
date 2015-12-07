@@ -45,7 +45,7 @@ router.get('/logout', (req, res) => {
   req.flash('login', 'Successfully logged out!')
   res.redirect('login');
 });
- 
+
 // Registration page
 router.get('/registration', (req, res) => {
   res.render('registration', {
@@ -54,10 +54,41 @@ router.get('/registration', (req, res) => {
   });
 });
 
+//Add new class page
+router.get('/addClass', (req,res) => {
+  var user = req.session.user;
+
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('login');
+    return;
+  }
+
+  if (user && !online[user.uid]) {
+    delete req.session.user;
+    req.flash('login', 'Login expired');
+    res.redirect('login');
+    return;
+  }
+
+  db.getUserClasses((err, data) => {
+    if (err) {
+      return;
+    }
+
+    res.render('addClass', {
+      title: 'Add Class',
+      data: data
+    });
+  });
+
+
+});
+
 // Profile page
 router.get('/profile', (req, res) => {
   var user = req.session.user;
-  
+
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('login');
@@ -74,9 +105,9 @@ router.get('/profile', (req, res) => {
   db.getProfile(user.spireid, (err, data) => {
     if (err) {
       return;
-    } 
+    }
 
-//****NEED PICTURE PASSED THROUGH******
+    //****NEED PICTURE PASSED THROUGH******
     res.render('profile', {
       title: 'Profile',
       namef: user.fname,
@@ -171,6 +202,39 @@ router.post('/update', (req, res) => {
 
     req.flash('/profile', 'About has been updated');
     res.redirect('/profle');
+  });
+});
+
+
+//Adds personal user class to 'students' table in database
+router.post('/addClass2', (req,res) => {
+  var user = req.session.user;
+
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('login');
+    return;
+  }
+
+  //Check if login has expired
+  if (user && !online[user.uid]) {
+    delete req.session.user;
+    req.flash('login', 'Login expired');
+    res.redirect('login');
+    return;
+  }
+
+  var id = req.body.class;
+  db.classLookup(id, (err,classname) => {
+    db.addStudentClass(id, classname.num ,user.spireid, (err,data) => {
+      if (err) {
+        console.log(err);
+        req.flash('/index', err);
+        res.redirect('/index');
+        return;
+      }
+      res.redirect('/index');
+    });
   });
 });
 

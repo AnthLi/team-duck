@@ -62,13 +62,9 @@ app.get('/index', (req, res) => {
     return;
   }
 
-  db.getUserClasses((err, data) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
+  //var personaldata;
+  db.getPersonalClasses( user.spireid, (err, data) => {
 
-    //****NEED PICTURE PASSED THROUGH******
     res.render('index', {
       title: 'Home Page',
       message: req.flash('index') || '',
@@ -77,7 +73,23 @@ app.get('/index', (req, res) => {
       indicator: true,
       classes: data
     });
+
   });
+
+
+  // var userdata;
+  // db.getUserClasses((err,data) => {
+  //   if (err) {
+  //     console.log(err);
+  //     return;
+  //   }
+  //   userdata = data;
+  //
+  // });
+
+
+
+
   //****NEED PICTURE PASSED THROUGH******
 });
 
@@ -116,12 +128,12 @@ app.get('/team', (req, res) => {
       title: 'Meet the team',
       members: data
     });
-  } 
+  }
   });
 });
 
 app.get('/team/:fname', (req, res) => {
-  var fname = req.params.fname; 
+  var fname = req.params.fname;
   console.log(fname);
   db.lookupMember(fname, (err, data) => {
     if (err) {

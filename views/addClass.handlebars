@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../css/index.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  </head>
+
+  <div id="page">
+    <div class="header">
+      <a href="#menu"></a>
+      Zembo
+    </div>
+  </div>
+  <center> <div id="form">
+     <form method="post" action="/user/addClass2">
+        <select name="class">
+          {{#each data}}
+            <option value={{this.class_id}}>{{this.num}}</option>
+          {{/each}}
+        </select><br>
+        <button class="btn">Add Class</button>
+     </form>
+  </center>
+</html>

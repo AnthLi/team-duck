@@ -3,8 +3,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    
-    <script> 
+
+    <script>
       $(document).ready(function() {
         $("#class1").click(function() {
           $("#extend1").slideToggle("fast");
@@ -38,16 +38,16 @@
     </div>
   </div>
 
-  
+
   <div class="content"></div>
     <div id="cont">
       <div id="tp">
         {{#each classes}}
         <ul id="class1">
           <div id="classname">
-            <p2><a href="/class/{{this.class_id}}">{{this.num}}</a></p2>
+            <p2><a href="/class/{{this.inclass}}">{{this.num}}</a></p2>
           </div>
-         
+
           <i id="dropdown" class="fa fa-chevron-down"></i>
         </ul>
         {{/each}}
@@ -60,27 +60,27 @@
           <div id="students">
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/anthony.jpg" alt="Anthony">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/harsh.jpg" alt="Harsh">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/ben.jpg" alt="Ben">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/zach.jpg" alt="Zachary">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/jon.jpg" alt="John">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/miranda.jpg" alt="Dylan">
-              
+
             </div>
           </div>
           <i id="dropdown" class="fa fa-chevron-down"></i>
@@ -105,27 +105,27 @@
           <div id="students">
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/bridget.jpg" alt="Anthony">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/rhea.jpg" alt="Harsh">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/dylan.jpg" alt="Ben">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/miranda.jpg" alt="Zachary">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/ben.jpg" alt="John">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/pranjal.jpg" alt="Dylan">
-              
+
             </div>
           </div>
           <i id="dropdown" class="fa fa-chevron-down"></i>
@@ -150,27 +150,27 @@
           <div id="students">
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/kazi.jpg" alt="Anthony">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/harsh.jpg" alt="Harsh">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/vince.jpg" alt="Ben">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/bridget.jpg" alt="Zachary">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/zach.jpg" alt="John">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/dylan.jpg" alt="Dylan">
-              
+
             </div>
           </div>
           <i id="dropdown" class="fa fa-chevron-down"></i>
@@ -195,27 +195,27 @@
           <div id="students">
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/anthony.jpg" alt="Anthony">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/akhil.jpg" alt="Harsh">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/miranda.jpg" alt="Ben">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/zach.jpg" alt="Zachary">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/rhea.jpg" alt="John">
-              
+
             </div>
             <div id="studentBody">
               <img id="studentImage" src="imgs/users/bridget.jpg" alt="Dylan">
-              
+
             </div>
           </div>
           <i id="dropdown" class="fa fa-chevron-down"></i>
@@ -231,7 +231,19 @@
             </li>
           </ul>
         </div>-->
-      </div> 
+      </div>
     </div>
   </div>
+
+  <!-- <form method="post" action="/user/register">
+     <select name="year">
+       {{#each list}}
+       <option value="class">{{this.num}}</option>
+       {{/each}}
+     </select><br>
+     <button class="btn">Sign Up</button>
+  </form> -->
+
+  <a href="/user/addClass">Add Class</a>
+
 </html>
