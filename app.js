@@ -64,6 +64,7 @@ app.get('/index', (req, res) => {
 
   //var personaldata;
   db.getPersonalClasses( user.spireid, (err, data) => {
+
     res.render('index', {
       title: 'Home Page',
       message: req.flash('index') || '',
@@ -72,7 +73,7 @@ app.get('/index', (req, res) => {
       indicator: true,
       classes: data
     });
-    //personaldata = data;
+
   });
 
 
