@@ -13,10 +13,16 @@ router.get('/:class', (req, res) => {
 			console.log("err: " + err);
 			return;
 		}
-		
-	res.render('classes', { 
-    	classes: data
-  	});
+			/*db.GetClassStudents(class_id, (err, data2) => {
+		    	if (err) {
+		    		return;
+		    	}*/
+			
+				res.render('classes', { 
+		   		classes: data,
+		   		//students: data2
+			//});
+	  	});
 	});
 });
 
