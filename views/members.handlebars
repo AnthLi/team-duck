@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="dist/css/jquery.mmenu.all.css" />
+    <link type="text/css" rel="stylesheet" href="../css/member.css">
+  </head>
+
   <div id="page">
     <div class="header">
       <a href="#menu"></a>
       Zembo
     </div>
   </div>
-    
-  <div class="content"> 
-    
-  </div>
   
-  <div id="cont">
-    <div id="tp">
-      <div id="panel1">
-        <ul id="test">
-          <center><img src ="imgs/logo.png" width="200" height="125px"></center>
-        </ul>
+  <center>
+    <div id="cont">
+      <div id="tp">
+        <div id="panel1">
+          <ul id="test">
+            <img src="../imgs/logo.png" width="350px" height="210px">
+            <center><p4><b>"Work alone no more"</b></p4></center>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <center>
-      <h1>
-        {{member.fname}} {{member.lname}}
-      </h1>
-    </center>
-    <div class="Description">
-      {{member.description}}
+      <center>
+        <h1>{{member.fname}} {{member.lname}}</h1>
+      </center>
+      <div class="Description">{{member.description}}</div>
+      <center><a href="/team">GO BACK</a></center>
     </div>
-    <center><a href="/team"> GO BACK </a></center>
-  </div>
+  </center>
   
 </html>

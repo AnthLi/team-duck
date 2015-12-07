@@ -141,9 +141,10 @@ app.get('/team', (req, res) => {
 
 app.get('/team/:fname', (req, res) => {
   var fname = req.params.fname;
-  console.log(fname);
+
   db.lookupMember(fname, (err, data) => {
     if (err) {
+      res.redirect('/team')
       return;
     }
 
