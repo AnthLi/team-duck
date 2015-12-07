@@ -68,15 +68,27 @@ app.get('/index', (req, res) => {
       console.log(err);
       return;
     }
+
+    if(user){
     //****NEED PICTURE PASSED THROUGH******
-    res.render('index', {
-      title: 'Home Page',
-      message: req.flash('index') || '',
-      namef: user.fname,
-      namel: user.lname,
-      indicator: true,
-      classes: data
-    });
+      res.render('index', {
+        title: 'Home Page',
+        message: req.flash('index') || '',
+        namef: user.fname,
+        namel: user.lname,
+        userId: user.uid,
+        indicator: true,
+        classes: data
+      });
+    } 
+    else{
+      es.render('index', {
+        title: 'Home Page',
+        message: req.flash('index') || '',
+        indicator: true,
+        classes: data
+      });
+    }
     //personaldata = data;
   });
 
