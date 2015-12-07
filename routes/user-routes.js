@@ -54,37 +54,6 @@ router.get('/registration', (req, res) => {
   });
 });
 
-//Add new class page
-router.get('/addClass', (req,res) => {
-  var user = req.session.user;
-
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('login');
-    return;
-  }
-
-  if (user && !online[user.uid]) {
-    delete req.session.user;
-    req.flash('login', 'Login expired');
-    res.redirect('login');
-    return;
-  }
-
-  db.getUserClasses((err, data) => {
-    if (err) {
-      return;
-    }
-
-    res.render('addClass', {
-      title: 'Add Class',
-      data: data
-    });
-  });
-
-
-});
-
 // Profile page
 router.get('/profile', (req, res) => {
   var user = req.session.user;
@@ -207,7 +176,7 @@ router.post('/update', (req, res) => {
 
 
 //Adds personal user class to 'students' table in database
-router.post('/addClass2', (req,res) => {
+router.post('/addClass', (req,res) => {
   var user = req.session.user;
 
   if (!user) {
@@ -224,9 +193,9 @@ router.post('/addClass2', (req,res) => {
     return;
   }
 
-  var id = req.body.class;
-  db.classLookup(id, (err,classname) => {
-    db.addStudentClass(id, classname.num ,user.spireid, (err,data) => {
+  var class_id = req.body.class;
+  db.classLookup(class_id, (err,classname) => {
+    db.addStudentClass(class_id, classname.num, user.spireid, (err,data) => {
       if (err) {
         console.log(err);
         req.flash('/index', err);
