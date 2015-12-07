@@ -37,6 +37,7 @@ router.get('/schedule', (req, res) => {
 
 ////// Start POST Requests
 
+// Event creation
 router.post('/createEvent', (req, res) => {
   var form = req.body
 

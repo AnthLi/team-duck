@@ -65,7 +65,6 @@ app.get('/index', (req, res) => {
   db.getUserClasses((err, data) => {
     if (err) {
       console.log(err);
-      notFound404(req, res);
       return;
     }
 
@@ -100,7 +99,6 @@ app.get('/team', (req, res) => {
 
   db.team((err, data) => {
     if (err) {
-      // notFound404(req, res);
       return;
     }
 //****NEED PICTURE PASSED THROUGH******
@@ -127,8 +125,6 @@ app.get('/team/:fname', (req, res) => {
   console.log(fname);
   db.lookupMember(fname, (err, data) => {
     if (err) {
-      // notFound404(req, res);
-      console.log("err" + err);
       return;
     }
 
