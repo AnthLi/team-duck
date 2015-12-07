@@ -136,34 +136,23 @@ router.post('/register', (req, res) => {
     return;
   }
 
-  // Check if the user is already in the database
-  db.lookupUser(form.email, (err, data) => {
+  db.addUser(user(form.major, form.year, form.fname, form.lname, form.email,
+    form.pass, form.dob, form.spireid), (err, data) => {
     if (err) {
       req.flash('registration', err);
       res.redirect('registration');
       return;
     }
 
-    // The user was not found in the database, free to add them
-    if (!data) {
-      db.addUser(user(form.major, form.year, form.fname, form.lname, form.email,
-        form.pass, form.dob, form.spireid), (err, data) => {
-        if (err) {
-          req.flash('registration', err);
-          res.redirect('registration');
-          return;
-        }
-
-        req.flash('login', 'Your account has been created!');
-        res.redirect('login');
-      });
-
+    // The user was found in the database, no need to add them again  
+    if (data.rowCount === 0) {
+      req.flash('registration', 'An account for this email already exists!');
+      res.redirect('registration');
       return;
     }
 
-    // The user was found in the database, no need to add them again
-    req.flash('registration', 'An account for this email already exists!');
-    res.redirect('registration');
+    req.flash('login', 'Your account has been created!');
+    res.redirect('login');
   });
 });
 

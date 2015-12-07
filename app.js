@@ -63,16 +63,10 @@ app.get('/index', (req, res) => {
   db.getPersonalClasses(user.spireid, (err, data) => {
     db.getUserClasses((err, data2) => {
       if (err) {
-        req.flash('index', err);
-        // res.redirect('index');
         return;
       }
 
       res.render('index', {
-        title: 'Home Page',
-        message: req.flash('index') || '',
-        namef: user.fname,
-        namel: user.lname,
         classes: data,
         data: data2
       });
