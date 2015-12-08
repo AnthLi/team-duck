@@ -76,14 +76,13 @@ router.get('/profile', (req, res) => {
       return;
     }
 
-    //****NEED PICTURE PASSED THROUGH******
     res.render('profile', {
       title: 'Profile',
       namef: user.fname,
       namel: user.lname,
+      userId: user.uid,
       data: data
     });
-    //****NEED PICTURE PASSED THROUGH******
   });
 });
 

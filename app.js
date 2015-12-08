@@ -78,10 +78,16 @@ app.get('/index', (req, res) => {
 app.get('/about', (req, res) => {
   var user = req.session.user;
 
-  res.render('about', {
-    namef: user.fname,
-    namel: user.lname
-  });
+  if(user){
+    res.render('about', {
+      namef: user.fname,
+      namel: user.lname,
+      userId: user.uid
+    });
+  }
+  else{
+    res.render('about');
+  }
 });
 
 // Team page
@@ -97,7 +103,8 @@ app.get('/team', (req, res) => {
         title: 'Meet the team',
         members: data,
         namef: user.fname,
-        namel: user.lname
+        namel: user.lname,
+        userId: user.uid
       });
     } else {
       res.render('team', {
