@@ -135,6 +135,13 @@ router.post('/register', (req, res) => {
     return;
   }
 
+  // Verify that the email is a university email
+  if (form.email.indexOf('umass.edu') < 0) {
+    req.flash('registration', 'The email is not valid!');
+    res.redirect('registration');
+    return;
+  }
+
   db.addUser(user(form.major, form.year, form.fname, form.lname, form.email,
     form.pass, form.dob, form.spireid), (err, data) => {
     if (err) {
