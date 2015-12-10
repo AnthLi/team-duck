@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-
 <html>
   <head>
-  	<link rel="stylesheet" type="text/css" href="../css/adminControls.css" />
+    <link rel="stylesheet" type="text/css" href="../css/adminControls.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
 
-  <body id="cont">
-
-  	<div id="page">
+  <div id="page">
     <div class="header">
-    <a href="#menu"></a>
-      {{title}}
+      <a href="#menu"></a>
+      Zembo
     </div>
-    </div>
+  </div>
 
-  		<table id="userlist">
-  			
+  <div id="cont">
+      <div id="tp">
+     <table class="linkText"> 			
   		<tr>
   			<th>
   				Name
@@ -30,9 +29,7 @@
   				BAN?
   			</th>
   		</tr>
-
   		{{#each users}}
-
   		<tr>
   			<td>
   				{{this.fname}} {{this.lname}}
@@ -49,14 +46,8 @@
           </form>
   			</td>
   		</tr>
-
-
   		{{/each}}
-
-
-
   		</table>
-  	
-  </body>
-
-  </html>
+      </div>
+  </div>
+</html>
