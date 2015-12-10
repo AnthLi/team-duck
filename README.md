@@ -66,3 +66,10 @@ If the user session state exists, then that means they are currently logged in. 
 This application uses a PostgreSQL database. The database stores tables, one of which consists of every single user registered for the app. Each user in the table has a UID, first name, last name, email, date of birth, admin status, and number of flags for inappropriate behavior for their attributes. There is also a table consists of every single class and their class ID that goes along with it. For example, class COMPSCI 326 and class ID 34166. Another table contains blacklisted users that were banned from the app, which contains the banned user's email address. One last table contains the id, first and last names, description, and role of each developer, which gets queried into the the ```/team``` view.
 
 The library ```/lib/database.js``` contains the connection to the database and various functions such as adding and deleting users from the database. A file containing the password to the database is stored locally and ignored by bit on each developer's computer and parsed in order to create a successful connection to the database. (Hint: the password in old commits is not the same, so don't try to be clever!)
+
+## The Team
+- Anthony Li
+- Harsh Keswani
+- Ben Cheung
+- Zachary Milrod
+- Jonathon Gatley
