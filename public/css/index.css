@@ -3,6 +3,12 @@
   height: 25px;
   width: 100%;
 }
+#class0{
+  background-color: #2878d8;
+  height: 130px;
+  width: 100%;
+  border-top: 1px solid #444;
+}
 
 #class1{
   background-color: #2878d8;
@@ -30,6 +36,18 @@
   height: 130px;
   width: 100%;
   border-top: 1px solid #444;
+}
+
+#classname a{
+  text-decoration: none;
+}
+
+#class0 p1{
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  margin-top: 40px;
+  padding-left: 1%;
 }
 
 #class1 p1{
@@ -116,6 +134,13 @@
   font-size: 30px;
   margin: 50px 0 0 90px;
   float: left;
+}
+
+#extend0{
+    display: none;
+    background-color: #fff;
+    height: 150px;
+    width: 100%;
 }
 
 #extend1{
