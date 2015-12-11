@@ -77,17 +77,22 @@
     </div>
   </div>
 
+
   <div class="content"></div>
     <div id="cont">
       <div id="tp">
         {{#if classes.length}}
+        <!-- LOOP BEGINS -->
         {{#each classes}}
+        <!-- RENDERS UNIQUE CLASS DIVS -->
           <ul id="class{{@index}}">
             <div id="classname">
               <p1><a href="/class/{{this.class_id}}">{{this.num}}</a></p1>
             </div>
             <i id="dropdown" class="fa fa-chevron-down"></i>
           </ul>
+         <!-- END --> 
+          <!-- RENDERS EXTENSION FOR EACH CLASS DIV -->
           <div id="extend{{@index}}">
           <ul>
             <li>
@@ -98,10 +103,14 @@
             </li>
           </ul>
         </div>
+        <!-- END --> 
         {{/each}}
+        <!-- LOOP ENDS -->
         {{/if}}
       </div>
     </div>
+
+    <!-- IGNORE -->
     <div class="content"></div>
     <div id="cont">
       <div id="tp">
@@ -138,6 +147,7 @@
           </div>
           <i id="dropdown" class="fa fa-chevron-down"></i>
         </ul>
+        <!-- IGNORE -->
 
   </div>
 </html>
