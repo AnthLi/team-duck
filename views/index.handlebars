@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
+  <!-- BEGIN HEAD -->
   <head>
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    <!-- BEGIN SCRIPT FOR ADD CLASS TOGGLE -->
     <script>
       $(document).ready(function() {
         $("#addclass").click(function() {
           $("#addclassdropdown").slideToggle("fast");
         });
       });
-     </script> 
+    </script> 
+     <!-- END -->
 
+    <!-- BEGIN SCRIPT FOR CLASSES TOGGLE -->
     <script>
     $(document).ready(function() {
       $("#class0").click(function() {
@@ -51,25 +55,31 @@
         });
       });
     </script>
+    <!-- END -->
   </head>
+  <!-- END HEAD -->
 
+  <!-- MENU BAR -->
   <div id="page">
     <div class="header">
       <a href="#menu"></a>
         Zembo
         <i id="addclass" class="fa fa-plus-circle"></i>
     </div>
+    <!-- END MENU -->
 
     <!-- add class dropdown -->
     <div id="addclassdropdown">
        <center> <div id="form">
          <form method="post" action="/user/addClass">
             <select name="values">
+              <!-- BEGIN LIST -->
               {{#each classList}}
                 <option value="{{this.class_id}}, {{this.num}}">
                   {{this.num}}
                 </option>
               {{/each}}
+              <!-- END LIST -->
             </select><br>
             <button class="btn">Add Class</button>
          </form>
