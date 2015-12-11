@@ -78,8 +78,8 @@ router.get('/profile', (req, res) => {
 
     res.render('profile', {
       title: 'Profile',
-      namef: user.fname,
-      namel: user.lname,
+      fname: user.fname,
+      lname: user.lname,
       userId: user.uid,
       data: data
     });

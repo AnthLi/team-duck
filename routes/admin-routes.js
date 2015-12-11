@@ -39,8 +39,8 @@ router.get('/online', (req, res) => {
     }
 
     res.render('online', {
-      namef: user.fname,
-      namel: user.lname,
+      fname: user.fname,
+      lname: user.lname,
       userId: user.uid,
       title: 'Online Users',
       online: online
@@ -69,8 +69,8 @@ router.get('/users', (req, res) => {
       }
 
       res.render('userList', {
-        namef: user.fname,
-        namel: user.lname,
+        fname: user.fname,
+        lname: user.lname,
         userId: user.uid,
         title: 'Users in Database',
         users: data
@@ -94,8 +94,8 @@ router.get('/controls', (req, res) => {
     }
 
     res.render('adminControls', {
-      namef: user.fname,
-      namel: user.lname,
+      fname: user.fname,
+      lname: user.lname,
       userId: user.uid,
       title: 'Admin Controls'
     });
@@ -117,8 +117,8 @@ router.get('/classes', (req, res) => {
     }
 
     res.render('classes', {
-      namef: user.fname,
-      namel: user.lname,
+      fname: user.fname,
+      lname: user.lname,
       userId: user.uid,
       title: 'Classes'
     });
