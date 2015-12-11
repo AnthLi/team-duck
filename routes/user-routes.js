@@ -119,7 +119,6 @@ router.post('/auth', (req, res) => {
 
     online[user.uid] = user; // Add user to map of online users
     req.session.user = user; // Create session variable
-    req.flash('index', 'Login successful');
     res.redirect('/index');
   });
 });
@@ -203,7 +202,6 @@ router.post('/addClass', (req,res) => {
       return;
     }
 
-    req.flash('index', 'Successfully added a class!')
     res.redirect('/index');
   });
 });

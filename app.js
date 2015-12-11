@@ -60,7 +60,9 @@ app.get('/index', (req, res) => {
     return;
   }
 
+  // Get the user's own classes
   db.getPersonalClasses(user.spireid, (err, data) => {
+    // Get the list of classes for the dropdown menu
     db.getClassList((err, data2) => {
       if (err) {
         return;
