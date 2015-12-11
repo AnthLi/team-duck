@@ -13,12 +13,20 @@
      </script> 
 
     <script>
-      $(document).ready(function() {
-        $("#class1").click(function() {
-          $("#extend1").slideToggle("fast");
-        });
+    $(document).ready(function() {
+      $("#class0").click(function() {
+        $("#extend0").slideToggle("fast");
       });
+    });
+    </script>
 
+    <script>
+    $(document).ready(function() {
+      $("#class1").click(function() {
+        $("#extend1").slideToggle("fast");
+      });
+    });
+  
       $(document).ready(function() {
         $("#class2").click(function() {
           $("#extend2").slideToggle("fast");
@@ -34,6 +42,12 @@
       $(document).ready(function() {
         $("#class4").click(function() {
           $("#extend4").slideToggle("fast");
+        });
+      });
+
+      $(document).ready(function() {
+        $("#class5").click(function() {
+          $("#extend5").slideToggle("fast");
         });
       });
     </script>
@@ -68,12 +82,22 @@
       <div id="tp">
         {{#if classes.length}}
         {{#each classes}}
-          <ul id="class1">
+          <ul id="class{{@index}}">
             <div id="classname">
               <p1><a href="/class/{{this.class_id}}">{{this.num}}</a></p1>
             </div>
             <i id="dropdown" class="fa fa-chevron-down"></i>
           </ul>
+          <div id="extend{{@index}}">
+          <ul>
+            <li>
+              <i id="cap" class="icon fa fa-graduation-cap fa-5x"></i>
+              <i id="pencil" class="icon fa fa-pencil-square-o fa-5x"></i>
+              <i id="calendar" class="icon fa fa-calendar fa-5x"></i>
+              <i id="event" class="icon fa fa-plus-square-o fa-5x"></i>
+            </li>
+          </ul>
+        </div>
         {{/each}}
         {{/if}}
       </div>
@@ -115,15 +139,5 @@
           <i id="dropdown" class="fa fa-chevron-down"></i>
         </ul>
 
-        <div id="extend1">
-          <ul>
-            <li>
-              <i id="cap" class="icon fa fa-graduation-cap fa-5x"></i>
-              <i id="pencil" class="icon fa fa-pencil-square-o fa-5x"></i>
-              <i id="calendar" class="icon fa fa-calendar fa-5x"></i>
-              <i id="event" class="icon fa fa-plus-square-o fa-5x"></i>
-            </li>
-          </ul>
-        </div>
   </div>
 </html>
