@@ -126,21 +126,23 @@ p4{
 	float: right !important;
 }
 
-#daZem{
-	margin-left: 7.5%;
-}
-
-#daButt{
-	background-color: inherit;
-	color: white;
-	font-weight: bold;
-	font-size: .86em;
-	border: none;
-	cursor: pointer;
-}
-
 #prof{
 	text-align: center;
+}
+
+#onlineImage{
+  height: 130px;
+  width: 130px;
+  border-radius: 90px;
+  border: 2px #444 solid;
+}
+
+#onlineLink{
+	text-decoration: none;
+}
+
+#onlineUsers{
+	width: 130px;
 }
 
 #drawerImage{
