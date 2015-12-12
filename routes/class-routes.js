@@ -6,7 +6,7 @@ var user = require('../lib/user.js'); // User library
 var router = express.Router(); // "Router" to separate particular points
 
 router.get('/:class', (req, res) => {
-  var class_id = req.params.class;
+  var classid = req.params.class;
   var user = req.session.user;
 
   if (!user) {
@@ -22,16 +22,16 @@ router.get('/:class', (req, res) => {
     return;
   }
 
-  db.getClassDetails(class_id, (err, data) => {
+  db.getClassDetails(classid, (err, data) => {
     if (err) {
       res.redirect('/index');
-      console.log(err);
       return;
     }
 
+    var d = data[0].students.split(' ');
     res.render('class', { 
-      class_id: data[0],
-      students: data
+      num: data[0].num,
+      students: d
     });
   });
 });
