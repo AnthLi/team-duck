@@ -9,9 +9,10 @@ var router = express.Router(); // "Router" to separate particular points
 ////// Start GET Requests
 
 // Schedule page
-router.get('/schedule', (req, res) => {
+//router.get('/schedule', (req, res) => {
+router.get('/schedule/:classid', (req,res) => { 
   var user = req.session.user;
-
+  var classid = req.params.classid;
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
@@ -29,6 +30,7 @@ router.get('/schedule', (req, res) => {
     title: 'Create an Event',
     fname: user.fname,
     lname: user.lname,
+    classid : classid,
     userId: user.spireid,
     message: req.flash('schedule') || ''
   });
@@ -39,26 +41,27 @@ router.get('/schedule', (req, res) => {
 ////// Start POST Requests
 
 // Event creation
-router.post('/createEvent', (req, res) => {
-  var form = req.body
+router.post('/createEvent/:classid', (req, res) => {
+  var form = req.body;
+  var classid = req.params.classid;
 
   if (!form.anonymity | !form.title | !form.description | !form.location | 
     !form.date, !form.time) {
-    req.flash('schedule', 'Please fill out all fields');
+    req.flash('../schedule/'+ classid, 'Please fill out all fields');
     res.redirect('schedule');
     return;
   }
-
+console.log(form.anonymity);
   db.createEvent(form.anonymity, form.title, form.description, form.location, 
-    form.date + ' ' + form.time, (err, data) => {
+    form.date + ' ' + form.time, classid, (err, data) => {
     if (err) {
-      req.flash('schedule', err);
+      req.flash('../schedule/'+ classid, err);
       res.redirect('schedule')
       return;
     }
-
-    req.flash('schedule', 'Your event has been created!');
-    res.redirect('schedule');
+    //think we should redirect to the page where all the events are
+    req.flash('../../class/'+ classid, 'Your event has been created!');
+    res.redirect('../../class/' + classid);
   });
 });
 
