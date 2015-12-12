@@ -7,8 +7,8 @@ var router = express.Router(); // "Router" to separate particular points
 
 ////// Start GET Requests
 
-router.get('/:class', (req, res) => {
-  var classid = req.params.class;
+router.get('/:classid', (req, res) => {
+  var classid = req.params.classid;
   var user = req.session.user;
 
   if (!user) {
@@ -30,23 +30,19 @@ router.get('/:class', (req, res) => {
       return;
     }
 
-    res.render('class', { 
+    res.render('class', {
+      fname: user.fname,
+      lname: user.lname,
+      userID: user.spireid,
       num: data[0].num,
       students: data[0].students
     });
   });
 });
 
-////// End GET Requests
-
-////// Start POST Requests
-
-router.post('/delete', (req, res) => {
-  var classid = req.params.class;
+router.get('/delete/:classid', (req, res) => {
+  var classid = req.params.classid;
   var user = req.session.user;
-
-  console.log(classid);
-  console.log(user);
 
   if (!user) {
     req.flash('login', 'Not logged in');
@@ -67,10 +63,13 @@ router.post('/delete', (req, res) => {
       return;
     }
 
-    res.render('/index');
+    res.redirect('/index');
   });
-
 });
+
+////// End GET Requests
+
+////// Start POST Requests
 
 ////// End POST Requests
 

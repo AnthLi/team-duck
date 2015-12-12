@@ -62,10 +62,9 @@ app.get('/index', (req, res) => {
 
   // Get the user's own classes
   db.getPersonalClasses(user.spireid, (err, classesData) => {
-    if (err) {
-      return;
-    }
-    
+    // No error checking here since we still want to render index if the user
+    // isn't in any classes
+
     // Get the list of classes for the dropdown menu
     db.getClassList((err, subjectsData) => {
       if (err) {
@@ -79,7 +78,7 @@ app.get('/index', (req, res) => {
         res.render('index', {
           fname: user.fname,
           lname: user.lname,
-          userId: user.spireid,
+          userID: user.spireid,
           classes: classesData,
           classList: subjectsData
         });
@@ -101,7 +100,7 @@ app.get('/about', (req, res) => {
     res.render('about', {
       fname: user.fname,
       lname: user.lname,
-      userId: user.spireid
+      userID: user.spireid
     });
   }
   else{
@@ -125,7 +124,7 @@ app.get('/team', (req, res) => {
       res.render('team', {
         fname: user.fname,
         lname: user.lname,
-        userId: user.spireid,
+        userID: user.spireid,
         title: 'Meet the team',
         members: data
       });
@@ -155,7 +154,7 @@ app.get('/team/:fname', (req, res) => {
       res.render('member', {
         fname: user.fname,
         lname: user.lname,
-        userId: user.spireid,
+        userID: user.spireid,
         title: 'Meet the team',
         member: data
       });
