@@ -70,19 +70,21 @@
 
     <!-- add class dropdown -->
     <div id="addclassdropdown">
-       <center> <div id="form">
-         <form method="post" action="/user/addClass">
-            <select name="values">
-              <!-- BEGIN LIST -->
-              {{#each classList}}
-                <option value="{{this.class_id}}, {{this.num}}">
-                  {{this.num}}
-                </option>
-              {{/each}}
-              <!-- END LIST -->
-            </select><br>
-            <button class="btn">Add Class</button>
-         </form>
+       <center>
+         <div id="f1">
+            <form method="post" action="/user/addClass">
+              <select name="values" onchange="showForm()">
+                <!-- BEGIN LIST -->
+                {{#each classList}}
+                  <option value="{{this.class_id}}, {{this.num}}">
+                    {{this.num}}
+                  </option>
+                {{/each}}
+                <!-- END LIST -->
+              </select><br>
+              <button class="btn">Add Class</button>
+            </form>
+          </div>
       </center>
     </div>
   </div>
@@ -116,10 +118,15 @@
           <div id="extend{{@index}}">
           <ul>
             <li>
-              <a href="{{this.class_id}}"><i id="cap" class="icon fa fa-graduation-cap fa-5x"></i></a>
+              <a href="/class/{{this.classid}}"><i id="cap" class="icon fa fa-graduation-cap fa-5x"></i></a>
               <a href=""><i id="pencil" class="icon fa fa-pencil-square-o fa-5x"></i></a>
+
               <a href="group/schedule/{{this.classid}}"><i id="calendar" class="icon fa fa-calendar fa-5x"></i></a>
               <a href="classes/delete"><i id="event" class="icon fa fa-trash fa-5x"></i></a>
+
+              <a href="group/schedule"><i id="calendar" class="icon fa fa-calendar fa-5x"></i></a>
+              <a href="class/delete/{{this.classid}}"><i id="event" class="icon fa fa-trash fa-5x"></i></a>
+
             </li>
           </ul>
         </div>
