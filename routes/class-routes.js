@@ -27,11 +27,25 @@ router.get('/:class', (req, res) => {
       res.redirect('/index');
       return;
     }
+    db.getEventsByClass(classid, (err, events) => {
+      if(err) {
+        res.redirect('/index');
+        return;
+      }
+      if(events.length() === 0){
 
-    res.render('class', { 
-      num: data[0].num,
-      students: data[0].students
+      }
+      res.render('class', { 
+        num: data[0].num,
+        students: data[0].students,
+        events : events
+      });
     });
+    // res.render('class', { 
+    //   num: data[0].num,
+    //   students: data[0].students,
+
+    // });
   });
 });
 

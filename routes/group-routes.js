@@ -44,16 +44,15 @@ router.get('/schedule/:classid', (req,res) => {
 router.post('/createEvent/:classid', (req, res) => {
   var form = req.body;
   var classid = req.params.classid;
-
+  var user = req.session.user;
   if (!form.anonymity | !form.title | !form.description | !form.location | 
     !form.date, !form.time) {
     req.flash('../schedule/'+ classid, 'Please fill out all fields');
     res.redirect('schedule');
     return;
   }
-console.log(form.anonymity);
   db.createEvent(form.anonymity, form.title, form.description, form.location, 
-    form.date + ' ' + form.time, classid, (err, data) => {
+    form.date + ' ' + form.time, classid, user.spireid, (err, data) => {
     if (err) {
       req.flash('../schedule/'+ classid, err);
       res.redirect('schedule')
