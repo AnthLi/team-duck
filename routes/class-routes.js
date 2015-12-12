@@ -26,14 +26,20 @@ router.get('/:classid', (req, res) => {
 
       db.getClassDetails(classid, (err, data) => {
             if (err) {
+
+              req.flash('index', err);
               res.redirect('/index');
               return;
             }
             db.getEventsByClass(classid, (err, events) => {
                   if(err) {
+                     req.flash('index', err);
                     res.redirect('/index');
                     return;
                   }
+                  console.log(data[0].students[0]);
+                  console.log(data[0].num);
+                  console.log(events[0]);
                   res.render('class', {
                       fname: user.fname,
                       lname: user.lname,

@@ -20,4 +20,42 @@
         {{/each}}
       </div>
   </div>
+  <table >      
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Date
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Location
+        </th>
+        <th>
+          Creator
+        </th>
+      </tr>
+      {{#each events}}
+      <tr>
+        <td>
+          {{this.title}}
+        </td>
+        <td>
+          {{this.date}}
+        </td>
+        <td>
+          {{this.description}}
+        </td>
+        <td>
+          {{this.location}}
+        </td>
+        <td>
+          {{this.name}}
+        </td>
+      </tr>
+      {{/each}}
+      </table>
 </html>
