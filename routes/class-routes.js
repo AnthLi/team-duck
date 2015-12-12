@@ -37,10 +37,9 @@ router.get('/:classid', (req, res) => {
                     res.redirect('/index');
                     return;
                   }
-                  console.log(data[0].students[0]);
-                  console.log(data[0].num);
-                  console.log(events[0]);
+                 
                   res.render('class', {
+                      classid : classid,
                       fname: user.fname,
                       lname: user.lname,
                       userID: user.spireid,
