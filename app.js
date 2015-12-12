@@ -61,9 +61,13 @@ app.get('/index', (req, res) => {
   }
 
   // Get the user's own classes
-  db.getPersonalClasses(user.spireid, (err, data) => {
+  db.getPersonalClasses(user.spireid, (err, classesData) => {
+    if (err) {
+      return;
+    }
+    
     // Get the list of classes for the dropdown menu
-    db.getClassList((err, data2) => {
+    db.getClassList((err, subjectsData) => {
       if (err) {
         return;
       }
@@ -76,13 +80,13 @@ app.get('/index', (req, res) => {
           fname: user.fname,
           lname: user.lname,
           userId: user.spireid,
-          classes: data,
-          classList: data2
+          classes: classesData,
+          classList: subjectsData
         });
       } else {
         res.render('index', {
-          classes: data,
-          classList: data2
+          classes: classesData,
+          classList: subjectsData
         });
       }
     });

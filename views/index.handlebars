@@ -70,19 +70,21 @@
 
     <!-- add class dropdown -->
     <div id="addclassdropdown">
-       <center> <div id="form">
-         <form method="post" action="/user/addClass">
-            <select name="values">
-              <!-- BEGIN LIST -->
-              {{#each classList}}
-                <option value="{{this.class_id}}, {{this.num}}">
-                  {{this.num}}
-                </option>
-              {{/each}}
-              <!-- END LIST -->
-            </select><br>
-            <button class="btn">Add Class</button>
-         </form>
+       <center>
+         <div id="f1">
+            <form method="post" action="/user/addClass">
+              <select name="values" onchange="showForm()">
+                <!-- BEGIN LIST -->
+                {{#each classList}}
+                  <option value="{{this.class_id}}, {{this.num}}">
+                    {{this.num}}
+                  </option>
+                {{/each}}
+                <!-- END LIST -->
+              </select><br>
+              <button class="btn">Add Class</button>
+            </form>
+          </div>
       </center>
     </div>
   </div>

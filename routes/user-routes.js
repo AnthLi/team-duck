@@ -194,7 +194,7 @@ router.post('/addClass', (req,res) => {
     return;
   }
 
-  db.addStudentClass(num, user.spireid, (err,data) => {
+  db.joinClass(num, user.spireid, (err,data) => {
     if (err) {
       res.redirect('/index');
       return;
