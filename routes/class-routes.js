@@ -28,7 +28,7 @@ router.get('/:class', (req, res) => {
       return;
     }
 
-    var d = data[0].students.split(' ');
+    var d = data[0].students.split(' '); // Split each spireid into an array
     res.render('class', { 
       num: data[0].num,
       students: d
