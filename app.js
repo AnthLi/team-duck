@@ -67,15 +67,6 @@ app.get('/index', (req, res) => {
       if (err) {
         return;
       }
-      /*
-       for class in data
-        sql -> class.class_id
-
-      */
-
-
-
-
 
       if (user) {
         res.render('index', {
