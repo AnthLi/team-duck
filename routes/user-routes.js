@@ -80,7 +80,7 @@ router.get('/profile', (req, res) => {
       title: 'Profile',
       fname: user.fname,
       lname: user.lname,
-      userId: user.spireid,
+      userID: user.spireid,
       data: data
     });
   });
@@ -194,7 +194,7 @@ router.post('/addClass', (req,res) => {
     return;
   }
 
-  db.addStudentClass(num, user.spireid, (err,data) => {
+  db.joinClass(num, user.spireid, (err,data) => {
     if (err) {
       res.redirect('/index');
       return;

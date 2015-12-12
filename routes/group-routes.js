@@ -29,7 +29,7 @@ router.get('/schedule', (req, res) => {
     title: 'Create an Event',
     fname: user.fname,
     lname: user.lname,
-    userId: user.spireid,
+    userID: user.spireid,
     message: req.flash('schedule') || ''
   });
 });
