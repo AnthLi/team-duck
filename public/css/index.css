@@ -38,12 +38,19 @@
   border-top: 1px solid #444;
 }
 
+#class5{
+  background-color: #2878d8;
+  height: 130px;
+  width: 100%;
+  border-top: 1px solid #444;
+}
+
 #classname a{
   text-decoration: none;
 }
 
 #class0 p1{
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   position: absolute;
   margin-top: 40px;
@@ -51,7 +58,7 @@
 }
 
 #class1 p1{
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   position: absolute;
   margin-top: 40px;
@@ -59,7 +66,7 @@
 }
 
 #class2 p1{
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   position: absolute;
   margin-top: 40px;
@@ -67,7 +74,7 @@
 }
 
 #class3 p1{
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   position: absolute;
   margin-top: 40px;
@@ -75,7 +82,15 @@
 }
 
 #class4 p1{
-  font-size: 20px;
+  font-size: 15px;
+  color: white;
+  position: absolute;
+  margin-top: 40px;
+  padding-left: 1%;
+}
+
+#class5 p1{
+  font-size: 15px;
   color: white;
   position: absolute;
   margin-top: 40px;
@@ -171,6 +186,13 @@
     width: 100%;
 }
 
+#extend5{
+    display: none;
+    background-color: #fff;
+    height: 150px;
+    width: 100%;
+}
+
 .icon{
   margin-left: 14.5%;
   margin-top: 3%;
@@ -178,19 +200,6 @@
 
 #profRight{
   float: right !important;
-}
-
-#daZem{
-  margin-left: 7.5%;
-}
-
-#daButt{
-  background-color: inherit;
-  color: white;
-  font-weight: bold;
-  font-size: .86em;
-  border: none;
-  cursor: pointer;
 }
 
 
