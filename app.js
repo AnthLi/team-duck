@@ -92,8 +92,8 @@ app.get('/about', (req, res) => {
 
   if(user){
     res.render('about', {
-      fname: user.fname,
-      lname: user.lname,
+      namef: user.fname,
+      namel: user.lname,
       userId: user.uid
     });
   }
@@ -110,14 +110,13 @@ app.get('/team', (req, res) => {
     if (err) {
       return;
     }
-
-    if (user) {
+    if(user) {
       res.render('team', {
-        fname: user.fname,
-        lname: user.lname,
-        userId: user.uid,
         title: 'Meet the team',
         members: data,
+        namef: user.fname,
+        namel: user.lname,
+        userId: user.uid
       });
     } else {
       res.render('team', {
@@ -129,7 +128,6 @@ app.get('/team', (req, res) => {
 });
 
 app.get('/team/:fname', (req, res) => {
-  var user = req.session.user;
   var fname = req.params.fname;
 
   db.lookupMember(fname, (err, data) => {
@@ -138,20 +136,10 @@ app.get('/team/:fname', (req, res) => {
       return;
     }
 
-    if (user) {
-      res.render('members', {
-        fname: user.fname,
-        lname: user.lname,
-        userId: user.uid,
-        title: data.fname,
-        member: data
-      });  
-    } else {
-      res.render('members', {
-        title: data.fname,
-        member: data
-      });
-    }
+    res.render('members', {
+      title: data.fname,
+      member: data
+    });
   });
 });
 
