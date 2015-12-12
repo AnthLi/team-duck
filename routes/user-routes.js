@@ -80,7 +80,7 @@ router.get('/profile', (req, res) => {
       title: 'Profile',
       fname: user.fname,
       lname: user.lname,
-      userId: user.uid,
+      userId: user.spireid,
       data: data
     });
   });
