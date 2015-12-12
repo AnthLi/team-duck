@@ -178,7 +178,7 @@ router.post('/update', (req, res) => {
 // Adds a user class to 'students' table in database
 router.post('/addClass', (req,res) => {
   var user = req.session.user;
-  var form = req.body.values.split(',');
+  var num = req.body.values.split(', ')[1]; // Get the class number
 
   if (!user) {
     req.flash('login', 'Not logged in');
@@ -194,7 +194,7 @@ router.post('/addClass', (req,res) => {
     return;
   }
 
-  db.addStudentClass(user.spireid, Number(form[0]), form[1], (err,data) => {
+  db.addStudentClass(num, user.spireid, (err,data) => {
     if (err) {
       console.log(err);
       req.flash('index', err);
