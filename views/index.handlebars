@@ -98,14 +98,15 @@
         <!-- RENDERS UNIQUE CLASS DIVS -->
           <ul id="class{{@index}}">
             <div id="classname">
-              <p1><a href="/class/{{this.class_id}}">{{this.num}}</a></p1>
+              <p1><a href="/class/{{this.classid}}">{{this.num}}</a></p1>
             </div>
 
             <div id="students">
-              <div id="studentBody">
-               
-                <img id="studentImage" src="imgs/users/{{this.uid}}.jpg" alt="{{this.uid}}">
+            {{#each students}}
+              <div id="studentBody">  
+                <img id="studentImage" src="imgs/users/{{this}}.jpg" alt="{{this}}">
               </div>
+              {{/each}}
             </div>
 
             <i id="dropdown" class="fa fa-chevron-down"></i>
@@ -129,45 +130,6 @@
       </div>
     </div>
     <!-- END CONTENT -->
-
-    <!-- IGNORE 
-    <div class="content"></div>
-    <div id="cont">
-      <div id="tp">
-        <ul id="class1">
-          <div id="classname">
-            <p1>COMPSCI 311</p1>
-            <p2>Introduction to Algorithms</p2>
-          </div>
-          <div id="students">
-            <div id="studentBody">
-              <img id="studentImage" src="imgs/users/anthony.jpg" alt="Anthony">
-              
-            </div>
-            <div id="studentBody">
-              <img id="studentImage" src="imgs/users/harsh.jpg" alt="Harsh">
-              
-            </div>
-            <div id="studentBody">
-              <img id="studentImage" src="imgs/users/ben.jpg" alt="Ben">
-              
-            </div>
-            <div id="studentBody">
-              <img id="studentImage" src="imgs/users/zach.jpg" alt="Zachary">
-              
-            </div>
-            <div id="studentBody">
-              <img id="studentImage" src="imgs/users/jon.jpg" alt="John">
-              
-            </div>
-            <div id="studentBody">
-              <img id="studentImage" src="imgs/users/miranda.jpg" alt="Dylan">
-              
-            </div>
-          </div>
-          <i id="dropdown" class="fa fa-chevron-down"></i>
-        </ul>
-        <!-- END IGNORE -->
   </div>
 
 </html>

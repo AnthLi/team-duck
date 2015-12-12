@@ -75,7 +75,7 @@ app.get('/index', (req, res) => {
         res.render('index', {
           fname: user.fname,
           lname: user.lname,
-          userId: user.uid,
+          userId: user.spireid,
           classes: data,
           classList: data2
         });
@@ -97,7 +97,7 @@ app.get('/about', (req, res) => {
     res.render('about', {
       fname: user.fname,
       lname: user.lname,
-      userId: user.uid
+      userId: user.spireid
     });
   }
   else{
@@ -121,7 +121,7 @@ app.get('/team', (req, res) => {
       res.render('team', {
         fname: user.fname,
         lname: user.lname,
-        userId: user.uid,
+        userId: user.spireid,
         title: 'Meet the team',
         members: data
       });
@@ -151,7 +151,7 @@ app.get('/team/:fname', (req, res) => {
       res.render('member', {
         fname: user.fname,
         lname: user.lname,
-        userId: user.uid,
+        userId: user.spireid,
         title: 'Meet the team',
         member: data
       });
