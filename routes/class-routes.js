@@ -107,11 +107,70 @@ router.get('/delete', (req, res) => {
   });
 });
 
+router.get('/Post', (req, res) => {
+  var user = req.session.user;
+  var classid = req.query.classid;
+
+  if (!user) {
+    req.flash('login', 'Not logged in');
+    res.redirect('/user/login');
+    return;
+  }
+
+  if (user && !online[user.uid]) {
+    delete req.session.user;
+    req.flash('login', 'Login expired');
+    res.redirect('/user/login');
+    return;
+  }
+  db.getPostsByClass(classid, (err, posts) => {
+      if(err){
+        req.flash('/class/'+classid , err);  
+        res.redirect('/class/' + classid);
+        return;
+    
+      }
+      res.render('createpost', { 
+        title: 'Make a Post',
+        fname: user.fname,
+        lname: user.lname,
+        classid : classid,
+        userID: user.spireid,
+        posts : posts,
+        message: req.flash('schedule') || ''
+      });
+  });
+});
+
+
+
+});
+
 ////// End GET Requests
 
 ////// Start POST Requests
 
+router.post('/createPost', (req, res) => {
+  var form = req.body;
+  var classid = req.query.classid;
+  var user = req.session.user;
 
+  if (!form.anonymity | !form.title | !form.content ) {
+    req.flash('Post?classid=' + classid, 'Please fill out all fields');
+    res.redirect('Post?classid=' + classid);
+    return;
+  }
+
+  db.createPost(user.spireid, form.title, form.content, classid, (err, data) => {
+    if (err) {
+      req.flash('Post?classid='+ classid, err);
+      res.redirect('Post?classid='+classid);
+      return;
+    }
+    req.flash('/class?classid=' + classid, 'Your Post has been made');
+    res.redirect('/class?classid=' + classid);
+  });
+});
 
 ////// End POST Requests
 
