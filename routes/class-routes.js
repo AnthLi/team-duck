@@ -5,9 +5,9 @@ var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
 
-////// Start GET Requests
+//// Start GET Requests
 
-// router.get('/:classid', (req, res) => {
+// router.get('/:class', (req, res) => {
 //       var classid = req.params.classid;
 //       var user = req.session.user;
 
