@@ -41,7 +41,7 @@ router.get('/online', (req, res) => {
     res.render('online', {
       fname: user.fname,
       lname: user.lname,
-      userID: user.uid,
+      userID: user.spireid,
       title: 'Online Users',
       online: online
     });
@@ -68,12 +68,13 @@ router.get('/users', (req, res) => {
         return;
       }
 
-      res.render('userList', {
+      res.render('users', {
         fname: user.fname,
         lname: user.lname,
-        userID: user.uid,
+        userID: user.spireid,
         title: 'Users in Database',
-        users: data
+        users: data,
+        message: req.flash('users') || ''
       });
     });
   });
@@ -96,7 +97,7 @@ router.get('/controls', (req, res) => {
     res.render('adminControls', {
       fname: user.fname,
       lname: user.lname,
-      userID: user.uid,
+      userID: user.spireid,
       title: 'Admin Controls'
     });
   });
@@ -116,10 +117,11 @@ router.get('/classes', (req, res) => {
       return;
     }
 
+    
     res.render('classes', {
       fname: user.fname,
       lname: user.lname,
-      userID: user.uid,
+      userID: user.spireid,
       title: 'Classes'
     });
   });
@@ -139,7 +141,6 @@ router.post('/auth', (req, res) => {
 
   db.authorizeAdmin(user.email, (err, data) => {
     if (err) {
-      console.log(err);
       res.redirect(req.header('Referer')); // Redirect to the previous page
       return;
     }
@@ -149,17 +150,19 @@ router.post('/auth', (req, res) => {
 });
 
 // Banhammer
-router.post('/ban/:email', (req,res) => {
-  var result = req.params.email;
-  db.deleteUser(result, (err) => {
+router.post('/ban', (req,res) => {
+  var email = req.query.email;
+  console.log(email);
+
+  db.deleteUser(email, (err) => {
     if (err) {
-      req.flash('userList', err);
-      res.redirect('../users');
+      req.flash('users', err);
+      res.redirect('users');
       return;
     }
 
-    req.flash('userList' ,'Deleted user: ' + result);
-    res.redirect('../users');
+    req.flash('users' ,'Deleted user ' + email);
+    res.redirect('users');
   });
 });
 
