@@ -32,3 +32,42 @@
   font-size: 15px;
   color: white;
 }
+
+#events {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    position: relative;
+    height: auto;
+    overflow: auto;
+}
+
+#events li a {
+    display: block;
+    color: #000;
+    padding: 10px 0 10px 20px;
+    text-decoration: none;
+}
+
+#nameRight{
+    float: right;
+    padding-right: 15px;
+}
+
+#yes{
+  background-color: #1fd826;
+}
+
+#yes a:hover{
+  background-color: #6cf071;
+}
+
+#no{
+  background-color: #fc0000;
+}
+
+#no a:hover{
+  background-color: #ff4343;
+}

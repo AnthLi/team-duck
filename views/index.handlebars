@@ -54,6 +54,19 @@
           $("#extend5").slideToggle("fast");
         });
       });
+
+      var toggle = 0;
+
+      function changeClass(i){
+        if( toggle == 0 ){
+          $('#class'+i+' #dropdown').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+          toggle = 1;
+        }
+        else{
+          $('#class'+i+' #dropdown').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+          toggle = 0;
+        }
+      }
     </script>
     <!-- END -->
   </head>
@@ -98,7 +111,7 @@
         <!-- LOOP BEGINS -->
         {{#each classes}}
         <!-- RENDERS UNIQUE CLASS DIVS -->
-          <ul id="class{{@index}}">
+          <ul id="class{{@index}}" onclick="changeClass({{@index}})">
             <div id="classname">
               <p1><a href="/class?classid={{this.classid}}">{{this.num}}</a></p1>
             </div>
