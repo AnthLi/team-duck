@@ -63,6 +63,7 @@ router.get('/content', (req, res) => {
       return;
     }
 
+    console.log(data);
     res.render('event', {
       data: data
     });  
