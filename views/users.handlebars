@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/adminControls.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  </head>
+
+  <div id="page">
+    <div class="header">
+      <a href="#menu"></a>
+      Zembo
+    </div>
+  </div>
+
+  <div id="cont">
+    <div id="tp">
+      <center>{{message}}</center>
+      <table class="linkText">    
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            Flags
+          </th>
+          <th>
+            BAN?
+          </th>
+        </tr>
+        {{#each users}}
+        <tr>
+          <td>
+            {{this.fname}} {{this.lname}}
+          </td>
+          <td>
+            {{this.email}}
+          </td>
+          <td>
+            {{this.flags}}
+          </td>
+          <td>
+            <form method="post" action="/admin/ban?email={{this.email}}">
+              <button>BAN</button>
+            </form>
+          </td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+  </div>
+</html>
