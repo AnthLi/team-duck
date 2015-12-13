@@ -69,28 +69,6 @@ router.get('/content', (req, res) => {
   });
 });
 
-// Retrieve all the students in the class
-router.get('/students', (req, res) => {
-  var user = req.session.user;
-  var classid = req.query.classid;
-
-  // The user session either doesn't exist, or it expired
-  if (!sessionCheck(user, online, req, res)) {
-    return;
-  }
-
-  db.getStudentsInClass(classid, (err, data) => {
-    if (err) {
-      res.redirect(req.header('Referer'));
-      return;
-    }
-
-    res.render('students', {
-      data: data.students
-    });
-  });
-});
-
 // Delete a class based on the classid
 router.get('/delete', (req, res) => {
   var classid = req.query.classid;
