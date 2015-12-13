@@ -25,34 +25,40 @@
 }
 
 #nav p1{
-  text-align: right;
-  right: 0;
-  float: right;
-  padding: 14px 16px;
-  font-size: 15px;
-  color: white;
+  	text-align: right;
+  	right: 0;
+  	float: right;
+  	padding: 14px 16px;
+  	font-size: 15px;
+  	color: white;
 }
 
 #eventsAndPosts {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-   width: 25%;
-   background-color: #f1f1f1;
-   position: fixed;
+	list-style-type: none;
+   	margin: 0;
+   	padding: 0;
+   	width: 100%;
+   	background-color: #f1f1f1;
+   	position: fixed;
     margin-top: 50px;
     height: auto;
     overflow: auto;
 }
 
 #eventsAndPosts li a {
-   display: block;
+   	display: block;
     color: #000;
-    padding: 8px 0 8px 16px;
+   	padding: 10px 0 10px 20px;
     text-decoration: none;
 }
 
 #eventsAndPosts li a:hover{
-    background-color: #555;
+    background-color: #4CAF50;
     color: white;
+}
+
+#arrow{
+    float: right;
+    font-size: 20px;
+    padding-right: 15px;
 }
