@@ -56,9 +56,9 @@ router.get('/registration', (req, res) => {
 });
 
 // Profile page
-router.get('/profile/:spire', (req, res) => {
+router.get('/profile', (req, res) => {
   var user = req.session.user;
-  var spireid = req.params.spire;
+  var spireid = req.query.spireid;
 
   // The user session either doesn't exist, or it expired
   if (!sessionCheck(user, online, req, res)) {
@@ -74,7 +74,7 @@ router.get('/profile/:spire', (req, res) => {
       title: 'Profile',
       fname: user.fname,
       lname: user.lname,
-      userID: user.spireid,
+      spireid: user.spireid,
       data: data
     });
   });

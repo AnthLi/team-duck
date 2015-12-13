@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
-  	<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script>
-        $(document).ready(function() {
-          $("#update").click(function() {
-            $("#extend1").slideToggle("fast");
-          });
-        });
-      </script>
-    </script> -->
-
+  <head>
     <link type="text/css" rel="stylesheet" href="/css/profile.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
@@ -22,7 +12,7 @@
     </div>
   </div>
   <div id="cont">
-  	{{#each data}}
+    {{#each data}}
       <div id="tp">
 	     <div id="profilepicture">
 	     	<center><img id="studentImage" src="/imgs/users/{{this.spireid}}.jpg" alt="{{this.fname}}"></center>

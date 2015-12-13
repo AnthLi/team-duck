@@ -1,43 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link type="text/css" rel="stylesheet" href="/css/event.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <style>
-    #nav {
-      width: 100%;
-      position: relative;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #333;
-    }
-
-    #nav li {
-      float: left;
-    }
-
-    #nav li a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-    #nav li a:hover:not(.active) {
-      background-color: #111;
-      background-color: #2878d8;
-    }
-
-    #nav p1{
-      text-align: right;
-      right: 0;
-      float: right;
-      padding: 14px 16px;
-      font-size: 15px;
-      color: white;
-    }
-    </style>
   </head>
 
   <div id="page">
@@ -54,16 +19,14 @@
         <li><a href="/group/schedule?classid={{classid}}">+ Event</a></li>
         <p1>{{data.title}} - <i>{{data.name}}</i></p1>
       </ul> 
-      <ul>
-        <li><a href="/class/content?classid={{classid}}&eid={{eid}}"><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{this.title}}</b> - <i>{{this.name}} </i>scheduled for {{this.date}} <i id="arrow" class="fa fa-arrow-right"></i></a></li>
+      <ul id="events">
+        <li><a><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{data.title}}</b> scheduled for {{data.date}} <b><i id="nameRight">{{data.name}}</i></b></a></li>
+        <li><a><b>Description - </b><i>{{data.description}}</i></a></li>
+        <li><a><b>Where - </b><i>{{data.location}}</i></a></li>
+        <li id="yes"><a href="">Yes</a></li>
+        <li id="no"><a href="">No</a></li>
       </ul>
     </div>
   </div>
-  
-  {{data.title}} <br>
-  {{data.description}} <br>
-  {{data.location}} <br>
-  {{data.date}} <br>
-  {{data.classid}} <br>
-  {{data.eid}}
+
 </html>
