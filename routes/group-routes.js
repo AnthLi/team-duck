@@ -66,26 +66,27 @@ router.post('/createEvent', (req, res) => {
   });
 });
 
-router.post('/createPost/:classid', (req, res) => {
+router.post('/createPost', (req, res) => {
   var form = req.body;
-  var classid = req.params.classid;
+  var classid = req.query.classid;
   var user = req.session.user;
 
   if (!form.title || !form.content) {
-    req.flash('../class/'+ classid, 'Please fill out all fields');
+    req.flash('/class/'+ classid, 'Please fill out all fields');
     res.redirect('/class/'+classid);
     return;
   }
 
-  db.createPost(user.spireid, form.title, form.content, classid, (err, data) => {
+  db.createPost(user.spireid, form.title, form.content, classid, 
+    (err, data) => {
     if (err) {
-      console.log(err);
-      req.flash('/class/'+ classid, err);
-      res.redirect('/class/'+classid);
+      req.flash('/class?classid=' + classid, err);
+      res.redirect('/class?classid=' + classid);
       return;
     }
-    req.flash('/class/'+ classid, 'Your post has been created!');
-    res.redirect('/class/' + classid);
+
+    req.flash('/class?classid=' + classid, 'Your post has been created!');
+    res.redirect('/class?classid=' + classid);
   });
 });
 

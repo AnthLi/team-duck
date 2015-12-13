@@ -10,8 +10,7 @@ var router = express.Router(); // "Router" to separate particular points
 // Dynamic route for every class page based on the query string
 router.get('/', (req, res) => {
   var user = req.session.user;
-  var query = req.query; // Get the query string
-  var classid = req.query.classid; // Get the classid from the query string
+  var classid = req.query.classid;
   
   if (!user) {
     req.flash('login', 'Not logged in');
@@ -33,6 +32,7 @@ router.get('/', (req, res) => {
       return;
     }
 
+    // Get the events for the class
     db.getEventsByClass(classid, (err, events) => {
       if (err) {
         res.redirect('/index');
@@ -69,6 +69,7 @@ router.get('/content', (req, res) => {
     classid: classid,
     eid: eid
   });
+});
 
 // Delete a class based on the classid
 router.get('/delete', (req, res) => {
