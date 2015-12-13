@@ -29,14 +29,12 @@
     </div>
 
     {{#each online}}
-          <a id="onlineLink" href="/user/profile">
-            <div id="onlineUsers">
-              <img id="onlineImage" src="/imgs/users/{{this.uid}}.jpg"><br>
-              <center>{{fname}} {{lname}}</center>
-            </div>
-          </a>
-       <br>
+      <a id="onlineLink" href="/user/profile">
+        <div id="onlineUsers">
+          <img id="onlineImage" src="/imgs/users/{{this.spireid}}.jpg"><br>
+          <center>{{fname}} {{lname}}</center>
+        </div>
+      </a>
+      <br>
     {{/each}}
-
-
 </html>
