@@ -2,7 +2,7 @@
 <html>
   <!-- BEGIN HEAD -->
   <head>
-    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- BEGIN SCRIPT FOR ADD CLASS TOGGLE -->
@@ -71,7 +71,7 @@
     <!-- add class dropdown -->
     <div id="addclassdropdown">
        <center>
-         <div id="f1">
+         <div id="form">
             <form method="post" action="/user/addClass">
               <select name="values" onchange="showForm()">
                 <!-- BEGIN LIST -->
@@ -120,8 +120,9 @@
             <li>
               <a href="/class/{{this.classid}}"><i id="cap" class="icon fa fa-graduation-cap fa-5x"></i></a>
               <a href=""><i id="pencil" class="icon fa fa-pencil-square-o fa-5x"></i></a>
-              <a href="group/schedule"><i id="calendar" class="icon fa fa-calendar fa-5x"></i></a>
+              <a href="group/schedule/{{this.classid}}"><i id="calendar" class="icon fa fa-calendar fa-5x"></i></a>
               <a href="class/delete/{{this.classid}}"><i id="event" class="icon fa fa-trash fa-5x"></i></a>
+
             </li>
           </ul>
         </div>
