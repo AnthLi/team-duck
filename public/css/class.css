@@ -1,6 +1,6 @@
 #nav {
     width: 100%;
-    position: fixed;
+    position: relative;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -33,27 +33,49 @@
     color: white;
 }
 
-#eventsAndPosts {
-  list-style-type: none;
+#events {
+    list-style-type: none;
     margin: 0;
     padding: 0;
     width: 100%;
     background-color: #f1f1f1;
-    position: fixed;
-    margin-top: 50px;
+    position: relative;
     height: auto;
     overflow: auto;
 }
 
-#eventsAndPosts li a {
+#events li a {
     display: block;
     color: #000;
     padding: 10px 0 10px 20px;
     text-decoration: none;
 }
 
-#eventsAndPosts li a:hover{
+#events li a:hover{
     background-color: #4CAF50;
+    color: white;
+}
+
+#posts {
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    position: relative;
+    height: auto;
+    overflow: auto;
+}
+
+#posts li a {
+    display: block;
+    color: #000;
+    padding: 10px 0 10px 20px;
+    text-decoration: none;
+}
+
+#posts li a:hover{
+    background-color: #ff9400;
     color: white;
 }
 
