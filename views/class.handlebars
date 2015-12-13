@@ -84,15 +84,51 @@
       <div id="tp">
       <ul id="nav">
         <li><a href="">+ Post</a></li>
-        <li><a href="schedule/{{this.classid}}">+ Event</a></li>
+        <li><a href="/group/schedule/{{this.classid}}">+ Event</a></li>
         <li><a href="">Students</a></li>
         <li><a href="">Description</a></li>
         <p1>{{num}}</p1>
       </ul>
       <ul id="eventsAndPosts">
-      {{#each content}}
-        <li><a href="content">{{this}}</a></li>
-      {{/each}}   
+     <table >      
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Date
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Location
+        </th>
+        <th>
+          Creator
+        </th>
+      </tr>
+      {{#each events}}
+      <tr>
+        <td>
+          {{this.title}}
+        </td>
+        <td>
+          {{this.date}} 
+          <!-- Date too long, someone shorten it somehow -->
+        </td>
+        <td>
+          {{this.description}}
+        </td>
+        <td>
+          {{this.location}}
+        </td>
+        <td>
+          {{this.name}}
+        </td>
+      </tr>
+      {{/each}}
+      </table> 
       </ul> 
       </div>
   </div>

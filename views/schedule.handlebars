@@ -17,7 +17,7 @@
     <div id="cont">
       <div id="tp">
         <center><p>{{message}}</p></center>
-        <form method="post" id="schedule" action="/group/createEvent">
+        <form method="post" id="schedule" action="/group/createEvent/{{classid}}">
           <label><b>{{title}}</b></label><br>
           <input type="text" id="inputholder" name="title" placeholder="event title: Eg - 'Anyone want to meet up to work on Homework 4?'"><br>
           <input type="text" id="inputholder" name="description" placeholder="description: Eg - 'Work on Algorithms Homework 4 and discuss Graph Theory'"><br>
@@ -29,7 +29,7 @@
           <label id="basic">Post as:</label>
           <select name="anonymity">
             <option value="anonymous">Anonymous</option>
-            <option value={{user}}>{{fname}}</option>
+            <option value={{fname}}>{{fname}}</option>
           </select><br><br>
           <button id="createbutton">Create</button>
         </form>

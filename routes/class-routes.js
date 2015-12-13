@@ -5,40 +5,84 @@ var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
 
-////// Start GET Requests
+//// Start GET Requests
 
-router.get('/:classid', (req, res) => {
-  var classid = req.params.classid;
-  var user = req.session.user;
+router.get('/:class', (req, res) => {
+      var classid = req.params.class;
+      var user = req.session.user;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('/user/login');
-    return;
-  }
+      if (!user) {
+        req.flash('login', 'Not logged in');
+        res.redirect('/user/login');
+        return;
+      }
 
-  if (user && !online[user.uid]) {
-    delete req.session.user;
-    req.flash('login', 'Login expired');
-    res.redirect('/user/login');
-    return;
-  }
+      if (user && !online[user.uid]) {
+        delete req.session.user;
+        req.flash('login', 'Login expired');
+        res.redirect('/user/login');
+        return;
+      }
 
-  db.getClassDetails(classid, (err, data) => {
-    if (err) {
-      res.redirect('/index');
-      return;
-    }
+      db.getClassDetails(classid, (err, data) => {
+            if (err) {
+              console.log(err);
+              res.redirect('/index');
+              return;
+            }
+            db.getEventsByClass(classid, (err, events) => {
+                  if(err) {
+                    console.log(err);
+                    res.redirect('/index');
+                    return;
+                  }
+                  res.render('class', {
+                      fname: user.fname,
+                      lname: user.lname,
+                      userID: user.spireid,
+                      num: data[0].num,
+                      students: data[0].students,
+                      events : events
 
-    res.render('class', {
-      fname: user.fname,
-      lname: user.lname,
-      userID: user.spireid,
-      num: data[0].num,
-      students: data[0].students
+                  });
+            // res.render('class', { 
+            //   num: data[0].num,
+            //   students: data[0].students,
+
+            // });
+          });
     });
-  });
 });
+
+// router.get('/:class', (req, res) => {
+//   var classid = req.params.class;
+//   var user = req.session.user;
+
+//   if (!user) {
+//     req.flash('login', 'Not logged in');
+//     res.redirect('/user/login');
+//     return;
+//   }
+
+//   if (user && !online[user.uid]) {
+//     delete req.session.user;
+//     req.flash('login', 'Login expired');
+//     res.redirect('/user/login');
+//     return;
+//   }
+
+//   db.getClassDetails(classid, (err, data) => {
+//     if (err) {
+//       res.redirect('/index');
+//       return;
+//     }
+
+//     res.render('class', { 
+//       num: data[0].num,
+//       students: data[0].students
+//     });
+//   });
+// });
 
 router.get('/delete/:classid', (req, res) => {
   var classid = req.params.classid;
