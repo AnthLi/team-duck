@@ -37,6 +37,45 @@
       font-size: 15px;
       color: white;
     }
+
+    #events {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        position: relative;
+        height: auto;
+        overflow: auto;
+    }
+
+    #events li a {
+        display: block;
+        color: #000;
+        padding: 10px 0 10px 20px;
+        text-decoration: none;
+    }
+
+    #nameRight{
+        float: right;
+        padding-right: 15px;
+    }
+
+    #yes{
+      background-color: #1fd826;
+    }
+
+    #yes a:hover{
+      background-color: #6cf071;
+    }
+
+    #no{
+      background-color: #fc0000;
+    }
+
+    #no a:hover{
+      background-color: #ff4343;
+    }
     </style>
   </head>
 
@@ -54,16 +93,14 @@
         <li><a href="/group/schedule?classid={{classid}}">+ Event</a></li>
         <p1>{{data.title}} - <i>{{data.name}}</i></p1>
       </ul> 
-      <ul>
-        <li><a href="/class/content?classid={{classid}}&eid={{eid}}"><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{this.title}}</b> - <i>{{this.name}} </i>scheduled for {{this.date}} <i id="arrow" class="fa fa-arrow-right"></i></a></li>
+      <ul id="events">
+        <li><a><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{data.title}}</b> scheduled for {{data.date}} <b><i id="nameRight">{{data.name}}</i></b></a></li>
+        <li><a><b>Description - </b><i>{{data.description}}</i></a></li>
+        <li><a><b>Where - </b><i>{{data.location}}</i></a></li>
+        <li id="yes"><a href="">Yes</a></li>
+        <li id="no"><a href="">No</a></li>
       </ul>
     </div>
   </div>
-  
-  {{data.title}} <br>
-  {{data.description}} <br>
-  {{data.location}} <br>
-  {{data.date}} <br>
-  {{data.classid}} <br>
-  {{data.eid}}
+
 </html>
