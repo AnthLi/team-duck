@@ -50,6 +50,15 @@ router.get('/:class', (req, res) => {
   });
 });
 
+router.get('/content', (req, res) => {
+  var classid = req.session;
+
+  console.log(classid);
+
+  res.redirect(req.header('Referer'));
+});
+
+// Delete a class based on the classid
 router.get('/delete/:classid', (req, res) => {
   var classid = req.params.classid;
   var user = req.session.user;

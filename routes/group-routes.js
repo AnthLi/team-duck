@@ -66,10 +66,6 @@ router.post('/createEvent/:classid', (req, res) => {
   });
 });
 
-// router.post('/updateAttending', (req, res) => {
-//   db.updateAttending()
-// });
-
 ////// End POST Requests
 
 module.exports = router;
