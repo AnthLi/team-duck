@@ -1,4 +1,5 @@
 var express = require('express');
+var multer = require('multer');
 
 var db = require('../lib/database.js'); // Database library
 var online = require('../lib/online').online; // List of online users
@@ -116,6 +117,19 @@ router.post('/auth', (req, res) => {
   });
 });
 
+
+var uploading = (multer({
+  dest: './public/imgs/users/',
+  limits: {files: 1}
+}));
+
+// Upload a picture to the file system
+router.post('/upload', uploading.single('profile'), (req, res) => {
+  console.log(req.body);
+  console.log(req.files);
+  res.redirect('registration');
+});
+
 // Account creation
 router.post('/register', (req, res) => {
   var form = req.body;
@@ -170,11 +184,6 @@ router.post('/register', (req, res) => {
     req.flash('registration', 'This email has been banned!');
     res.redirect('registration');
   });
-});
-
-// Upload a picture to the file system
-router.post('/upload', (req, res) => {
-  
 });
 
 // Update the about section for a specific user
