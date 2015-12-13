@@ -1,6 +1,7 @@
 var express = require('express');
 var db = require('../lib/database.js'); // Database library
 var online = require('../lib/online').online; // List of online users
+var sessionCheck = require('../lib/sessionCheck.js') // Session checking library
 var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
@@ -12,16 +13,8 @@ router.get('/', (req, res) => {
   var user = req.session.user;
   var classid = req.query.classid;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('/user/login');
-    return;
-  }
-
-  if (user && !online[user.uid]) {
-    delete req.session.user;
-    req.flash('login', 'Login expired');
-    res.redirect('/user/login');
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
     return;
   }
 
@@ -55,19 +48,24 @@ router.get('/', (req, res) => {
 
 // Get the details for a specific event
 router.get('/content', (req, res) => {
+  var user = req.session.user;
   var classid = req.query.classid;
   var eid = req.query.eid;
+
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
 
   db.getEventDetails(classid, eid, (err, data) => {
     if (err) {
       res.redirect('/');
       return;
     }
-  });
 
-  res.render('event', {
-    classid: classid,
-    eid: eid
+    res.render('event', {
+      data: data
+    });  
   });
 });
 
@@ -76,16 +74,8 @@ router.get('/delete', (req, res) => {
   var classid = req.query.classid;
   var user = req.session.user;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('/user/login');
-    return;
-  }
-
-  if (user && !online[user.uid]) {
-    delete req.session.user;
-    req.flash('login', 'Login expired');
-    res.redirect('/user/login');
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
     return;
   }
 
