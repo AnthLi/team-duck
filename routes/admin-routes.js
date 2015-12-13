@@ -116,6 +116,7 @@ router.get('/classes', (req, res) => {
       return;
     }
 
+    
     res.render('classes', {
       fname: user.fname,
       lname: user.lname,
