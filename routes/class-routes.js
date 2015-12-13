@@ -7,7 +7,7 @@ var router = express.Router(); // "Router" to separate particular points
 
 //// Start GET Requests
 
-// Dynamic route for every class page
+// Dynamic route for every class page based on the query string
 router.get('/', (req, res) => {
   var user = req.session.user;
   var query = req.query; // Get the query string
@@ -26,6 +26,7 @@ router.get('/', (req, res) => {
     return;
   }
 
+  // Get the details about the class
   db.getClassDetails(classid, (err, data) => {
     if (err) {
       res.redirect('/index');
@@ -56,6 +57,13 @@ router.get('/', (req, res) => {
 router.get('/content', (req, res) => {
   var classid = req.query.classid;
   var eid = req.query.eid;
+
+  db.getEventDetails(classid, eid, (err, data) => {
+    if (err) {
+      res.redirect('/');
+      return;
+    }
+  });
 
   res.render('event', {
     classid: classid,
