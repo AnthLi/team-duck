@@ -69,13 +69,14 @@ router.get('/:classid', (req, res) => {
                       posts: posts
                   });
                   })
-            // res.render('class', { 
+            // res.render('class', {
             //   num: data[0].num,
             //   students: data[0].students,
 
             // });
           });
      });
+   });
 
 
 // Dynamic route for every class page
@@ -83,7 +84,7 @@ router.get('/', (req, res) => {
   var user = req.session.user;
   var query = req.query; // Get the query string
   var classid = req.query.classid; // Get the classid from the query string
-  
+
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
@@ -132,6 +133,7 @@ router.get('/content', (req, res) => {
     classid: classid,
     eid: eid
   });
+});
 
 // Delete a class based on the classid
 router.get('/delete', (req, res) => {
