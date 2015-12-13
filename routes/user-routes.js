@@ -56,15 +56,16 @@ router.get('/registration', (req, res) => {
 });
 
 // Profile page
-router.get('/profile', (req, res) => {
+router.get('/profile/:spire', (req, res) => {
   var user = req.session.user;
+  var spireid = req.params.spire;
 
   // The user session either doesn't exist, or it expired
   if (!sessionCheck(user, online, req, res)) {
     return;
   }
 
-  db.getProfile(user.spireid, (err, data) => {
+  db.getProfile(spireid, (err, data) => {
     if (err) {
       return;
     }

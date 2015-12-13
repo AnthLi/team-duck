@@ -1,10 +1,11 @@
 #profilepicture{
+  padding-top: 30px;
   margin: 0 auto;
 }
 
 #studentImage{
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
 }
 
 #details{
