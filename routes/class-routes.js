@@ -42,7 +42,8 @@ router.get('/:class', (req, res) => {
               userID: user.spireid,
               num: data[0].num,
               students: data[0].students,
-              events : events
+              events : events,
+              classid : classid
 
           });
      });

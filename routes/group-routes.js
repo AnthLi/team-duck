@@ -45,22 +45,24 @@ router.post('/createEvent/:classid', (req, res) => {
   var form = req.body;
   var classid = req.params.classid;
   var user = req.session.user;
+
   if (!form.anonymity | !form.title | !form.description | !form.location | 
     !form.date, !form.time) {
-    req.flash('../schedule/'+ classid, 'Please fill out all fields');
+    req.flash('schedule/' + classid, 'Please fill out all fields');
     res.redirect('schedule');
     return;
   }
+
   db.createEvent(form.anonymity, form.title, form.description, form.location, 
     form.date + ' ' + form.time, classid, user.spireid, (err, data) => {
     if (err) {
-      req.flash('../schedule/'+ classid, err);
+      req.flash('schedule/'+ classid, err);
       res.redirect('schedule')
       return;
     }
-    //think we should redirect to the page where all the events are
-    req.flash('../../class/'+ classid, 'Your event has been created!');
-    res.redirect('../../class/' + classid);
+    
+    req.flash('/class/'+ classid, 'Your event has been created!');
+    res.redirect('/class/' + classid);
   });
 });
 
