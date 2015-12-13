@@ -132,6 +132,7 @@ app.get('/team', (req, res) => {
   });
 });
 
+// Individual dev team pages
 app.get('/team/:fname', (req, res) => {
   var user = req.session.user;
   var fname = req.params.fname;

@@ -161,6 +161,7 @@ router.post('/register', (req, res) => {
   });
 });
 
+// Update the about section for a specific user
 router.post('/update', (req, res) => {
   db.updateAbout(req.body.about, user.spireid, (err, data) => {
     if (err) {
@@ -173,7 +174,6 @@ router.post('/update', (req, res) => {
     res.redirect('/profle');
   });
 });
-
 
 // Adds a user class to 'students' table in database
 router.post('/addClass', (req,res) => {
