@@ -104,8 +104,7 @@
   <!-- end add class dropdown -->
 
   <!-- BEGIN CONTENT -->
-  <div class="content"></div>
-    <div id="cont">
+    
       <div id="tp">
         {{#if classes.length}}
         <!-- LOOP BEGINS -->
@@ -135,7 +134,7 @@
             <li>
               <a href="/class?classid={{this.classid}}"><i id="cap" class="icon fa fa-graduation-cap fa-5x"></i></a>
               <a href="/group/createPost?classid={{this.classid}}"><i id="pencil" class="icon fa fa-pencil-square-o fa-5x"></i></a>
-              <a href="/class?classid={{this.classid}}"><i id="calendar" class="icon fa fa-calendar fa-5x"></i></a>
+              <a href="/group/createEvent?classid={{this.classid}}"><i id="calendar" class="icon fa fa-calendar fa-5x"></i></a>
               <a href="/class/delete?classid={{this.classid}}"><i id="event" class="icon fa fa-trash fa-5x"></i></a>
 
             </li>
@@ -146,8 +145,6 @@
         <!-- LOOP ENDS -->
         {{/if}}
       </div>
-    </div>
-    <!-- END CONTENT -->
   </div>
 
 </html>
