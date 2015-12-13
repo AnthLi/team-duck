@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
         res.render('class', {
           fname: user.fname,
           lname: user.lname,
-          userID: user.spireid,
+          spireid: user.spireid,
           num: data[0].num,
           students: data[0].students,
           eid: data[0].eid,

@@ -66,7 +66,7 @@ app.get('/index', (req, res) => {
         res.render('index', {
           fname: user.fname,
           lname: user.lname,
-          userID: user.spireid,
+          spireid: user.spireid,
           classes: classesData,
           classList: subjectsData
         });
@@ -88,7 +88,7 @@ app.get('/about', (req, res) => {
     res.render('about', {
       fname: user.fname,
       lname: user.lname,
-      userID: user.spireid
+      spireid: user.spireid
     });
   }
   else{
@@ -114,7 +114,7 @@ app.get('/team', (req, res) => {
         res.render('member', {
           fname: user.fname,
           lname: user.lname,
-          userID: user.spireid,
+          spireid: user.spireid,
           title: 'Meet the team',
           member: data
         });
@@ -140,7 +140,7 @@ app.get('/team', (req, res) => {
       res.render('team', {
         fname: user.fname,
         lname: user.lname,
-        userID: user.spireid,
+        spireid: user.spireid,
         title: 'Meet the team',
         members: data
       });

@@ -24,7 +24,7 @@ router.get('/createEvent', (req,res) => {
     fname: user.fname,
     lname: user.lname,
     classid : classid,
-    userID: user.spireid,
+    spireid: user.spireid,
     message: req.flash('createEvent') || ''
   });
 });
@@ -43,7 +43,7 @@ router.get('/createPost', (req,res) => {
     title: 'Submit a Post',
     fname: user.fname,
     lname: user.lname,
-    userID: user.spireid,
+    spireid: user.spireid,
     classid : classid,
     message: req.flash('createPost') || ''
   });
