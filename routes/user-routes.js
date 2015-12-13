@@ -2,7 +2,9 @@ var express = require('express');
 
 var db = require('../lib/database.js'); // Database library
 var online = require('../lib/online').online; // List of online users
+var sessionCheck = require('../lib/sessionCheck.js') // Session checking library
 var user = require('../lib/user.js'); // User library
+
 
 var router = express.Router(); // "Router" to separate particular points
 
@@ -27,9 +29,8 @@ router.get('/login', (req, res) => {
 router.get('/logout', (req, res) => {
   var user = req.session.user;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('login');
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
     return;
   }
 
@@ -55,23 +56,16 @@ router.get('/registration', (req, res) => {
 });
 
 // Profile page
-router.get('/profile', (req, res) => {
+router.get('/profile/:spire', (req, res) => {
   var user = req.session.user;
+  var spireid = req.params.spire;
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('login');
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
     return;
   }
 
-  if (user && !online[user.uid]) {
-    delete req.session.user;
-    req.flash('login', 'Login expired');
-    res.redirect('login');
-    return;
-  }
-
-  db.getProfile(user.spireid, (err, data) => {
+  db.getProfile(spireid, (err, data) => {
     if (err) {
       return;
     }

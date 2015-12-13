@@ -106,7 +106,9 @@
             <div id="students">
             {{#each students}}
               <div id="studentBody">  
-                <img id="studentImage" src="imgs/users/{{this}}.jpg" alt="{{this}}">
+                <a href="/user/profile/{{this}}">
+                  <img id="studentImage" src="imgs/users/{{this}}.jpg" alt="{{this}}">
+                </a>
               </div>
               {{/each}}
             </div>
