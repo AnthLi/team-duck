@@ -1,8 +1,4 @@
-#topbar{
-  background-color: #458de2;
-  height: 25px;
-  width: 100%;
-}
+
 #class0{
   background-color: #2878d8;
   height: 130px;
@@ -210,4 +206,38 @@
 
 #addclassdropdown{
   display: none;
+}
+
+@media (max-width:  827px){
+  #students{
+    display: none;
+  }
+
+  #dropdown{
+    float: right;
+    margin-right: 5%;
+  }
+
+  #classname{
+    width: 0%;
+  }
+
+  #classname p1{
+    text-align: center;
+    width: 100%;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 10%;
+  }
+
+  #cap, #pencil, #calendar, #event{
+    font-size: 350%;
+    margin-top: 10%;
+  }
+
+  #cap{
+    margin-left: 8%;
+  }
+
+
 }
