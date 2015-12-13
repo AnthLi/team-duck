@@ -208,6 +208,36 @@
   display: none;
 }
 
+@media (max-width:  827px){
+  #students{
+    display: none;
+  }
+
+  #dropdown{
+    float: right;
+    margin-right: 5%;
+  }
+
+  #classname{
+    width: 0%;
+  }
+
+  #classname p1{
+    text-align: center;
+    width: 100%;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 10%;
+  }
+
+  #cap, #pencil, #calendar, #event{
+    font-size: 350%;
+    margin-top: 10%;
+  }
+
+  #cap{
+    margin-left: 8%;
+  }
 
 
-
+}
