@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// Get the details for a specific event
+// Get the details for a specific event in the class
 router.get('/content', (req, res) => {
   var user = req.session.user;
   var classid = req.query.classid;
@@ -59,14 +59,35 @@ router.get('/content', (req, res) => {
 
   db.getEventDetails(classid, eid, (err, data) => {
     if (err) {
-      res.redirect('/');
+      res.redirect(req.header('Referer'));
       return;
     }
 
-    console.log(data);
     res.render('event', {
       data: data
     });  
+  });
+});
+
+// Retrieve all the students in the class
+router.get('/students', (req, res) => {
+  var user = req.session.user;
+  var classid = req.query.classid;
+
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
+
+  db.getStudentsInClass(classid, (err, data) => {
+    if (err) {
+      res.redirect(req.header('Referer'));
+      return;
+    }
+
+    res.render('students', {
+      data: data.students
+    });
   });
 });
 
