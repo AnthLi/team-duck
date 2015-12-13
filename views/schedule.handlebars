@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <link rel="stylesheet" type="text/css" href="../css/schedule.css" />
+    <link rel="stylesheet" type="text/css" href="../css/class.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
 
@@ -12,11 +13,13 @@
     </div>
   </div>
   
-  <div class="content"></div>
-    <div id="cont">
-      <div id="tp">
+  <div class="content"></div> <!-- OPEN CONTENT -->
+    <div id="cont"> <!-- OPEN CONT -->
+      <div id="tp"> <!-- OPEN TP -->
+
         <center><p>{{message}}</p></center>
-        <form method="post" id="schedule" action="/group/createEvent/{{classid}}">
+
+        <form method="post" id="schedule" action="/group/createEvent/{{classid}}"> <!-- OPEN FORM -->
           <label><b>{{title}}</b></label><br>
           <input type="text" id="inputholder" name="title" placeholder="event title: Eg - 'Anyone want to meet up to work on Homework 4?'"><br>
           <input type="text" id="inputholder" name="description" placeholder="description: Eg - 'Work on Algorithms Homework 4 and discuss Graph Theory'"><br>
@@ -27,18 +30,14 @@
           <input type="time" name="time" required><br>
           <label id="basic">Post as:</label>
           <select name="anonymity">
-            <option value="anonymous">Anonymous</option>
-            <option value={{fname}}>{{fname}}</option>
+            <option value="Anonymous">Anonymous</option>
+            <option value="{{fname}}">{{fname}}</option>
           </select><br><br>
           <button id="createbutton">Create</button>
-        </form>
+        </form> <!-- CLOSE FORM -->
 
-        <center>
-          {{#each event}}
-            
-          {{/each}}
-        </center>
-      </div>
-    </div>
-  </div>
+      </div> <!-- CLOSE TP -->
+    </div> <!-- CLOSE CONT -->
+  </div> <!-- CLOSE CONTENT -->
+
 </html>
