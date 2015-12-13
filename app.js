@@ -106,15 +106,43 @@ app.get('/about', (req, res) => {
 // Team page
 app.get('/team', (req, res) => {
   var user = req.session.user;
+  var fname = req.query.dev;
 
+  // If the query string exists with the dev's first name, render their page
+  if (fname) {
+    db.lookupMember(fname, (err, data) => {
+      if (err) {
+        res.redirect('/team')
+        return;
+      }
+
+      // Pass drawer data if there is a user session
+      if (user) {
+        res.render('member', {
+          fname: user.fname,
+          lname: user.lname,
+          userID: user.spireid,
+          title: 'Meet the team',
+          member: data
+        });
+      } else {
+        res.render('member', {
+          title: data.fname,
+          member: data
+        });
+      }
+    });
+
+    return;
+  }
+
+  // Render all of the dev team
   db.team((err, data) => {
     if (err) {
       return;
     }
 
-    // If the user is logged in, render fname, lname, and profile pic
-    // in the drawer, along with the page data
-    // Else, just the page data
+    // Pass drawer data if there is a user session
     if (user) {
       res.render('team', {
         fname: user.fname,
@@ -127,36 +155,6 @@ app.get('/team', (req, res) => {
       res.render('team', {
         title: 'Meet the team',
         members: data
-      });
-    }
-  });
-});
-
-app.get('/team/:fname', (req, res) => {
-  var user = req.session.user;
-  var fname = req.params.fname;
-
-  db.lookupMember(fname, (err, data) => {
-    if (err) {
-      res.redirect('/team')
-      return;
-    }
-
-    // If the user is logged in, render fname, lname, and profile pic
-    // in the drawer, along with the page data
-    // Else, just the page data
-    if (user) {
-      res.render('member', {
-        fname: user.fname,
-        lname: user.lname,
-        userID: user.spireid,
-        title: 'Meet the team',
-        member: data
-      });
-    } else {
-      res.render('member', {
-        title: data.fname,
-        member: data
       });
     }
   });

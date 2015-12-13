@@ -141,26 +141,47 @@ router.post('/register', (req, res) => {
     return;
   }
 
-  db.addUser(user(form.major, form.year, form.fname, form.lname, form.email,
-    form.pass, form.dob, form.spireid), (err, data) => {
+  // Check if the user is banned
+  db.isBanned(form.email, (err, data) => {
     if (err) {
       req.flash('registration', err);
       res.redirect('registration');
       return;
     }
 
-    // The user was found in the database, no need to add them again  
-    if (data.rowCount === 0) {
-      req.flash('registration', 'An account for this email already exists!');
-      res.redirect('registration');
+    // The email was not in the blacklist; available to complete registration
+    if (!data) {
+      // Add the user to the database
+      db.addUser(user(form.major, form.year, form.fname, form.lname, form.email,
+        form.pass, form.dob, form.spireid), (err, data) => {
+        if (err) {
+          req.flash('registration', err);
+          res.redirect('registration');
+          return;
+        }
+
+        // The user was found in the database, no need to add them again  
+        if (data.rowCount === 0) {
+          req.flash('registration', 'This email is already registered!');
+          res.redirect('registration');
+          return;
+        }
+
+        req.flash('login', 'Your account has been created!');
+        res.redirect('login');
+      });
+
       return;
     }
 
-    req.flash('login', 'Your account has been created!');
-    res.redirect('login');
+    req.flash('registration', 'This email has been banned!');
+    res.redirect('registration');
   });
+
+  
 });
 
+// Update the about section for a specific user
 router.post('/update', (req, res) => {
   db.updateAbout(req.body.about, user.spireid, (err, data) => {
     if (err) {
@@ -173,7 +194,6 @@ router.post('/update', (req, res) => {
     res.redirect('/profle');
   });
 });
-
 
 // Adds a user class to 'students' table in database
 router.post('/addClass', (req,res) => {

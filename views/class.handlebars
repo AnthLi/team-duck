@@ -23,7 +23,7 @@
     <div id="tp">
       <ul id="nav">
         <li><a id="postButt">+ Post</a></li>
-        <li><a href="/group/schedule/{{classID}}">+ Event</a></li>
+        <li><a href="/group/schedule?classid={{classid}}">+ Event</a></li>
         <li><a href="">Students</a></li>
         <li><a href="">Description</a></li>
         <p1>{{num}}</p1>
@@ -42,7 +42,7 @@
 
       <ul id="eventsAndPosts">
         {{#each events}}
-           <li><a href="content"><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{this.title}}</b> - <i>{{this.name}} </i>scheduled for {{this.date}} <i id="arrow" class="fa fa-arrow-right"></i></a></li>
+           <li><a href="/class/content?classid={{classid}}&eid={{eid}}"><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{this.title}}</b> - <i>{{this.name}} </i>scheduled for {{this.date}} <i id="arrow" class="fa fa-arrow-right"></i></a></li>
         {{/each}}   
       </ul> 
 

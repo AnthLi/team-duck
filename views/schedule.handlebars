@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <link rel="stylesheet" type="text/css" href="/css/schedule.css" />
+    <link rel="stylesheet" type="text/css" href="/css/schedule.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
 
@@ -19,7 +19,7 @@
       <center><p>{{message}}</p></center>
 
       <!-- OPEN FORM -->
-      <form method="post" id="schedule" action="/group/createEvent/{{classid}}"> 
+      <form method="post" id="schedule" action="/group/createEvent?classid={{classid}}"> 
         <label><b>{{title}}</b></label><br>
         <input type="text" id="inputholder" name="title" placeholder="event title: Eg - 'Anyone want to meet up to work on Homework 4?'"><br>
         <input type="text" id="inputholder" name="description" placeholder="description: Eg - 'Work on Algorithms Homework 4 and discuss Graph Theory'"><br>
