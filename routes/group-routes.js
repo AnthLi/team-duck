@@ -8,11 +8,11 @@ var router = express.Router(); // "Router" to separate particular points
 
 ////// Start GET Requests
 
-// Schedule page
-//router.get('/schedule', (req, res) => {
-router.get('/schedule/:classid', (req,res) => { 
+// Event scheduling page
+router.get('/schedule', (req,res) => { 
   var user = req.session.user;
-  var classid = req.params.classid;
+  var classid = req.query.classid;
+
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
@@ -41,9 +41,9 @@ router.get('/schedule/:classid', (req,res) => {
 ////// Start POST Requests
 
 // Event creation
-router.post('/createEvent/:classid', (req, res) => {
+router.post('/createEvent', (req, res) => {
   var form = req.body;
-  var classid = req.params.classid;
+  var classid = req.query.classid;
   var user = req.session.user;
 
   if (!form.anonymity | !form.title | !form.description | !form.location | 
@@ -56,19 +56,15 @@ router.post('/createEvent/:classid', (req, res) => {
   db.createEvent(form.anonymity, form.title, form.description, form.location, 
     form.date + ' ' + form.time, classid, user.spireid, (err, data) => {
     if (err) {
-      req.flash('schedule/'+ classid, err);
-      res.redirect('schedule')
+      req.flash('schedule?classid='+ classid, err);
+      res.redirect('schedule');
       return;
     }
     
-    req.flash('/class/'+ classid, 'Your event has been created!');
-    res.redirect('/class/' + classid);
+    req.flash('/class?classid=' + classid, 'Your event has been created!');
+    res.redirect('/class?classid=' + classid);
   });
 });
-
-// router.post('/updateAttending', (req, res) => {
-//   db.updateAttending()
-// });
 
 ////// End POST Requests
 
