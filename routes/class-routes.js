@@ -45,12 +45,7 @@ router.get('/:class', (req, res) => {
               events : events
 
           });
-    // res.render('class', { 
-    //   num: data[0].num,
-    //   students: data[0].students,
-
-    // });
-    });
+     });
   });
 });
 
