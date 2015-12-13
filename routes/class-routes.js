@@ -11,7 +11,7 @@ var router = express.Router(); // "Router" to separate particular points
 router.get('/', (req, res) => {
   var user = req.session.user;
   var classid = req.query.classid;
-  
+
   if (!user) {
     req.flash('login', 'Not logged in');
     res.redirect('/user/login');
