@@ -6,6 +6,77 @@ var user = require('../lib/user.js'); // User library
 var router = express.Router(); // "Router" to separate particular points
 
 //// Start GET Requests
+router.get('/:classid', (req, res) => {
+      var classid = req.params.classid;
+      var user = req.session.user;
+
+      if (!user) {
+        req.flash('login', 'Not logged in');
+        res.redirect('/user/login');
+        return;
+      }
+
+      if (user && !online[user.uid]) {
+        delete req.session.user;
+        req.flash('login', 'Login expired');
+        res.redirect('/user/login');
+        return;
+      }
+
+      db.getClassDetails(classid, (err, data) => {
+            if (err) {
+
+              req.flash('index', err);
+              res.redirect('/index');
+              return;
+            }
+            db.getEventsByClass(classid, (err, events) => {
+                  if(err) {
+                     req.flash('index', err);
+                    res.redirect('/index');
+                    return;
+                  }
+
+                  db.getPostsByClass(classid, (err, posts) => {
+
+                      if(err) {
+                        console.log(err);
+                        req.flash('class', err);
+                        res.render('class', {
+                          // classID: classid,
+                          fname: user.fname,
+                          lname: user.lname,
+                          userID: user.spireid,
+                          num: data[0].num,
+                          students: data[0].students,
+                          events : events,
+                        });
+                        return;
+                      }
+                      // console.log(posts);
+                      // console.log(data[0].students[0]);
+                      // console.log(data[0].num);
+                      // console.log(events[0]);
+
+                      res.render('class', {
+                      classID: classid,
+                      fname: user.fname,
+                      lname: user.lname,
+                      userID: user.spireid,
+                      num: data[0].num,
+                      students: data[0].students,
+                      events : events,
+                      posts: posts
+                  });
+                  })
+            // res.render('class', { 
+            //   num: data[0].num,
+            //   students: data[0].students,
+
+            // });
+          });
+     });
+
 
 // Dynamic route for every class page based on the query string
 router.get('/', (req, res) => {
@@ -69,7 +140,6 @@ router.get('/content', (req, res) => {
     classid: classid,
     eid: eid
   });
-});
 
 // Delete a class based on the classid
 router.get('/delete', (req, res) => {

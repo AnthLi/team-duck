@@ -59,7 +59,6 @@ color: white;
 }
 =======
     width: 100%;
-    position: fixed;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -98,7 +97,6 @@ color: white;
    	padding: 0;
    	width: 100%;
    	background-color: #f1f1f1;
-   	position: fixed;
     margin-top: 50px;
     height: auto;
     overflow: auto;
@@ -121,3 +119,50 @@ color: white;
     font-size: 20px;
     padding-right: 15px;
 }
+
+#titleInput{
+    width: 300px;
+      height: 25px;
+      font-size: 15px;
+    
+  }
+
+  #contentInput{
+    width: 500px;
+      height: 200px;
+      vertical-align: top;
+      font-size: 16px;
+  }
+
+    form{
+    text-align: center;
+    }
+
+    .title{
+        font-size: 3em;
+    }
+
+    .name{
+
+    }
+
+     .content{
+        background-color: #d9d9d9;
+        color: black;
+    }
+
+    .title, .name {
+        background-color: #2878d8;
+        color: white;
+    }
+
+    .title, .name, .content{
+        width: 80%;
+        text-align: center;
+        margin-left: 10%;
+    }
+
+    #postForm{
+        display: none;
+    }
+
