@@ -62,3 +62,50 @@
     font-size: 20px;
     padding-right: 15px;
 }
+
+#titleInput{
+    width: 300px;
+      height: 25px;
+      font-size: 15px;
+    
+  }
+
+  #contentInput{
+    width: 500px;
+      height: 200px;
+      vertical-align: top;
+      font-size: 16px;
+  }
+
+    form{
+    text-align: center;
+    }
+
+    .title{
+        font-size: 3em;
+    }
+
+    .name{
+
+    }
+
+     .content{
+        background-color: #d9d9d9;
+        color: black;
+    }
+
+    .title, .name {
+        background-color: #2878d8;
+        color: white;
+    }
+
+    .title, .name, .content{
+        width: 80%;
+        text-align: center;
+        margin-left: 10%;
+    }
+
+    #postForm{
+        display: none;
+    }
+
