@@ -3,13 +3,6 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/css/class.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script>
-    $(document).ready(function() {
-      $("#postButt").click(function() {
-        $("#postForm").slideToggle("slow");
-      });
-    });
-    </script>
   </head>
 
   <div id="page">
@@ -22,41 +15,17 @@
   <div id="cont">
     <div id="tp">
       <ul id="nav">
-        <li><a id="postButt">+ Post</a></li>
-        <li><a href="/group/schedule?classid={{classid}}">+ Event</a></li>
+        <li><a href="">+ Post</a></li>
+        <li><a href="/group/schedule/{{classid}}">+ Event</a></li>
         <li><a href="">Students</a></li>
         <li><a href="">Description</a></li>
         <p1>{{num}}</p1>
       </ul>
-
-      <br>
-      <div id="postForm">
-      <form method="post" action="/group/createPost/{{classID}}">
-
-        <input id="titleInput" type="text" name="title" placeholder="Title: What is your post about?"><br>
-        <textarea id="contentInput" type="text" name="content" placeholder="Content: What do you want to say to your classmates?"></textarea><br>
-        <button id="forButton">Submit</button>
-
-      </form>
-      </div>
-
       <ul id="eventsAndPosts">
         {{#each events}}
-           <li><a href="/class/content?classid={{classid}}&eid={{eid}}"><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{this.title}}</b> - <i>{{this.name}} </i>scheduled for {{this.date}} <i id="arrow" class="fa fa-arrow-right"></i></a></li>
+           <li><a href="content"><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{this.title}}</b> - <i>{{this.name}} </i>scheduled for {{this.date}} <i id="arrow" class="fa fa-arrow-right"></i></a></li>
         {{/each}}   
       </ul> 
-
-       {{#each posts}}
-          <br>
-
-          <div class="title"><br>{{this.pid}} </div>
-          <div class="name"><br>by {{this.uid}} at {{this.pdate}}</div>
-         
-          <div class="content"><br>{{this.pcontent}}<br><br></div>
-       
-      {{/each}}
-
-      
     </div>
   </div>
 </html>
