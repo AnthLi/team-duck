@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/css/schedule.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/group.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
 
@@ -15,14 +15,13 @@
   <div class="content"></div>
     <div id="cont">
       <div id="tp">
-        <form method="post" id="schedule" action="/class/createPost?classid={{classid}}"> 
+        <center><p>{{message}}</p></center>
+
+        <!-- OPEN FORM -->
+        <form method="post" id="schedule" action="/group/createPost?classid={{classid}}"> 
           <label><b>{{title}}</b></label><br>
           <input type="text" id="inputholder" name="title" placeholder="post title: Eg - 'Does anyone know if we have class tomorrow?'"><br>
-          <input type="text" id="inputholder" name="description" placeholder="description: Eg - 'I spoke to Tim and he told me he's going to be out of town for most of this week. He hasn't confirmed that class is cancelled tomorrow though. Any updates?"><br>
-          <label id="basic">Date:</label>
-          <input type="date" name="date" required><br>
-          <label id="basic">Time:</label>
-          <input type="time" name="time" required><br>
+          <input type="text" id="inputholder" name="content" placeholder="content: Eg - 'I spoke to Tim and he told me he's going to be out of town for most of this week. He hasn't confirmed that class is cancelled tomorrow though. Any updates?"><br>
           <label id="basic">Post as:</label>
           <select name="anonymity">
             <option value="Anonymous">Anonymous</option>
