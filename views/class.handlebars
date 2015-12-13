@@ -3,68 +3,13 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../css/class.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-    <style>
-    #nav {
-        width: 100%;
-        position: fixed;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-    }
-
-    #nav li {
-        float: left;
-    }
-
-    #nav li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-    #nav li a:hover:not(.active) {
-        background-color: #111;
-        background-color: #2878d8;
-    }
-
-    #nav p1{
-      text-align: right;
-      right: 0;
-      float: right;
-      padding: 14px 16px;
-      font-size: 15px;
-      color: white;
-    }
-
-    #eventsAndPosts {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        width: 25%;
-        background-color: #f1f1f1;
-        position: fixed;
-        margin-top: 50px;
-        height: auto;
-        overflow: auto;
-    }
-
-    #eventsAndPosts li a {
-        display: block;
-        color: #000;
-        padding: 8px 0 8px 16px;
-        text-decoration: none;
-    }
-
-    #eventsAndPosts li a:hover{
-        background-color: #555;
-        color: white;
-    }
-    </style>
+    <script>
+    $(document).ready(function() {
+      $("#postButt").click(function() {
+        $("#postForm").slideToggle("slow");
+      });
+    });
+    </script>
 
   </head>
 
@@ -83,12 +28,34 @@
   <div id="cont">
       <div id="tp">
       <ul id="nav">
-        <li><a href="">+ Post</a></li>
-        <li><a href="schedule/{{this.classid}}">+ Event</a></li>
+        <li><a id="postButt">+ Post</a></li>
+        <li><a href="schedule/{{classID}}">+ Event</a></li>
         <li><a href="">Students</a></li>
         <li><a href="">Description</a></li>
         <p1>{{num}}</p1>
       </ul>
+
+      <br>
+      <div id="postForm">
+      <form method="post" action="/group/createPost/{{classID}}">
+
+        <input id="titleInput" type="text" name="title" placeholder="Title: What is your post about?"><br>
+        <textarea id="contentInput" type="text" name="content" placeholder="Content: What do you want to say to your classmates?"></textarea><br>
+        <button id="forButton">Submit</button>
+
+      </form>
+      </div>
+
+      {{#each posts}}
+          <br>
+
+          <div class="title"><br>{{this.pid}} </div>
+          <div class="name"><br>by {{this.uid}} at {{this.pdate}}</div>
+         
+          <div class="content"><br>{{this.pcontent}}<br><br></div>
+       
+      {{/each}}
+
       <ul id="eventsAndPosts">
       <table >      
       <tr>

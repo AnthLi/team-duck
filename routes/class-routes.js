@@ -37,18 +37,39 @@ router.get('/:classid', (req, res) => {
                     res.redirect('/index');
                     return;
                   }
-                  console.log(data[0].students[0]);
-                  console.log(data[0].num);
-                  console.log(events[0]);
-                  res.render('class', {
+
+                  db.getPostsByClass(classid, (err, posts) => {
+
+                      if(err) {
+                        console.log(err);
+                        req.flash('class', err);
+                        res.render('class', {
+                          // classID: classid,
+                          fname: user.fname,
+                          lname: user.lname,
+                          userID: user.spireid,
+                          num: data[0].num,
+                          students: data[0].students,
+                          events : events,
+                        });
+                        return;
+                      }
+                      // console.log(posts);
+                      // console.log(data[0].students[0]);
+                      // console.log(data[0].num);
+                      // console.log(events[0]);
+
+                      res.render('class', {
+                      classID: classid,
                       fname: user.fname,
                       lname: user.lname,
                       userID: user.spireid,
                       num: data[0].num,
                       students: data[0].students,
-                      events : events
-
+                      events : events,
+                      posts: posts
                   });
+                  })
             // res.render('class', { 
             //   num: data[0].num,
             //   students: data[0].students,
