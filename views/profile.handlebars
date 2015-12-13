@@ -5,28 +5,47 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
 
+  <!-- NAVBAR -->
   <div id="page">
     <div class="header">
       <a href="#menu"></a>
         Zembo
     </div>
   </div>
-  <div id="cont">
+  <!-- CLOSE NAV -->
+
+  <!-- START BODY -->
+  <div id="tp">
     {{#each data}}
-      <div id="tp">
-	     <div id="profilepicture">
-	     	<center><img id="studentImage" src="/imgs/users/{{this.spireid}}.jpg" alt="{{this.fname}}"></center>
-	     </div>
-	     <div id="details">
-	     <center><ul>
-	     		<p3><li>{{this.fname}} {{this.lname}}</li>
-	     		<li>{{this.major}}</li>
-	     		<li>{{this.year}}</li>
-	     		<li>Birthdate: {{this.dob}}</li>
-	     	</ul></center>
-	     </div>
-	     
-	     <hr/>
-     </div>
-     {{/each}}
+    <!-- PROFILE OPEN -->
+    <div id="profile">
+      <!-- OUTER CONTAINER OPEN -->
+        <div id="container">
+          <!-- INNER OPEN -->
+          <div id="inner">
+            <!-- PICTURE OPEN -->
+             <div id="image">
+                <img id="picture" src="/imgs/users/{{this.spireid}}.jpg" alt="{{this.fname}}">
+             </div> <!-- CLOSE PICTURE -->
+             <!-- PROFILE DETAILS -->
+             <div id="details">
+                <ul id="userInfo">
+                  <b><li>{{this.fname}} {{this.lname}}</li>
+                  <li>{{this.major}}</li>
+                  <li>{{this.year}}</li>
+                  <li>Birthdate: {{this.dob}}</li></b>
+                </ul>
+             </div> <!-- CLOSE DETAILS -->
+          </div> <!-- CLOSE INNER -->
+        </div> <!-- CLOSE CONTAINER -->
+        <!-- OPEN ABOUT -->
+        <div>
+          <ul id="about">
+            
+          </ul>
+        </div> <!-- CLOSE ABOUT -->
+    </div> <!-- CLOSE PROFILE -->
+  {{/each}}
+  </div>
+  <!-- END BODY -->
 </html>

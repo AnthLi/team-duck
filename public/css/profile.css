@@ -1,24 +1,52 @@
-#profilepicture{
-  padding-top: 30px;
-  margin: 0 auto;
+#picture{
+  display: block;
+  position: relative;
+  height: 195px;
+  width: 195px;
+  border-radius: 100px;
+  border: 2px #444 solid;
 }
 
-#studentImage{
-  height: 300px;
-  width: 300px;
+#userInfo {
+    margin-top: 3%;
+    list-style-type: none;
+    width: 100%;
+    background-color: #f1f1f1;
+    position: absolute;
+    height: auto;
+}
+
+#userInfo li {
+    display: block;
+    color: #000;
+    padding: 10px 0 10px 20px;
+    text-decoration: none;
+}
+
+#container{
+  background-color: #f1f1f1;
+  overflow: hidden;
+  width: 100%;
+}
+
+#inner{
+  overflow: hidden;
+  width: 100%;
+}
+
+#image{
+  padding: 2%;
+  float: left;
+  background-color: #595959;
+  width: 200px;
+  height: auto
 }
 
 #details{
-  margin: 0 auto;
-}
-
-#details ul{
-  list-style: none;
-}
-
-#details li{
-  border-bottom: 1px solid #444;
-  width: 15%;
+  float: left;
+  background-color: #f1f1f1;
+  width: 100px;
+  height: auto
 }
 
 #update{
