@@ -84,3 +84,21 @@
     font-size: 20px;
     padding-right: 15px;
 }
+
+@media (max-width: 830px){
+    #posts li, #events li{
+        clear: both;
+        height: 75px;
+    }
+
+    #posts li a:hover, #events li a:hover{
+        background-color: #4CAF50;
+        color: white;
+        height: 65px;
+    }
+}
+
+
+
+
+

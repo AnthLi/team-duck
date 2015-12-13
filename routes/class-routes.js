@@ -59,22 +59,44 @@ router.get('/content', (req, res) => {
   var user = req.session.user;
   var classid = req.query.classid;
   var eid = req.query.eid;
+  var pid = req.query.pid;
 
   // The user session either doesn't exist, or it expired
   if (!sessionCheck(user, online, req, res)) {
     return;
   }
 
-  db.getEventDetails(classid, eid, (err, data) => {
-    if (err) {
-      res.redirect(req.header('Referer'));
-      return;
-    }
+  // Query string contains an event id
+  if (eid) {
+    db.getEventDetails(classid, eid, (err, data) => {
+      if (err) {
+        res.redirect(req.header('Referer'));
+        return;
+      }
 
-    res.render('event', {
-      data: data
-    });  
-  });
+      res.render('event', {
+        data: data
+      });  
+    });
+    
+    return;
+  }
+  
+  // Query string contains a post id
+  if (pid) {
+    db.getPostDetails(classid, pid, (err, data) => {
+      if (err) {
+        res.redirect(req.header('Referer'));
+        return;
+      }
+
+      res.render('post', {
+        data: data
+      });  
+    });
+    
+    return;
+  }
 });
 
 // Delete a class based on the classid

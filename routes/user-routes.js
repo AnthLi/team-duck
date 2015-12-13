@@ -5,7 +5,6 @@ var online = require('../lib/online').online; // List of online users
 var sessionCheck = require('../lib/sessionCheck.js') // Session checking library
 var user = require('../lib/user.js'); // User library
 
-
 var router = express.Router(); // "Router" to separate particular points
 
 ////// Start GET Requests
@@ -171,7 +170,10 @@ router.post('/register', (req, res) => {
     req.flash('registration', 'This email has been banned!');
     res.redirect('registration');
   });
+});
 
+// Upload a picture to the file system
+router.post('/upload', (req, res) => {
   
 });
 
