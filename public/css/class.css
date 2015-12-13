@@ -1,6 +1,5 @@
 #nav {
     width: 100%;
-    position: fixed;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -39,7 +38,6 @@
    	padding: 0;
    	width: 100%;
    	background-color: #f1f1f1;
-   	position: fixed;
     margin-top: 50px;
     height: auto;
     overflow: auto;

@@ -77,7 +77,6 @@ router.get('/:classid', (req, res) => {
           });
      });
   });
-});
 
 // router.get('/:class', (req, res) => {
 //   var classid = req.params.class;
