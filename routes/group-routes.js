@@ -31,7 +31,6 @@ router.get('/schedule/:classid', (req,res) => {
     fname: user.fname,
     lname: user.lname,
     classid : classid,
-    userId: user.spireid,
     userID: user.spireid,
     message: req.flash('schedule') || ''
   });
