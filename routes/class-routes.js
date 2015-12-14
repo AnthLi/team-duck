@@ -107,14 +107,22 @@ router.get('/content', (req, res) => {
         return;
       }
 
-      res.render('event', {
-        fname: user.fname,
-        lname: user.lname,
-        spireid: user.spireid,
-        data: data,
-        classid: classid,
-        eid: eid
-      });  
+      db.eventStats(eid, (err, stats) => {
+        if (err) {
+          res.redirect(req.header('Referer'));
+          return;
+        }
+
+        res.render('event', {
+          fname: user.fname,
+          lname: user.lname,
+          spireid: user.spireid,
+          data: data,
+          classid: classid,
+          eid: eid,
+          stats: stats
+        });
+      })
     });
     
     return;

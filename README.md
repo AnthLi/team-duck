@@ -42,6 +42,7 @@ If ```nodemon app.js``` isn't working, try ```npm install -g nodemon```, then re
 - [express](http://expressjs.com/) to provide the main web framework
 - [express-handlebars](https://github.com/ericf/express-handlebars) to provide templating and styling via injection
 - [express-session](https://www.npmjs.com/package/express-session) to support session states
+- [multer](https://github.com/expressjs/multer) to upload files to the file system
 - [nodemon](https://github.com/remy/nodemon) to automatically reload the server on any changes
 - [pg](https://github.com/brianc/node-postgres) to access the PostgreSQL database
 
@@ -49,13 +50,17 @@ If ```nodemon app.js``` isn't working, try ```npm install -g nodemon```, then re
 - ```/index```: the home page
 - ```/about```: what we're about
 - ```/team```: the devs and who we are
+- ```/class```: individual class pages
+- ```/class/content```: events and posts for each individual class page
+- ```/class/students```: a list of all students in the class
+- ```/group/createEvent```: event creation page for an individual class
+- ```/group/createPost```: post submission for an individual class
 - ```/user/login```: logging into the application
 - ```/user/registration```: registering for an account
-- ```/user/profile```: the user profile (work in progress)
-- ```/admin/online```: a list of all online users (work in progress)
-- ```/admin/users```: a list of every user and all of their attributes (work in progress)
-- ```/admin/controls```: various admin controls (work in progress)
-- ```/admin/classes```: a list of all classes (work in progress)
+- ```/user/profile```: the user profile
+- ```/admin/online```: a list of all online users
+- ```/admin/users```: a list of every user and all of their attributes
+- ```/admin/controls```: various admin controls
 
 ## Statefulness
 Statefulness is maintained by using the [express-session](https://www.npmjs.com/package/express-session) library. In ```app.js```, ```/routes/user-routes.js```, and ```/routes/admin-routes.js```, there are various GET requests that check both the user session state through ```req.session.user``` and if the user is online through ```/lib/online.js```.

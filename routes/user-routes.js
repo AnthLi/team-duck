@@ -143,10 +143,10 @@ router.post('/register', uploading.single('profile'), (req, res) => {
     res.redirect('registration');
     return;
   }
-  
+
   var oldName = './public/imgs/users/' + req.file.filename;
   var newName = './public/imgs/users/' + form.spireid + '.jpg';
-  fs.renameSync(newName, oldName); // Rename file to registrant's spireid
+  fs.renameSync(oldName, newName); // Rename file to registrant's spireid
 
   // Check if the user is banned
   db.isBanned(form.email, (err, data) => {
