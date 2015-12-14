@@ -121,16 +121,18 @@ router.post('/postComment', (req, res) => {
 
   db.getCID(pid, (err, cid) => {
     if (err) {
-      res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+      res.redirect('/class/content?classid=' + cid + '&' + 'pid=' + pid);
     }
 
     // uid, pid, cid, content,cb
-    db.postComment(pid, form.content, form.anonymity, user.spireid, (err, data) => {
-      if(err){
-        res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+    db.postComment(pid, form.content, form.anonymity, user.spireid, 
+      (err, data) => {
+      if (err) {
+        res.redirect('/class/content?classid=' + cid + '&' + 'pid=' + pid);
         return;
       }
-      res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+
+      res.redirect('/class/content?classid=' + cid + '&' + 'pid=' + pid);
     });
   });
 });
