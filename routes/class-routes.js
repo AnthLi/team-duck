@@ -112,8 +112,6 @@ router.get('/content', (req, res) => {
         });
       });
     });
-    
-  //   return;
   }
 });
 

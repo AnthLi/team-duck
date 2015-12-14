@@ -115,37 +115,23 @@ router.post('/createPost', (req, res) => {
 });
 
 router.post('/postComment', (req, res) => {
-    var form = req.body;
-    var pid = req.query.pid;
-    var user = req.session.user;
-
-    if (!user) {
-      req.flash('login', 'Not logged in');
-      res.redirect('login');
-      return;
-    }
-
-  //Check if login has expired
-  if (user && !online[user.uid]) {
-    delete req.session.user;
-    req.flash('login', 'Login expired');
-    res.redirect('login');
-    return;
-  }
-
+  var form = req.body;
+  var pid = req.query.pid;
+  var user = req.session.user;
 
   db.getCID(pid, (err, cid) => {
+    if (err) {
+      res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+    }
+
+    // uid, pid, cid, content,cb
+    db.postComment(pid, form.content, form.anonymity, user.spireid, (err, data) => {
       if(err){
         res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+        return;
       }
-      //uid, pid, cid, content,cb
-      db.postComment(pid, form.content, form.anonymity, user.spireid, (err, data) => {
-        if(err){
-          res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
-          return;
-        }
-        res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
-      });
+      res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+    });
   });
 });
 
