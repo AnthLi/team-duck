@@ -60,11 +60,13 @@ app.get('/index', (req, res) => {
     // Get the list of classes for the dropdown menu
     db.getClassList((err, classList) => {
       // Randomize the students in each class on the home page
-      classesData.forEach((elem) => {
-        var students = elem.students.slice(0, 7);
-        shuffle(students);
-        classesData[classesData.indexOf(elem)].students = students;
-      });
+      if (classesData.rowCount > 0) {
+        classesData.forEach((elem) => {
+          var students = elem.students.slice(0, 7);
+          shuffle(students);
+          classesData[classesData.indexOf(elem)].students = students;
+        });
+      }
 
       // If the user is logged in, render fname, lname, and profile pic
       // in the drawer, along with the page data
