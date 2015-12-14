@@ -6,7 +6,7 @@ var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
 
-//// Start GET Requests
+////// Start GET Requests
 
 // Dynamic route for every class page based on the query string
 router.get('/', (req, res) => {
@@ -39,7 +39,6 @@ router.get('/', (req, res) => {
         }
 
         db.getPersonalClasses(user.spireid, (err, classes) => {
-
           if (err) {
             res.redirect('/index');
             return;
@@ -58,7 +57,6 @@ router.get('/', (req, res) => {
             classes: classes
           });
         });
-
       });
     });
   });
@@ -92,19 +90,19 @@ router.get('/content', (req, res) => {
     return;
   }
   
-   // Query string contains a post id
+  // Query string contains a post id
   if (pid) {
     db.getPostDetails(classid, pid, (err, data) => {
       if (err) {
         res.redirect(req.header('Referer'));
         return;
       }
+
       db.getComments(pid, (err, comments) => {
         if (err) {
-        res.redirect(req.header('Referer'));
-        return;
-      }
-      console.log(comments);
+          res.redirect(req.header('Referer'));
+          return;
+        }
 
         res.render('post', {
           data: data,

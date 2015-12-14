@@ -115,7 +115,6 @@ router.post('/createPost', (req, res) => {
 });
 
 router.post('/postComment', (req, res) => {
-
     var form = req.body;
     var pid = req.query.pid;
     var user = req.session.user;
