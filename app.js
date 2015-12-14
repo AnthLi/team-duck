@@ -67,13 +67,11 @@ app.get('/index', (req, res) => {
           fname: user.fname,
           lname: user.lname,
           spireid: user.spireid,
-          loggedIn: true,
           classes: classesData,
           classList: subjectsData
         });
       } else {
         res.render('index', {
-          loggedIn: false,
           classes: classesData,
           classList: subjectsData
         });
@@ -91,13 +89,10 @@ app.get('/about', (req, res) => {
       fname: user.fname,
       lname: user.lname,
       spireid: user.spireid,
-      loggedIn: true
     });
   }
   else{
-    res.render('about', {
-      loggedIn: false,
-    });
+    res.render('about');
   }
 });
 
@@ -120,13 +115,11 @@ app.get('/team', (req, res) => {
           fname: user.fname,
           lname: user.lname,
           spireid: user.spireid,
-          loggedIn: true,
           title: 'Meet the team',
           member: data
         });
       } else {
         res.render('member', {
-          loggedIn: false,
           title: data.fname,
           member: data
         });
@@ -148,13 +141,11 @@ app.get('/team', (req, res) => {
         fname: user.fname,
         lname: user.lname,
         spireid: user.spireid,
-        loggedIn: true,
         title: 'Meet the team',
         members: data
       });
     } else {
       res.render('team', {
-        loggedIn: false,
         title: 'Meet the team',
         members: data
       });
