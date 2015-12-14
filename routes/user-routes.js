@@ -205,17 +205,8 @@ router.post('/addClass', (req,res) => {
   var user = req.session.user;
   var num = req.body.values.split(', ')[1]; // Get the class number
 
-  if (!user) {
-    req.flash('login', 'Not logged in');
-    res.redirect('login');
-    return;
-  }
-
-  //Check if login has expired
-  if (user && !online[user.uid]) {
-    delete req.session.user;
-    req.flash('login', 'Login expired');
-    res.redirect('login');
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
     return;
   }
 

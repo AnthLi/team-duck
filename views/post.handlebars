@@ -30,7 +30,14 @@
 
   <ul id="postdata">
     <li><a><b>{{data.title}}</b> posted on {{data.date}} <b><i id="nameRight">{{data.name}}</i></b></a></li>
-    <li><a><i>"{{data.content}}"</i></a></li>
+    <li>
+      <a>
+        <i>"{{data.content}}"</i>
+      <form id="flagPost" method="post" action="/group/flagPost?pid={{pid}}">
+        <input type="submit" value="Report">
+      </form>
+      </a>
+  </li>
   </ul>
 
   <ul id="reply">
@@ -56,6 +63,9 @@
     {{#each comments}}
     <li><a>
       <b>{{this.name}}</b><br> "{{this.content}}"
+      <form id="flagComment" method="post" action="/group/flagComment?cid={{this.cid}}">
+        <input id="" type="submit" value="Report">
+      </form>
     </a></li>
     {{/each}}
   </ul>

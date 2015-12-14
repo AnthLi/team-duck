@@ -159,6 +159,11 @@ router.post('/postComment', (req, res) => {
   var form = req.body;
   var pid = req.query.pid;
 
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
+
   db.getCID(pid, (err, cid) => {
     if (err) {
       res.redirect('/class/content?classid=' + cid + '&' + 'pid=' + pid);
@@ -176,6 +181,45 @@ router.post('/postComment', (req, res) => {
     });
   });
 });
+
+//Flags post
+router.post('/flagPost', (req, res) => {
+  var user = req.session.user;
+  var pid = req.query.pid;
+
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
+
+  db.postFlag(pid, user.spireid, (err, data) => {
+    if (err) {
+      return;
+    }
+
+    res.redirect(req.header('Referer'));
+  });
+});
+
+//Flags comment
+router.post('/flagComment', (req, res) => {
+  var user = req.session.user;
+  var cid = req.query.cid;
+
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
+
+  db.commentFlag(cid, user.spireid, (err, data) => {
+    if (err) {;
+      return;
+    }
+
+    res.redirect(req.header('Referer'));
+  });
+});
+
 
 ////// End POST Requests
 
