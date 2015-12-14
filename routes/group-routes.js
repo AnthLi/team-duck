@@ -159,6 +159,11 @@ router.post('/postComment', (req, res) => {
   var form = req.body;
   var pid = req.query.pid;
 
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
+
   db.getCID(pid, (err, cid) => {
     if (err) {
       res.redirect('/class/content?classid=' + cid + '&' + 'pid=' + pid);
@@ -188,7 +193,7 @@ router.post('/flagPost', (req, res) => {
   }
 
   db.postFlag(pid, user.spireid, (err, data) => {
-    if(err){
+    if (err) {
       return;
     }
 
@@ -207,7 +212,7 @@ router.post('/flagComment', (req, res) => {
   }
 
   db.commentFlag(cid, user.spireid, (err, data) => {
-    if(err){;
+    if (err) {;
       return;
     }
 
