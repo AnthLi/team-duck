@@ -97,7 +97,7 @@
     }
 }
 
-select{
+#selectID {
     border: 0;
     border-radius: 0;
     background-color: transparent;
@@ -109,7 +109,7 @@ select{
     -webkit-appearance: none;
 }
 
-#dropDown{
+#dropDown2{
    width: 170px;
    overflow: hidden;
    background: url(/imgs/down_arrow_select.jpg) no-repeat right #ddd;

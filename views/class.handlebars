@@ -26,8 +26,8 @@
       <ul id="nav">
         <li><a href="/group/createPost?classid={{classid}}">+ Post</a></li>
         <li><a href="/group/createEvent?classid={{classid}}">+ Event</a></li>
-        <div id="dropDown">
-          <select name="classes" onChange="window.location.href=this.value">
+        <div id="dropDown2">
+          <select id="selectID" name="classes" onChange="window.location.href=this.value">
             {{#each classes}}
               <option value="/class?classid={{this.classid}}">{{this.num}}</option>
             {{/each}}

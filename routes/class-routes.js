@@ -106,9 +106,8 @@ router.get('/content', (req, res) => {
 
         res.render('post', {
           data: data,
-          fname: user.fname,
-          lname: user.lname,
-          spireid : user.spireid,
+          fname : user.fname,
+          spireid: user.spireid,
           comments : comments
         });
       });
