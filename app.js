@@ -77,12 +77,14 @@ app.get('/index', (req, res) => {
           classes: classesData,
           classList: classList
         });
-      } else {
-        res.render('index', {
-          classes: classesData,
-          classList: classList
-        });
+
+        return;
       }
+
+      res.render('index', {
+        classes: classesData,
+        classList: classList
+      });
     });
   });
 });
@@ -97,10 +99,11 @@ app.get('/about', (req, res) => {
       lname: user.lname,
       spireid: user.spireid,
     });
+
+    return;
   }
-  else{
-    res.render('about');
-  }
+
+  res.render('about');
 });
 
 // Team page
@@ -125,12 +128,14 @@ app.get('/team', (req, res) => {
           title: 'Meet the team',
           member: data
         });
-      } else {
-        res.render('member', {
-          title: data.fname,
-          member: data
-        });
+
+        return;
       }
+
+      res.render('member', {
+        title: data.fname,
+        member: data
+      });
     });
 
     return;
@@ -151,12 +156,14 @@ app.get('/team', (req, res) => {
         title: 'Meet the team',
         members: data
       });
-    } else {
-      res.render('team', {
-        title: 'Meet the team',
-        members: data
-      });
+
+      return;
     }
+
+    res.render('team', {
+      title: 'Meet the team',
+      members: data
+    });
   });
 });
 
