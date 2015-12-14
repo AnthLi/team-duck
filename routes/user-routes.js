@@ -1,4 +1,5 @@
 var express = require('express');
+var fs = require('fs');
 var multer = require('multer');
 
 var db = require('../lib/database.js'); // Database library
@@ -7,6 +8,12 @@ var sessionCheck = require('../lib/sessionCheck.js') // Session checking library
 var user = require('../lib/user.js'); // User library
 
 var router = express.Router(); // "Router" to separate particular points
+
+// Multer paramters
+var uploading = multer({
+  dest: './public/imgs/users/',
+  limits: {files: 1}
+});
 
 ////// Start GET Requests
 
@@ -34,14 +41,9 @@ router.get('/logout', (req, res) => {
     return;
   }
 
-  if (user) {
-    delete online[user.uid];
-    delete req.session.user;
-  }
-
-  if (user && !online[user.uid]) {
-    delete req.session.user;
-  }
+  // Delete the user session
+  delete online[user.uid];
+  delete req.session.user;
 
   req.flash('login', 'Successfully logged out!')
   res.redirect('login');
@@ -117,17 +119,19 @@ router.post('/auth', (req, res) => {
   });
 });
 
-
-var uploading = (multer({
-  dest: './public/imgs/users/',
-  limits: {files: 1}
-}));
-
 // Upload a picture to the file system
 router.post('/upload', uploading.single('profile'), (req, res) => {
-  console.log(req.body);
-  console.log(req.files);
-  res.redirect('registration');
+  // Check if there is a file to be uploaded
+  if (!req.file) {
+    req.flash('registration', 'Please upload a picture!');
+    res.redirect('registration');
+    return;
+  }
+
+  var oldName = './public/imgs/users/' + req.file.originalname;
+  var newName = './public/imgs/users/' + req.file.filename;
+
+  fs.renameSync(newName, oldName); // Rename file to its original name
 });
 
 // Account creation
