@@ -111,9 +111,11 @@
         {{#each classes}}
         <!-- RENDERS UNIQUE CLASS DIVS -->
           <ul id="class{{@index}}" onclick="changeClass({{@index}})">
-            <div id="classname">
-              <p1><a href="/class?classid={{this.classid}}">{{this.num}}</a></p1>
-            </div>
+            <a href="/class?classid={{this.classid}}">
+              <div id="classname">
+                <p1>{{this.num}}</p1>
+              </div>
+            </a>  
 
             <div id="students">
             {{#each students}}
