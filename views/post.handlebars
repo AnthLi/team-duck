@@ -33,7 +33,7 @@
     <li>
       <a>
         <i>"{{data.content}}"</i>
-      <form id="flagPost" method="post" action="/group/flagPost?pid={{pid}}">
+      <form id="flagPost" method="post" action="/group/flagPost?pid={{pid}}&ri={{data.spireid}}">
         <input type="submit" value="Report">
       </form>
       </a>
@@ -63,7 +63,7 @@
     {{#each comments}}
     <li><a>
       <b>{{this.name}}</b><br> "{{this.content}}"
-      <form id="flagComment" method="post" action="/group/flagComment?cid={{this.cid}}">
+      <form id="flagComment" method="post" action="/group/flagComment?cid={{this.cid}}&ri={{this.spireid}}">
         <input id="" type="submit" value="Report">
       </form>
     </a></li>
