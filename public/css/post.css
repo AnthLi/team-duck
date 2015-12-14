@@ -54,10 +54,30 @@
     overflow: auto;
 }
 
-
-
 #postdata li a{
 	display: block;
+    color: #000;
+    padding: 10px 0 10px 20px;
+    text-decoration: none;
+}
+
+#comments {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    position: relative;
+    height: auto;
+    overflow: auto;
+}
+
+#comments li{
+  border-bottom: 1px solid #595959;
+}
+
+#comments li a{
+    display: block;
     color: #000;
     padding: 10px 0 10px 20px;
     text-decoration: none;
@@ -71,7 +91,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: #595959;
+    background-color: #2878d8;
     position: relative;
     height: auto;
     overflow: auto;
@@ -80,7 +100,7 @@
 
 
 #reply li a{
-	display: block;
+	  display: block;
     color: white;
     padding: 10px 0 10px 20px;
     text-decoration: none;

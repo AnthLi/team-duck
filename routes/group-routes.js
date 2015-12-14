@@ -39,7 +39,7 @@ router.get('/createPost', (req,res) => {
     return;
   }
 
-  res.render('createPost', { 
+  res.render('createpost', { 
     title: 'Submit a Post',
     fname: user.fname,
     lname: user.lname,

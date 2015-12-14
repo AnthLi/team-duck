@@ -120,7 +120,7 @@
 
 #studentBody{
   float: left;
-  width: 16%;
+  width: 11%;
   height: 130px;
 }
 
@@ -204,7 +204,8 @@
 
 #addclass{
   float: right;
-  padding: 1%;
+  margin-top: 12.5px;
+  margin-right: 10px;
 }
 
 #addclassdropdown{
