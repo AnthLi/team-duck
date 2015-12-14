@@ -57,6 +57,7 @@ app.get('/index', (req, res) => {
   // No error checking here since we still want to render index regardless
   db.getPersonalClasses(user.spireid, (err, classesData) => {
     // Get the list of classes for the dropdown menu
+    console.log(classesData);
     db.getClassList((err, subjectsData) => {
 
       // If the user is logged in, render fname, lname, and profile pic
