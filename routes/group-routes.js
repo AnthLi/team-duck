@@ -198,10 +198,12 @@ router.post('/flagPost', (req, res) => {
       res.redirect(req.header('Referer'));
       return;
     }
+
     db.incrementFlag(reportee_id, (err, data) => {
-      if(err){
+      if (err) {
         return;
       }
+      
       res.redirect(req.header('Referer'));
     });
   });
@@ -220,15 +222,16 @@ router.post('/flagComment', (req, res) => {
 
   db.commentFlag(cid, user.spireid, (err, data) => {
     if (err) {
-      console.log("0 : " + err);
       res.redirect(req.header('Referer'));
       return;
     }
+    
     db.incrementFlag(reportee_id, (err, data) => {
-      if(err){
+      if (err) {
         console.log("1 : " + err);
         return;
       }
+
       res.redirect(req.header('Referer'));
     });
   });
