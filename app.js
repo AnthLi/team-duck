@@ -44,6 +44,25 @@ app.get('/', (req, res) => {
   res.redirect('index');
 });
 
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 // Home page
 app.get('/index', (req, res) => {
   var user = req.session.user;
@@ -57,8 +76,18 @@ app.get('/index', (req, res) => {
   // No error checking here since we still want to render index regardless
   db.getPersonalClasses(user.spireid, (err, classesData) => {
     // Get the list of classes for the dropdown menu
+<<<<<<< HEAD
     console.log(classesData);
     db.getClassList((err, subjectsData) => {
+=======
+    db.getClassList((err, classList) => {
+      // Randomize the students in each class on the home page
+      classesData.forEach((elem) => {
+        var students = elem.students.slice(0, 7);
+        shuffle(students);
+        classesData[classesData.indexOf(elem)].students = students;
+      });
+>>>>>>> 1546667cd8d1bc7384bfc74e397a2cabe87ae242
 
       // If the user is logged in, render fname, lname, and profile pic
       // in the drawer, along with the page data
@@ -69,12 +98,12 @@ app.get('/index', (req, res) => {
           lname: user.lname,
           spireid: user.spireid,
           classes: classesData,
-          classList: subjectsData
+          classList: classList
         });
       } else {
         res.render('index', {
           classes: classesData,
-          classList: subjectsData
+          classList: classList
         });
       }
     });
