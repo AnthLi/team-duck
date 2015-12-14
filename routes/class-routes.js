@@ -38,17 +38,27 @@ router.get('/', (req, res) => {
           return;
         }
 
-        res.render('class', {
-          fname: user.fname,
-          lname: user.lname,
-          spireid: user.spireid,
-          num: data[0].num,
-          students: data[0].students,
-          eid: data[0].eid,
-          events: events,
-          posts: posts,
-          classid: classid
+        db.getPersonalClasses(user.spireid, (err, classes) => {
+
+          if (err) {
+            res.redirect('/index');
+            return;
+          }
+
+          res.render('class', {
+            fname: user.fname,
+            lname: user.lname,
+            spireid: user.spireid,
+            num: data[0].num,
+            students: data[0].students,
+            eid: data[0].eid,
+            events: events,
+            posts: posts,
+            classid: classid,
+            classes: classes
+          });
         });
+
       });
     });
   });
@@ -82,20 +92,30 @@ router.get('/content', (req, res) => {
     return;
   }
   
-  // Query string contains a post id
+   // Query string contains a post id
   if (pid) {
     db.getPostDetails(classid, pid, (err, data) => {
       if (err) {
         res.redirect(req.header('Referer'));
         return;
       }
+      db.getComments(pid, (err, comments) => {
+        if (err) {
+        res.redirect(req.header('Referer'));
+        return;
+      }
+      console.log(comments);
 
-      res.render('post', {
-        data: data
-      });  
+        res.render('post', {
+          data: data,
+          userID : user.spireid,
+          userId : user.spireid,
+          comments : comments
+        });
+      });
     });
     
-    return;
+  //   return;
   }
 });
 

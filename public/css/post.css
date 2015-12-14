@@ -38,6 +38,11 @@
     padding-right: 15px;
 }
 
+#flag{
+  float:right;
+  padding-right: 15px;
+}
+
 #postdata {
     list-style-type: none;
     margin: 0;
