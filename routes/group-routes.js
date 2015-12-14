@@ -59,6 +59,11 @@ router.post('/createEvent', (req, res) => {
   var classid = req.query.classid;
   var user = req.session.user;
 
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
+
   // Check if the form contains any empty fields
   if (!form.anonymity | !form.title | !form.description | !form.location | 
     !form.date | !form.time) {
@@ -84,6 +89,11 @@ router.post('/createPost', (req, res) => {
   var form = req.body;
   var classid = req.query.classid;
   var user = req.session.user;
+
+  // The user session either doesn't exist, or it expired
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
 
   // Check if the form contains any empty fields
   if (!form.anonymity | !form.title | !form.content) {
