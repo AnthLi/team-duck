@@ -103,30 +103,6 @@ router.get('/controls', (req, res) => {
   });
 });
 
-// List of all classes
-router.get('/classes', (req, res) => {
-  var user = req.session.user;
-
-  if (!session(user, req, res)) {
-    return;
-  }
-
-  db.authorizeAdmin(user.email, (err, data) => {
-    if (err) {
-      res.redirect('/index');
-      return;
-    }
-
-    
-    res.render('classes', {
-      fname: user.fname,
-      lname: user.lname,
-      spireid: user.spireid,
-      title: 'Classes'
-    });
-  });
-});
-
 ////// End GET Requests
 
 ////// Start POST Requests
