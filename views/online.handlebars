@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/css/online.css">
+  </head>
   
   <div id="page">
     <div class="header">
@@ -29,12 +32,10 @@
     </div>
 
     {{#each online}}
-      <a id="onlineLink" href="/user/profile">
-        <div id="onlineUsers">
+      <a id="onlineLink" href="/user/profile?spireid={{this.spireid}}">
+        <span id="onlineUsers">
           <img id="onlineImage" src="/imgs/users/{{this.spireid}}.jpg">
-          <center>{{fname}} {{lname}}</center>
-        </div>
+        </span>
       </a>
-      <br>
     {{/each}}
 </html>

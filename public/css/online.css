@@ -1,0 +1,16 @@
+#onlineImage{
+  height: 130px;
+  width: 130px;
+  border-radius: 90px;
+  border: 2px #444 solid;
+  margin: 17px 30px;
+  margin-top: 1%;
+}
+
+#onlineLink{
+  text-decoration: none;
+}
+
+#onlineUsers{
+  width: 130px;
+}
