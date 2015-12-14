@@ -77,7 +77,7 @@ The library ```/lib/database.js``` contains the connection to the database and v
 - Harsh Keswani
 - Ben Cheung
 - Zachary Milrod
-- Jonathon Gatley
-- 
+- Jonathan Gatley
+
 ## Final Project Document
 https://docs.google.com/a/umass.edu/document/d/1QAY0uNoGbssk_nWpT-EiKctfoWRgb0gmmcVC5dHICgY/edit?usp=sharing
