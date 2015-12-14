@@ -49,7 +49,7 @@
   font-size: 15px;
   color: white;
   position: absolute;
-  margin-top: 40px;
+  margin-top: 55px;
   padding-left: 1%;
 }
 
@@ -57,7 +57,7 @@
   font-size: 15px;
   color: white;
   position: absolute;
-  margin-top: 40px;
+  margin-top: 55px;
   padding-left: 1%;
 }
 
@@ -65,7 +65,7 @@
   font-size: 15px;
   color: white;
   position: absolute;
-  margin-top: 40px;
+  margin-top: 55px;
   padding-left: 1%;
 }
 
@@ -73,7 +73,7 @@
   font-size: 15px;
   color: white;
   position: absolute;
-  margin-top: 40px;
+  margin-top: 55px;
   padding-left: 1%;
 }
 
@@ -81,7 +81,7 @@
   font-size: 15px;
   color: white;
   position: absolute;
-  margin-top: 40px;
+  margin-top: 55px;
   padding-left: 1%;
 }
 
@@ -89,7 +89,7 @@
   font-size: 15px;
   color: white;
   position: absolute;
-  margin-top: 40px;
+  margin-top: 55px;
   padding-left: 1%;
 }
 
@@ -201,11 +201,14 @@
 
 #addclass{
   float: right;
-  padding: 0.9%;
+  padding: 0.65%;
 }
 
 #addclassdropdown{
   display: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }
 
 @media (max-width: 900px){

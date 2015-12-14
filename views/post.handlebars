@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link type="text/css" rel="stylesheet" href="/css/event.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/group.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/post.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script>
+      $(document).ready(function(){
+      $("#response").click(function(){
+        $("#responsebox").slideToggle("fast");
+      });
+    });
+    </script>
   </head>
 
   <div id="page">
@@ -12,10 +21,29 @@
     </div>
   </div>
 
-  {{data.name}} <br>
-  {{data.classid}} <br>
-  {{data.title}} <br>
-  {{data.content}} <br>
-  {{data.date}}
+  <div id="cont">
+    <ul id="nav">
+        <li><a href="/group/createPost?classid={{classid}}">+ Post</a></li>
+        <li><a href="/group/createEvent?classid={{classid}}">+ Event</a></li>
+        <p1>{{data.title}} - <i>{{data.name}}</i></p1>
+    </ul> 
+
+  <ul id="postdata">
+    <li><a><b>{{data.title}}</b> posted on {{data.date}} <b><i id="nameRight">{{data.name}}</i></b></a></li>
+    <li><a><i>{{data.content}}</i></a></li>
+  </ul>
+
+  <ul id="reply">
+    <li><center><a id="response"><b>Reply</b></a></center></li>
+  </ul>
+
+  <div id="responsebox">
+    <form> 
+      <textarea id="textbox" rows="4"></textarea>
+      <center><button id="createbutton">Reply</button></center>
+    </form>
+  </div>
+
+  </div>
 
 </html>

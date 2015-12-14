@@ -20,7 +20,7 @@
       });
     </script>
 
-    <title>Zembo</title>
+  <title>Zembo</title>
   </head>
 
   <div>
@@ -35,11 +35,11 @@
             <div id="drawerName">{{fname}} {{lname}}</div>
           </a>
         </div>
-        <br>
-        <li><a href="/index">Home</a></li>
+        
+        <li><a id = "standard" href="/index">Home</a></li>
         <li><a id="onlyWhenLoggedIn" href="/admin/controls" action="/admin/auth">Admin</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/team">Team</a></li>
+        <li><a id = "standard" href="/about">About</a></li>
+        <li><a id = "standard" href="/team">Team</a></li>
         <li><a id="onlyWhenLoggedIn" href="/user/logout">Logout</a></li>
         <div id="bottomDrawer"></div>
       </ul>

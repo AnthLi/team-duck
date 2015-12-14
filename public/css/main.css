@@ -151,11 +151,11 @@ p4{
   border: 2px #444 solid;
   margin: 17px 30px;
   margin-bottom: -1%;
-  margin-top: -.0000000001%;
+  margin-top: 1%;
 }
 
 #drawerProfPic{
-  background-color: #9f9f9f;
+  background-color: #444;
 }
 
 #prof{
@@ -167,8 +167,22 @@ p4{
   font-weight: bolder;
   padding-bottom: 5%;
   padding-top: 5%;
-  font-size: 2em;
+  font-size: 1.5em;
 }
+
+#onlyWhenLoggedIn{
+	font-size: 15px;
+	color: black;
+	margin-left: 40%;
+}
+#standard{
+	font-size: 15px;
+	color: black;
+}
+
+
+
+</style>
 
 /*#bottomDrawer{
 	background-color: white;
@@ -179,8 +193,3 @@ p4{
     background-position: 10% 85%; 
     background-size: 225px 160px;
 }*/
-
-
-
-
-
