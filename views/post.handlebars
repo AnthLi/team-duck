@@ -30,7 +30,7 @@
 
   <ul id="postdata">
     <li><a><b>{{data.title}}</b> posted on {{data.date}} <b><i id="nameRight">{{data.name}}</i></b></a></li>
-    <li><a><i>{{data.content}}</i> <b id="flag">Flag</b></a></li>
+    <li><a><i>"{{data.content}}"</i> <b id="flag">Flag</b></a></li>
   </ul>
 
   <ul id="reply">
@@ -40,11 +40,16 @@
   <div id="responsebox">
     <form method="post" action="/group/postComment?classid={{data.cid}}&pid={{data.pid}}"> 
       <textarea id="textbox" rows="4" name="content"></textarea>
-      <label id="basic">Post as:</label>
-          <select name="anonymity">
+      
+         
+        <center> 
+        <label id="basic">Post as:</label>
+        <select class="anonymity" name="anonymity">
             <option value="Anonymous">Anonymous</option>
             <option value="{{fname}}">{{fname}}</option>
-          </select><br><br>
+        </select>
+        </center>
+      
       <center><button id="createbutton">Reply</button></center>
     </form>
   </div>
@@ -52,11 +57,10 @@
 
   <ul id="comments">
     {{#each comments}}
-    <li>
-      {{this.content}} - {{this.name}}
-    </li>
+    <li><a>
+      <b>{{this.name}}</b><br> "{{this.content}}"
+    </a></li>
     {{/each}}
-
   </ul>
   </div>
 
