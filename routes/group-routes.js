@@ -140,7 +140,7 @@ router.post('/postComment', (req, res) => {
         res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
       }
       //uid, pid, cid, content,cb
-      db.postComment(pid, form.content, user.spireid, (err, data) => {
+      db.postComment(pid, form.content, form.anonymity, user.spireid, (err, data) => {
         if(err){
           res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
           return;
