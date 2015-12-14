@@ -92,7 +92,6 @@
     }
 
     #posts li a:hover, #events li a:hover{
-        background-color: #4CAF50;
         color: white;
         height: 65px;
     }
