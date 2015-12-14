@@ -99,7 +99,7 @@
 #classname{
   float: left;
   width: 13%;
-  height: 130px;
+  height: 128.5px;
   background-color: #595959;
 }
 
@@ -204,7 +204,7 @@
 
 #addclass{
   float: right;
-  padding: 0.65%;
+  padding: 1%;
 }
 
 #addclassdropdown{
