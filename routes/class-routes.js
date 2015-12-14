@@ -89,10 +89,19 @@ router.get('/content', (req, res) => {
         res.redirect(req.header('Referer'));
         return;
       }
+      db.getComment(data.pid, (err, comments) => {
+        if (err) {
+        res.redirect(req.header('Referer'));
+        return;
+      }
 
-      res.render('post', {
-        data: data
-      });  
+        res.render('post', {
+          data: data, 
+          userID : user.spireid,
+          userId : user.spireid,
+          comments : comments
+        });  
+      });
     });
     
     return;
