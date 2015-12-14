@@ -8,6 +8,7 @@ var session = require('express-session');
 var db = require('./lib/database.js'); // Database library
 var online = require('./lib/online').online; // List of online users
 var sessionCheck = require('./lib/sessionCheck.js') // Session checking library
+var shuffle = require('./lib/shuffle.js'); // Array shuffler library
 
 var app = express();
 
@@ -43,25 +44,6 @@ app.use('/group', require('./routes/group-routes')); // Separate group routes
 app.get('/', (req, res) => {
   res.redirect('index');
 });
-
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
 
 // Home page
 app.get('/index', (req, res) => {
