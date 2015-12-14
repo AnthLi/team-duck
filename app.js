@@ -76,10 +76,6 @@ app.get('/index', (req, res) => {
   // No error checking here since we still want to render index regardless
   db.getPersonalClasses(user.spireid, (err, classesData) => {
     // Get the list of classes for the dropdown menu
-<<<<<<< HEAD
-    console.log(classesData);
-    db.getClassList((err, subjectsData) => {
-=======
     db.getClassList((err, classList) => {
       // Randomize the students in each class on the home page
       classesData.forEach((elem) => {
@@ -87,7 +83,6 @@ app.get('/index', (req, res) => {
         shuffle(students);
         classesData[classesData.indexOf(elem)].students = students;
       });
->>>>>>> 1546667cd8d1bc7384bfc74e397a2cabe87ae242
 
       // If the user is logged in, render fname, lname, and profile pic
       // in the drawer, along with the page data
