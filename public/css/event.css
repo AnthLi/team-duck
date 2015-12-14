@@ -51,6 +51,23 @@
     text-decoration: none;
 }
 
+/*#perce {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #444;
+    position: relative;
+    height: auto;
+    overflow: auto;
+}
+
+#perce li a {
+    display: block;
+    color: #000;
+    padding: 10px 0 10px 20px;
+    text-decoration: none;
+}*/
+
 #nameRight{
     float: right;
     padding-right: 15px;
@@ -70,4 +87,19 @@
 
 #no a:hover{
   background-color: #ff4343;
+}
+
+#graph{
+  list-style: none;
+}
+
+#graph li{
+  color: white;
+  float: left;
+}
+
+#totalVotes{
+  color: black;
+  float: right;
+  padding-right: 15px;
 }

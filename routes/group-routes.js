@@ -186,6 +186,7 @@ router.post('/postComment', (req, res) => {
 router.post('/flagPost', (req, res) => {
   var user = req.session.user;
   var pid = req.query.pid;
+  var reportee_id = req.query.ri;
 
   // The user session either doesn't exist, or it expired
   if (!sessionCheck(user, online, req, res)) {
@@ -194,10 +195,15 @@ router.post('/flagPost', (req, res) => {
 
   db.postFlag(pid, user.spireid, (err, data) => {
     if (err) {
+      res.redirect(req.header('Referer'));
       return;
     }
-
-    res.redirect(req.header('Referer'));
+    db.incrementFlag(reportee_id, (err, data) => {
+      if(err){
+        return;
+      }
+      res.redirect(req.header('Referer'));
+    });
   });
 });
 
@@ -205,6 +211,7 @@ router.post('/flagPost', (req, res) => {
 router.post('/flagComment', (req, res) => {
   var user = req.session.user;
   var cid = req.query.cid;
+  var reportee_id = req.query.ri;
 
   // The user session either doesn't exist, or it expired
   if (!sessionCheck(user, online, req, res)) {
@@ -212,11 +219,18 @@ router.post('/flagComment', (req, res) => {
   }
 
   db.commentFlag(cid, user.spireid, (err, data) => {
-    if (err) {;
+    if (err) {
+      console.log("0 : " + err);
+      res.redirect(req.header('Referer'));
       return;
     }
-
-    res.redirect(req.header('Referer'));
+    db.incrementFlag(reportee_id, (err, data) => {
+      if(err){
+        console.log("1 : " + err);
+        return;
+      }
+      res.redirect(req.header('Referer'));
+    });
   });
 });
 
