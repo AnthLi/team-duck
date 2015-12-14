@@ -49,6 +49,9 @@ router.get('/createPost', (req,res) => {
   });
 });
 
+
+
+
 ////// End GET Requests
 
 ////// Start POST Requests
@@ -101,6 +104,42 @@ router.post('/createPost', (req, res) => {
     }
     
     res.redirect('/class?classid=' + classid);
+  });
+});
+
+router.post('/postComment', (req, res) => {
+
+    var form = req.body;
+    var pid = req.query.pid;
+    var user = req.session.user;
+
+    if (!user) {
+      req.flash('login', 'Not logged in');
+      res.redirect('login');
+      return;
+    }
+
+  //Check if login has expired
+  if (user && !online[user.uid]) {
+    delete req.session.user;
+    req.flash('login', 'Login expired');
+    res.redirect('login');
+    return;
+  }
+
+
+  db.getCID(pid, (err, cid) => {
+      if(err){
+        res.redirect('Post?='+pid);
+      }
+      //uid, pid, cid, content,cb
+      db.postComment(user.spireid, pid, cid, form.content, (err, data) => {
+        if(err){
+          res.redirect('Post?='+pid);
+          return;
+        }
+        res.redirect('Post?='+pid);
+      });
   });
 });
 
