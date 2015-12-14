@@ -119,24 +119,9 @@ router.post('/auth', (req, res) => {
   });
 });
 
-// Upload a picture to the file system
-router.post('/upload', uploading.single('profile'), (req, res) => {
-  // Check if there is a file to be uploaded
-  if (!req.file) {
-    req.flash('registration', 'Please upload a picture!');
-    res.redirect('registration');
-    return;
-  }
-
-  var oldName = './public/imgs/users/' + req.file.originalname;
-  var newName = './public/imgs/users/' + req.file.filename;
-
-  fs.renameSync(newName, oldName); // Rename file to its original name
-});
-
 // Account creation
-router.post('/register', (req, res) => {
-  var form = req.body;
+router.post('/register', uploading.single('profile'), (req, res) => {
+  var form = req.body; // Get the form values
 
   // Check if the user did not fill out the entire form
   if (!form.fname | !form.lname | !form.email | !form.pass | !form.dob) {
@@ -151,6 +136,19 @@ router.post('/register', (req, res) => {
     res.redirect('registration');
     return;
   }
+
+  // Check if there is a file to be uploaded
+  if (!req.file) {
+    req.flash('registration', 'Please upload a picture!');
+    res.redirect('registration');
+    return;
+  }
+
+  // Original and new file names of the uploaded file
+  var oldName = './public/imgs/users/' + req.file.originalname;
+  var newName = './public/imgs/users/' + req.file.filename;
+
+  fs.renameSync(newName, oldName); // Rename file to its original name
 
   // Check if the user is banned
   db.isBanned(form.email, (err, data) => {

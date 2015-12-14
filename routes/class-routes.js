@@ -38,17 +38,27 @@ router.get('/', (req, res) => {
           return;
         }
 
-        res.render('class', {
-          fname: user.fname,
-          lname: user.lname,
-          spireid: user.spireid,
-          num: data[0].num,
-          students: data[0].students,
-          eid: data[0].eid,
-          events: events,
-          posts: posts,
-          classid: classid
+        db.getPersonalClasses(user.spireid, (err, classes) => {
+
+          if (err) {
+            res.redirect('/index');
+            return;
+          }
+
+          res.render('class', {
+            fname: user.fname,
+            lname: user.lname,
+            spireid: user.spireid,
+            num: data[0].num,
+            students: data[0].students,
+            eid: data[0].eid,
+            events: events,
+            posts: posts,
+            classid: classid,
+            classes: classes
+          });
         });
+
       });
     });
   });
