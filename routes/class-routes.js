@@ -83,7 +83,10 @@ router.get('/content', (req, res) => {
       }
 
       res.render('event', {
-        data: data
+        data: data,
+        fname : user.fname,
+        lname: user.lname,
+        spireid: user.spireid
       });  
     });
     
@@ -107,6 +110,7 @@ router.get('/content', (req, res) => {
         res.render('post', {
           data: data,
           fname : user.fname,
+          lname: user.lname,
           spireid: user.spireid,
           comments : comments
         });

@@ -55,16 +55,16 @@
         });
       });
 
-      var toggle = 0;
+      var toggle = [0, 0, 0, 0, 0, 0]; //array to represent whether the icons for a class is open or not
 
       function changeClass(i){
-        if( toggle == 0 ){
+        if( toggle[i] == 0 ){
           $('#class'+i+' #dropdown').removeClass('fa-chevron-down').addClass('fa-chevron-up');
-          toggle = 1;
+          toggle[i] = 1;
         }
         else{
           $('#class'+i+' #dropdown').removeClass('fa-chevron-up').addClass('fa-chevron-down');
-          toggle = 0;
+          toggle[i] = 0;
         }
       }
     </script>
