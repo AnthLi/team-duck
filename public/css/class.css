@@ -98,6 +98,28 @@
     }
 }
 
+select{
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    width: 170px;
+    padding: 5px;
+    font-size: 14px;
+    -webkit-appearance: none;
+}
+
+#dropDown{
+   width: 170px;
+   overflow: hidden;
+   background: url(/imgs/down_arrow_select.jpg) no-repeat right #ddd;
+   border: 1px solid #ccc;
+   float: right;
+   vertical-align: middle;
+   margin-top: .5%;
+}
+
 
 
 
