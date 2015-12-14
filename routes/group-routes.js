@@ -104,6 +104,42 @@ router.post('/createPost', (req, res) => {
   });
 });
 
+router.post('/postComment', (req, res) => {
+
+    var form = req.body;
+    var pid = req.query.pid;
+    var user = req.session.user;
+
+    if (!user) {
+      req.flash('login', 'Not logged in');
+      res.redirect('login');
+      return;
+    }
+
+  //Check if login has expired
+  if (user && !online[user.uid]) {
+    delete req.session.user;
+    req.flash('login', 'Login expired');
+    res.redirect('login');
+    return;
+  }
+
+
+  db.getCID(pid, (err, cid) => {
+      if(err){
+        res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+      }
+      //uid, pid, cid, content,cb
+      db.postComment(pid, form.content, user.spireid, (err, data) => {
+        if(err){
+          res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+          return;
+        }
+        res.redirect('/class/content?classid='+cid+"&"+"pid="+pid);
+      });
+  });
+});
+
 ////// End POST Requests
 
 module.exports = router;
