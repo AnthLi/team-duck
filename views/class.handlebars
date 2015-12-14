@@ -3,6 +3,15 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/css/class.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script>
+
+    window.onload = function() {
+      $('select[name="classes"]').find('option:contains({{num}})').attr("selected",true);
+    };
+
+    </script>
+
   </head>
 
   <div id="page">
@@ -17,7 +26,13 @@
       <ul id="nav">
         <li><a href="/group/createPost?classid={{classid}}">+ Post</a></li>
         <li><a href="/group/createEvent?classid={{classid}}">+ Event</a></li>
-        <p1>{{num}}</p1>
+        <div id="dropDown">
+          <select name="classes" onChange="window.location.href=this.value">
+            {{#each classes}}
+              <option value="/class?classid={{this.classid}}">{{this.num}}</option>
+            {{/each}}
+          </select>
+        </div>  
       </ul> 
       <ul id="events">
         {{#each events}}
