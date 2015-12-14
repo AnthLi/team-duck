@@ -51,6 +51,7 @@ nav:not(.mm-menu)
 .footer
 {
 	text-align: center;
+	padding-left: 22px;
 }
 .header,
 .footer
