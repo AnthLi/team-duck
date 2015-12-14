@@ -12,7 +12,7 @@
     </div>
   </div>
 
-    <div id="cont">
+  <div id="cont">
     <div id="tp">
       <ul id="nav">
         <li><a href="/group/createPost?classid={{classid}}">+ Post</a></li>
@@ -21,16 +21,24 @@
       </ul> 
       <ul id="events">
         <li><a><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{data.title}}</b> scheduled for {{data.date}} <b><i id="nameRight">{{data.name}}</i></b></a></li>
-        <li><a><b>Description - </b><i>{{data.description}}</i></a></li>
+        <li><a><b>Description - </b><i>{{data.description}}</i></a><b id="totalVotes">{{stats.total}} votes</b></li>
         <li><a><b>Where - </b><i>{{data.location}}</i></a></li>
+
           <li id="yes"><a href="/group/attendEvent?classid={{classid}}&eid={{eid}}">Attend</a></li>
           <li id="no"><a href="/group/ignoreEvent?classid={{classid}}&eid={{eid}}">Ignore</a></li>
         </form>
       </ul>
     </div>
   </div>
-
-  Attending: {{stats.attending.length}} <br>
-  Ignoring: {{stats.ignoring.length}} <br>
-  Total responses: {{stats.total}}
+   <script>
+    $(function(){
+      var p = ({{stats.attending.length}}/{{stats.total}})*100;
+      $('#perce').css('width', p + '%');
+      $('#perce2').css('width', (100-p) + '%');
+    });
+   </script>
+   <ul id="graph">
+   <li id="perce" style="background-color: #2878d8; height: 40px"><center><script>document.write(Math.round(({{stats.attending.length}}/{{stats.total}})*100)+'% attending');</script></center></li>
+   <li id="perce2" style="background-color: #ff9400; height: 40px"><center><script>document.write(Math.round(({{stats.ignoring.length}}/{{stats.total}})*100)+'% attending');</script></center></li>
+   </ul>
 </html>
