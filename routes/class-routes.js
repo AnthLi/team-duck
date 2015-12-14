@@ -139,7 +139,8 @@ router.get('/content', (req, res) => {
           lname: user.lname,
           spireid: user.spireid,
           data: data,
-          comments : comments
+          pid: pid,
+          comments: comments
         });
       });
     });
