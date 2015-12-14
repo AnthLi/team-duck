@@ -23,8 +23,9 @@
         <li><a><i id="calendar" class="icon fa fa-calendar fa-1x"></i> <b>{{data.title}}</b> scheduled for {{data.date}} <b><i id="nameRight">{{data.name}}</i></b></a></li>
         <li><a><b>Description - </b><i>{{data.description}}</i></a></li>
         <li><a><b>Where - </b><i>{{data.location}}</i></a></li>
-        <li id="yes"><a href="">Yes</a></li>
-        <li id="no"><a href="">No</a></li>
+          <li id="yes"><a href="/group/attendEvent?classid={{classid}}&eid={{eid}}">Attend</a></li>
+          <li id="no"><a href="/group/ignoreEvent?classid={{classid}}&eid={{eid}}">Ignore</a></li>
+        </form>
       </ul>
     </div>
   </div>

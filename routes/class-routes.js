@@ -108,10 +108,12 @@ router.get('/content', (req, res) => {
       }
 
       res.render('event', {
-        data: data,
-        fname : user.fname,
+        fname: user.fname,
         lname: user.lname,
-        spireid: user.spireid
+        spireid: user.spireid,
+        data: data,
+        classid: classid,
+        eid: eid
       });  
     });
     
@@ -133,10 +135,10 @@ router.get('/content', (req, res) => {
         }
 
         res.render('post', {
-          data: data,
-          fname : user.fname,
+          fname: user.fname,
           lname: user.lname,
           spireid: user.spireid,
+          data: data,
           comments : comments
         });
       });
@@ -146,9 +148,9 @@ router.get('/content', (req, res) => {
 
 // Delete a class based on the classid
 router.get('/delete', (req, res) => {
-  var classid = req.query.classid;
   var user = req.session.user;
-
+  var classid = req.query.classid;
+  
   // The user session either doesn't exist, or it expired
   if (!sessionCheck(user, online, req, res)) {
     return;
