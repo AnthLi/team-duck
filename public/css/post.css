@@ -116,3 +116,14 @@
 	display:none;
 }
 
+#flagPost{
+  float: right;
+  padding-right: 15px;
+}
+
+#flagComment{
+  float: right;
+  padding-right: 15px;
+}
+
+
