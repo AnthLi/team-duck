@@ -179,6 +179,15 @@ p4{
 	color: black;
 }
 
+#banner{
+	background-color: #f2f2f2;
+	height: 40px;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 10px;
+	font-size: 1.25em;
+}
+
 
 
 </style>
