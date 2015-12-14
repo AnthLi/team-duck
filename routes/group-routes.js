@@ -49,15 +49,55 @@ router.get('/createPost', (req,res) => {
   });
 });
 
+// Attend an event posted
+router.get('/attendEvent', (req, res) => {
+  var user = req.session.user;
+  var classid = req.query.classid;
+  var eid = req.query.eid;
+  
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
+
+  db.attendEvent(eid, user.spireid, (err, data) => {
+    if (err) {
+      res.redirect(req.header('Referer'));
+      return;
+    }
+
+    res.redirect('/class?classid=' + classid);
+  });
+});
+
+// Ignore an event posted
+router.get('/ignoreEvent', (req, res) => {
+  var user = req.session.user;
+  var classid = req.query.classid;
+  var eid = req.query.eid;
+  
+  if (!sessionCheck(user, online, req, res)) {
+    return;
+  }
+
+  db.ignoreEvent(eid, user.spireid, (err, data) => {
+    if (err) {
+      res.redirect(req.header('Referer'));
+      return;
+    }
+
+    res.redirect('/class?classid=' + classid);
+  });
+});
+
 ////// End GET Requests
 
 ////// Start POST Requests
 
 // Send event creation data
 router.post('/createEvent', (req, res) => {
+  var user = req.session.user;
   var form = req.body;
   var classid = req.query.classid;
-  var user = req.session.user;
 
   // The user session either doesn't exist, or it expired
   if (!sessionCheck(user, online, req, res)) {
@@ -86,9 +126,9 @@ router.post('/createEvent', (req, res) => {
 
 // Send post creation data
 router.post('/createPost', (req, res) => {
+  var user = req.session.user;
   var form = req.body;
   var classid = req.query.classid;
-  var user = req.session.user;
 
   // The user session either doesn't exist, or it expired
   if (!sessionCheck(user, online, req, res)) {
@@ -115,9 +155,9 @@ router.post('/createPost', (req, res) => {
 });
 
 router.post('/postComment', (req, res) => {
+  var user = req.session.user;
   var form = req.body;
   var pid = req.query.pid;
-  var user = req.session.user;
 
   db.getCID(pid, (err, cid) => {
     if (err) {
