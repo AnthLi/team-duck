@@ -282,7 +282,7 @@ li.mm-vertical.mm-opened > .mm-panel {
     border-color: rgba(0, 0, 0, 0.1); }
     .mm-menu .mm-navbar > *,
     .mm-menu .mm-navbar a {
-      color: rgba(0, 0, 0, 0.3); }
+      color: #595959; }
     .mm-menu .mm-navbar .mm-btn:before,
     .mm-menu .mm-navbar .mm-btn:after {
       border-color: rgba(0, 0, 0, 0.3); }
