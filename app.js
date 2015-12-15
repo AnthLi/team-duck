@@ -60,7 +60,7 @@ app.get('/index', (req, res) => {
     // Get the list of classes for the dropdown menu
     db.getClassList((err, classList) => {
       // Randomize the students in each class on the home page
-      if (classesData.rowCount > 0) {
+      if (classesData.rowCount === undefined) {
         classesData.forEach((elem) => {
           var students = elem.students.slice(0, 7);
           shuffle(students);
