@@ -47,7 +47,7 @@ If ```nodemon app.js``` isn't working, try ```npm install -g nodemon```, then re
 - [multer](https://github.com/expressjs/multer) to upload files to the file system
 - [nodemon](https://github.com/remy/nodemon) to automatically reload the server on any changes
 - [pg](https://github.com/brianc/node-postgres) to access the PostgreSQL database
-- [course-parser](https://github.com/AnthLi/course-parser) personal library containing a script to parse SPIRE HTML pages containing all UMass Amherst classes offered
+- [course-parser](https://github.com/AnthLi/course-parser) personal library containing a script to parse SPIRE's HTML files containing all UMass Amherst classes offered
 
 ## Views
 - ```/index```: the home page
