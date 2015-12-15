@@ -63,14 +63,14 @@ If ```nodemon app.js``` isn't working, try ```npm install -g nodemon```, then re
 - ```/admin/controls```: various admin controls
 
 ## Statefulness
-Statefulness is maintained by using the [express-session](https://www.npmjs.com/package/express-session) library. In ```app.js```, ```/routes/user-routes.js```, and ```/routes/admin-routes.js```, there are various GET requests that check both the user session state through ```req.session.user``` and if the user is online through ```/lib/online.js```.
+Statefulness is maintained by using the [express-session](https://www.npmjs.com/package/express-session) library. There are various GET requests throughout all routes that check both the user session state through ```req.session.user``` and if the user is online through ```/lib/online.js```.
 
 If the user session state exists, then that means they are currently logged in. Otherwise, it would be ```undefined```. Therefore, no user session exists. The library ```/lib/online.js``` simply stores a list of every user logged in. If a user isn't in the list, then either they are not logged in, or the server restarted and ended their session.
 
 ## Persistence
-This application uses a PostgreSQL database. The database stores tables, one of which consists of every single user registered for the app. Each user in the table has a UID, first name, last name, email, date of birth, admin status, and number of flags for inappropriate behavior for their attributes. There is also a table consists of every single class and their class ID that goes along with it. For example, class COMPSCI 326 and class ID 34166. Another table contains blacklisted users that were banned from the app, which contains the banned user's email address. One last table contains the id, first and last names, description, and role of each developer, which gets queried into the the ```/team``` view.
+This application uses a PostgreSQL database. The database contains multiple tables: blacklist, classes, comments, events, posts, subjects, team, and users. Blacklist contains the emails of all banned users. Classes contains rows of every class along with an array for each class containing every student enrolled. Comments contains all of the comments made in every post. Events and posts holds all of the events and posts created for every class. Subjects is the entire list of subjects offered at UMass. Team and users are the table of each developer and the table of all users registerted in the app.
 
-The library ```/lib/database.js``` contains the connection to the database and various functions such as adding and deleting users from the database. A file containing the password to the database is stored locally and ignored by bit on each developer's computer and parsed in order to create a successful connection to the database. (Hint: the password in old commits is not the same, so don't try to be clever!)
+The library ```/lib/database.js``` contains the connection to the database and various query functions such as adding, deleting, and updating tables in the datable. A file containing the password to the database is stored locally and ignored by bit on each developer's computer and parsed in order to create a successful connection to the database. (Hint: the password in old commits is not the same, so don't try to be clever!)
 
 ## The Team
 - Anthony Li
