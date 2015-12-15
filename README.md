@@ -83,3 +83,8 @@ The library ```/lib/database.js``` contains the connection to the database and v
 
 ## Final Project Document
 https://docs.google.com/document/d/1QAY0uNoGbssk_nWpT-EiKctfoWRgb0gmmcVC5dHICgY/edit?usp=sharing
+
+## Videos
+Source Code Overview: https://www.youtube.com/watch?v=e8KgI_KwYnc
+Web Application Demo: https://www.youtube.com/watch?v=qZ4uVgucyEI
+Presentation: 
