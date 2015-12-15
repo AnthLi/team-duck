@@ -173,7 +173,23 @@ p4{
 	font-size: 1.25em;
 }
 
+#goback {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #444;
+    position: relative;
+    height: auto;
+    overflow: auto;
+}
 
+#goback li a{
+  display: block;
+    color: #fff;
+    padding: 10px 0 10px 20px;
+    text-decoration: none;
+}
 
 </style>
 
