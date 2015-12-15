@@ -2,7 +2,6 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/main.css">
   </head>
 
   <div id="page">
@@ -13,18 +12,16 @@
   </div>
 
   <div id="banner">
-      {{#each classData}}
-      All Students in {{num}}
-      {{/each}}
+    {{#each classData}}
+      All students in {{num}}
+    {{/each}}
   </div>
 
-
-  
-    {{#each classData}}
+  {{#each classData}}
     {{#each students}}
       <a href="/user/profile?spireid={{this}}"><img id="drawerImage" src="/imgs/users/{{this}}.jpg"></a>
     {{/each}}
-    {{/each}}
+  {{/each}}
 
-
+  <center><a href="/class?classid={{classid}}">GO BACK</a></center>
 </html>

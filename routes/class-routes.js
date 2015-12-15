@@ -1,4 +1,5 @@
 var express = require('express');
+
 var db = require('../lib/database.js'); // Database library
 var online = require('../lib/online').online; // List of online users
 var sessionCheck = require('../lib/sessionCheck.js') // Session checking library
@@ -82,6 +83,7 @@ router.get('/students', (req,res) => {
       fname: user.fname,
       lname: user.lname,
       spireid: user.spireid,
+      classid: classid,
       classData: data
     });
   });
@@ -117,9 +119,9 @@ router.get('/content', (req, res) => {
           fname: user.fname,
           lname: user.lname,
           spireid: user.spireid,
-          data: data,
           classid: classid,
           eid: eid,
+          data: data,
           stats: stats
         });
       })
@@ -147,6 +149,7 @@ router.get('/content', (req, res) => {
           lname: user.lname,
           spireid: user.spireid,
           data: data,
+          classid: classid,
           pid: pid,
           comments: comments
         });

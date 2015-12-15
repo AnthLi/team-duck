@@ -129,21 +129,6 @@ p4{
 	text-align: center;
 }
 
-#onlineImage{
-  height: 130px;
-  width: 130px;
-  border-radius: 90px;
-  border: 2px #444 solid;
-}
-
-#onlineLink{
-	text-decoration: none;
-}
-
-#onlineUsers{
-	width: 130px;
-}
-
 #drawerImage{
   height: 130px;
   width: 130px;
