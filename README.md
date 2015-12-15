@@ -86,5 +86,7 @@ https://docs.google.com/document/d/1QAY0uNoGbssk_nWpT-EiKctfoWRgb0gmmcVC5dHICgY/
 
 ## Videos
 Source Code Overview: https://www.youtube.com/watch?v=e8KgI_KwYnc
+
 Web Application Demo: https://www.youtube.com/watch?v=qZ4uVgucyEI
+
 Presentation: 
