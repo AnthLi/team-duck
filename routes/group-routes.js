@@ -65,7 +65,7 @@ router.get('/attendEvent', (req, res) => {
       return;
     }
 
-    res.redirect('/class?classid=' + classid);
+    res.redirect('/class/content?classid=' + classid + '&eid=' + eid);
   });
 });
 
@@ -85,7 +85,7 @@ router.get('/ignoreEvent', (req, res) => {
       return;
     }
 
-    res.redirect('/class?classid=' + classid);
+    res.redirect('/class/content?classid=' + classid + '&eid=' + eid);
   });
 });
 
