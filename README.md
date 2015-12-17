@@ -1,5 +1,15 @@
 # Zembo
 
+## Final Project Document
+https://docs.google.com/document/d/1QAY0uNoGbssk_nWpT-EiKctfoWRgb0gmmcVC5dHICgY/edit?usp=sharing
+
+## Videos
+Source Code Overview: https://www.youtube.com/watch?v=e8KgI_KwYnc
+
+Web Application Demo: https://www.youtube.com/watch?v=qZ4uVgucyEI
+
+Presentation: https://www.youtube.com/watch?v=FBM9yEhTqYk
+
 ## Overview
 Many people today have their heads dug deep into the screens of their phones and computers, even when studying. Rather than getting together with others to study together, you can easily send them a message and start up a conversation. With Zembo though, you can easily create study session events and get together with just about anyone who wants to work on related topics and material. For those who want to join in on the study session, they can still join in on the event and keep in touch by sending posts and having others comment on your posts.
 
@@ -81,13 +91,3 @@ The library ```/lib/database.js``` contains the connection to the database and v
 - Ben Cheung
 - Zachary Milrod
 - Jonathan Gatley
-
-## Final Project Document
-https://docs.google.com/document/d/1QAY0uNoGbssk_nWpT-EiKctfoWRgb0gmmcVC5dHICgY/edit?usp=sharing
-
-## Videos
-Source Code Overview: https://www.youtube.com/watch?v=e8KgI_KwYnc
-
-Web Application Demo: https://www.youtube.com/watch?v=qZ4uVgucyEI
-
-Presentation: https://www.youtube.com/watch?v=FBM9yEhTqYk
